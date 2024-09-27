@@ -1,4 +1,6 @@
 ---
+import { Seo } from "astro-seo-meta"
+
 interface Props {
 	title: string;
 }
@@ -10,11 +12,31 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content="Site description" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<title>{title} :: drolx labs - Software development & services</title>
+		<Seo
+			title={title + ' :: drolx labs'}
+			description="Software products and services - telematics, logistics, transportation and other enterprise solutions"
+			keywords={["website", "blog", "software", "Nigeria", "App development", "Google Play", "App Store", "Software Development"]}
+			icon="/favicon.ico"
+			themeColor="#000000"
+			colorScheme="light"
+			facebook={{
+				image: "/social/facebook.png",
+				url: "https://facebook.com/drolxLabs",
+				type: "website",
+			}}
+			twitter={{
+				image: "/social/twitter.png",
+				site: "@drolxLabs",
+				card: "summary",
+			}}
+		/>
 	</head>
 	<body>
 		<slot />
