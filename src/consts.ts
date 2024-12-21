@@ -11,16 +11,9 @@
 //
 // Project: drolx.github.io
 // Author: Godwin peter. O (me@godwin.dev)
-// Created At: Sat 21 Dec 2024 11:09:00
+// Created At: Sat 21 Dec 2024 11:43:18
 // Modified By: Godwin peter. O (me@godwin.dev)
-// Modified At: Sat 21 Dec 2024 11:09:00
+// Modified At: Sat 21 Dec 2024 11:43:18
 
-import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-import mdx from '@astrojs/mdx';
-import sitemap from "@astrojs/sitemap";
-
-export default defineConfig({
-  site: 'https://drolx.com',
-  integrations: [mdx(), sitemap(), tailwind()],
-});
+export const SITE_TITLE = 'drolx Blogs';
+export const SITE_DESCRIPTION = 'Welcome to ....';

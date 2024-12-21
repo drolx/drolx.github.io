@@ -11,16 +11,23 @@
 //
 // Project: drolx.github.io
 // Author: Godwin peter. O (me@godwin.dev)
-// Created At: Sat 21 Dec 2024 11:09:00
+// Created At: Sat 21 Dec 2024 12:49:44
 // Modified By: Godwin peter. O (me@godwin.dev)
-// Modified At: Sat 21 Dec 2024 11:09:00
+// Modified At: Sat 21 Dec 2024 12:49:44
 
-import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-import mdx from '@astrojs/mdx';
-import sitemap from "@astrojs/sitemap";
+import rss from '@astrojs/rss';
+import { getCollection } from 'astro:content';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-export default defineConfig({
-  site: 'https://drolx.com',
-  integrations: [mdx(), sitemap(), tailwind()],
-});
+export async function GET(context: any) {
+  const posts = await getCollection('blog');
+  return rss({
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    site: context.site,
+    items: posts.map((post) => ({
+      ...post.data,
+      link: `/blog/${post.id}/`,
+    })),
+  });
+}

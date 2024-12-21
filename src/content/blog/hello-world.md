@@ -1,9 +1,11 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: "Hello, World!"
+description: 'Lorem ipsum dolor sit amet'
+pubDate: 'Jul 08 2022'
 author: "Godwin Peter .O"
-publishDate: "25-Sep-2024"
+heroImage: "/blog-placeholder-1.jpg" 
 ---
+
 All frontmatter properties are available as props to an Astro layout component.
 
 The `layout` property is the only special one provided by Astro.

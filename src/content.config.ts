@@ -11,16 +11,22 @@
 //
 // Project: drolx.github.io
 // Author: Godwin peter. O (me@godwin.dev)
-// Created At: Sat 21 Dec 2024 11:09:00
+// Created At: Sat 21 Dec 2024 14:49:08
 // Modified By: Godwin peter. O (me@godwin.dev)
-// Modified At: Sat 21 Dec 2024 11:09:00
+// Modified At: Sat 21 Dec 2024 14:49:08
 
-import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-import mdx from '@astrojs/mdx';
-import sitemap from "@astrojs/sitemap";
+import { glob } from 'astro/loaders';
+import { defineCollection, z } from 'astro:content';
 
-export default defineConfig({
-  site: 'https://drolx.com',
-  integrations: [mdx(), sitemap(), tailwind()],
+const blog = defineCollection({
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+  }),
 });
+
+export const collections = { blog };
