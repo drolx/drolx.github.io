@@ -60,12 +60,12 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=' + tagId}></script>
+    <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=G-TV4J9YCNL0'}></script>
     <script type="text/partytown" is:inline>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', tagId);
+        gtag('config', 'G-TV4J9YCNL0');
     </script>
 
     <!-- in <head> before GTM code -->
@@ -88,12 +88,11 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
         j.async = true;
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", tagId);
+      })(window, document, "script", "dataLayer", "G-TV4J9YCNL0");
     </script>
     </head>
   <body class:list={[
 		  clazz,
-		  'bg-gray-50 dark:bg-gray-800',
 	    'scrollbar scrollbar-w-1 scrollbar-thumb-rounded-[0.25rem]',
 	    'scrollbar-track-slate-200  scrollbar-thumb-gray-400',
 	    'dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700',
@@ -108,7 +107,6 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
       >
       </iframe>
     </noscript>
-
     <slot />
   </body>
 </html>
