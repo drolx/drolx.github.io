@@ -35,6 +35,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
         uses: withastro/action@v2
+        env:
+          PUBLIC_TAG_ID: ${{ secrets.PUBLIC_TAG_ID }}
+          PUBLIC_TAG_MANAGER_ID: ${{ secrets.PUBLIC_TAG_MANAGER_ID }}
         with:
           path: .
           node-version: 20

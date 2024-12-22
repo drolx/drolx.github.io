@@ -1,5 +1,7 @@
 ---
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts'
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_AUTHOR } from '@/consts'
+import { SEO } from 'astro-seo'
+import { getImagePath } from 'astro-opengraph-images'
 
 interface Props {
   title: string
@@ -9,14 +11,12 @@ interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const {
-  title,
-  description,
-  image = '/images/placeholder-640x480.png',
-  class: clazz,
-} = Astro.props
+const { title, description, image, class: clazz } = Astro.props
 
-const tagId = import.meta.env.PUBLIC_MEASUREMENT_ID
+const { url, site } = Astro
+const openGraphImageUrl = getImagePath({ url, site })
+const tagId = import.meta.env.TAG_ID
+const tagManagerId = import.meta.env.PUBLIC_TAG_MANAGER_ID
 const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
 ---
 
@@ -38,47 +38,58 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     <meta name="title" content={layoutTitle} />
     <meta name="description" content={description} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
-    <meta name="author" content="Godwin peter .O" />
+    <meta name="author" content={SITE_AUTHOR} />
 		<meta name="copyright" content="drolx-source-1.0" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={layoutTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={layoutTitle} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    <SEO
+      title={title}
+      description={description}
+      openGraph={
+      {
+        basic: {
+          title: title,
+          type: "website",
+          image: image ? (new URL(image, Astro.url)).toString() : openGraphImageUrl,
+          url: url,
+        },
+        optional: {
+          description: description,
+          siteName: layoutTitle,
+          locale: "en-US",
+        },
+      }
+      },
+      twitter={{
+        creator: "@drolxLabs",
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: image ? (new URL(image, Astro.url)).toString() : openGraphImageUrl, 
+        imageAlt: title,
+      }}
+    />
 
     <script>
       import 'flowbite';
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=G-TV4J9YCNL0'}></script>
-    <script type="text/partytown" is:inline>
+    <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=' + tagId}></script>
+    <script type="text/partytown" is:inline define:vars={{ tagId, tagManagerId }}>
+        // Google Analytics
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-TV4J9YCNL0');
-    </script>
+        gtag('config', tagId);
 
-    <!-- in <head> before GTM code -->
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-    </script>
+        // Before GTM code
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
 
-    <!-- Google Tag Manager -->
-    <script is:inline>
-      (function (w, d, s, l, i) {
+        // Google Tag Manager
+        (function (w, d, s, l, i) {
         console.log("GTM");
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -88,7 +99,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
         j.async = true;
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-TDRZ8NRG");
+      })(window, document, "script", "dataLayer", tagManagerId);
     </script>
     </head>
   <body class:list={[
@@ -100,7 +111,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe
-        src={'https://www.googletagmanager.com/ns.html?id=GTM-TDRZ8NRG' }
+        src={'https://www.googletagmanager.com/ns.html?id=' + tagManagerId }
         height="0"
         width="0"
         style="display:none;visibility:hidden"
