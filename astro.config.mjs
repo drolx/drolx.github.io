@@ -21,6 +21,7 @@ import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import icon from 'astro-icon'
 import { defineConfig } from 'astro/config'
+import opengraphImages, { presets } from 'astro-opengraph-images'
 
 export default defineConfig({
   site: 'https://drolx.com',
@@ -35,5 +36,7 @@ export default defineConfig({
         forward: ['dataLayer.push'],
       },
     }),
+    opengraphImages({ presets: presets.simpleBlog }),
   ],
 })
+
