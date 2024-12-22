@@ -15,5 +15,5 @@
 // Modified By: Godwin peter. O (me@godwin.dev)
 // Modified At: Sat 21 Dec 2024 11:43:18
 
-export const SITE_TITLE = 'drolx Blogs';
-export const SITE_DESCRIPTION = 'Welcome to ....';
+export const SITE_TITLE = 'drolx labs'
+export const SITE_DESCRIPTION = 'Software and Cloud Solutions'

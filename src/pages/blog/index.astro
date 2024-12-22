@@ -1,34 +1,28 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from 'astro:content'
+import SiteLayout from '@/layouts/SiteLayout.astro'
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+)
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-	</head>
-	<body>
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-              <div>{post.data.pubDate} </div>
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-	</body>
-</html>
+<SiteLayout title="Blogs">
+  <section>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}/`}>
+              <img width={720} height={360} src={post.data.heroImage} alt="" />
+              <h4 class="title">{post.data.title}</h4>
+              <p class="date">
+                <div>{post.data.publishedAt} </div>
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</SiteLayout>

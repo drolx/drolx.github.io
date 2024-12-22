@@ -38,7 +38,7 @@ jobs:
         with:
           path: .
           node-version: 20
-          package-manager: pnpm@latest
+          package-manager: bun@latest
 
   deploy:
     needs: build

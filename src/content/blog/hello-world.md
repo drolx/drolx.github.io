@@ -1,9 +1,9 @@
 ---
 title: "Hello, World!"
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
+description: "Lorem ipsum dolor sit amet"
+publishedAt: "Jul 08 2022"
 author: "Godwin Peter .O"
-heroImage: "/blog-placeholder-1.jpg" 
+heroImage: "/images/placeholder-640x480.png"
 ---
 
 All frontmatter properties are available as props to an Astro layout component.

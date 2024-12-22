@@ -15,12 +15,12 @@
 // Modified By: Godwin peter. O (me@godwin.dev)
 // Modified At: Sat 21 Dec 2024 12:49:44
 
-import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content'
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts'
+import rss from '@astrojs/rss'
 
 export async function GET(context: any) {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('blog')
   return rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
@@ -29,5 +29,5 @@ export async function GET(context: any) {
       ...post.data,
       link: `/blog/${post.id}/`,
     })),
-  });
+  })
 }

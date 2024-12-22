@@ -15,12 +15,25 @@
 // Modified By: Godwin peter. O (me@godwin.dev)
 // Modified At: Sat 21 Dec 2024 11:09:00
 
-import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-import mdx from '@astrojs/mdx';
-import sitemap from "@astrojs/sitemap";
+import mdx from '@astrojs/mdx'
+import partytown from '@astrojs/partytown'
+import sitemap from '@astrojs/sitemap'
+import tailwind from '@astrojs/tailwind'
+import icon from 'astro-icon'
+import { defineConfig } from 'astro/config'
 
 export default defineConfig({
   site: 'https://drolx.com',
-  integrations: [mdx(), sitemap(), tailwind()],
-});
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind({ nesting: true }),
+    icon({ iconDir: 'src/assets/icons' }),
+    partytown({
+      config: {
+        debug: false,
+        forward: ['dataLayer.push'],
+      },
+    }),
+  ],
+})

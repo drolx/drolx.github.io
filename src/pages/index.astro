@@ -1,8 +1,63 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import SiteLayout from '@/layouts/SiteLayout.astro'
+import LandingIndusCard from '@/components/landing/LandingIndusCard.astro'
+import IndustriesData from '@/data/industries.json'
+import LandingText from '@/data/landing-text.json'
 ---
 
-<Layout title="Coming Soon">
-	<div class="relative overflow-hidden">
-	</div>
-</Layout>
+<SiteLayout title="Home">
+  <div
+    class="container mx-auto flex flex-col space-y-6 px-6 py-10 lg:h-[32rem] lg:flex-row lg:items-center lg:py-16"
+  >
+    <div class="w-full lg:w-1/2">
+      <div class="lg:max-w-lg">
+        <h1
+          class="text-4xl font-black tracking-wide text-primary-500 dark:text-white lg:text-5xl"
+        >
+          Innovate.
+        </h1>
+        <h1
+          class="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl"
+        >
+          Transform. Scale.
+        </h1>
+        <div class="mt-8 space-y-5">
+          <p class="text-xl text-gray-700">Empowering businesses with cutting-edge SaaS solutions, software development, and cloud services.</p>
+          <button type="button" class="text-white bg-accent-500 hover:bg-secondary-400 font-semibold rounded-lg text-lg px-5 py-2.5 me-2 mb-2">Request Quote</button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="hidden h-96 w-full items-center justify-center lg:flex lg:w-1/2"
+    >
+      <img
+        class="mx-auto h-full w-full rounded-md object-cover lg:max-w-2xl"
+        src="/images/hero-image.svg"
+        alt="glasses photo"
+      />
+    </div>
+  </div>
+  <div class="flex flex-col bg-neutral-500 py-8">
+    <p class="mb-8 text-4xl font-black self-center text-grey-700">{'What We Offer'}</p>
+    <div class="flex flex-col md:flex-row space-x-4 px-4 justify-between">
+      <div class="flex-1 flex flex-col space-y-4 px-4 lg:px-6">
+        <p class="text-3xl font-semibold text-gray-700">{LandingText.solutionTitle}</p>
+        <p class="text-lg text-gray-700">{LandingText.solutionContent}</p>
+         <img
+        class="mx-auto h-full w-full rounded-md object-cover lg:max-w-2xl"
+          src="/images/dashboard-content.png"
+        alt="dashboard content"
+      />
+
+
+      </div>
+      <div class="flex-1 flex flex-col space-y-4 px-1 lg:px-4 items-center py-6 md:py-1">
+        {
+        IndustriesData.map(item => (
+          <LandingIndusCard title={item.title} content={item.content} icon={item.icon} /> 
+        ))
+        }
+      </div>
+    </div>
+  </div>
+</SiteLayout>

@@ -5,22 +5,29 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "clean": "bunx rimraf node_modules bun.* **/bun.* **/dist/*",
+    "clean": "bunx rimraf node_modules .astro bun.* **/bun.* **/dist/*",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "biome lint --write .",
+    "lint:fix": "biome check --write ."
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.0.3",
+    "@astrojs/partytown": "^2.1.2",
     "@astrojs/rss": "^4.0.10",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.4",
     "astro": "^5.1.1",
+    "astro-icon": "^1.1.4",
     "flowbite": "^2.5.1",
-    "tailwindcss": "^3.4.13",
-    "typescript": "^5.4.5"
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@iconify-json/mdi": "^1.2.2",
     "@tailwindcss/typography": "^0.5.15"
   }
 }
