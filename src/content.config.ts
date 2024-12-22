@@ -11,20 +11,22 @@
 //
 // Project: drolx.github.io
 // Author: Godwin peter. O (me@godwin.dev)
-// Created At: Sat 21 Dec 2024 18:52:16
+// Created At: Sat 21 Dec 2024 14:49:08
 // Modified By: Godwin peter. O (me@godwin.dev)
-// Modified At: Sat 21 Dec 2024 18:52:16
+// Modified At: Sat 21 Dec 2024 14:49:08
 
-import type { APIRoute } from 'astro'
+import { defineCollection, z } from 'astro:content'
+import { glob } from 'astro/loaders'
 
-const getRobotsTxt = (sitemapURL: URL) => `
-User-agent: *
-Allow: /
+const blog = defineCollection({
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishedAt: z.coerce.date(),
+    updatedAt: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+  }),
+})
 
-Sitemap: ${sitemapURL.href}
-`
-
-export const GET: APIRoute = ({ site }) => {
-  const sitemapURL = new URL('sitemap-index.xml', site)
-  return new Response(getRobotsTxt(sitemapURL))
-}
+export const collections = { blog }

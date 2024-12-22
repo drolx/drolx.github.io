@@ -11,20 +11,9 @@
 //
 // Project: drolx.github.io
 // Author: Godwin peter. O (me@godwin.dev)
-// Created At: Sat 21 Dec 2024 18:52:16
+// Created At: Sat 21 Dec 2024 11:43:18
 // Modified By: Godwin peter. O (me@godwin.dev)
-// Modified At: Sat 21 Dec 2024 18:52:16
+// Modified At: Sat 21 Dec 2024 11:43:18
 
-import type { APIRoute } from 'astro'
-
-const getRobotsTxt = (sitemapURL: URL) => `
-User-agent: *
-Allow: /
-
-Sitemap: ${sitemapURL.href}
-`
-
-export const GET: APIRoute = ({ site }) => {
-  const sitemapURL = new URL('sitemap-index.xml', site)
-  return new Response(getRobotsTxt(sitemapURL))
-}
+export const SITE_TITLE = 'drolx labs'
+export const SITE_DESCRIPTION = 'Software and Cloud Solutions'

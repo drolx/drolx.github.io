@@ -1,0 +1,23 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  title: string
+  content: string
+  icon: string
+}
+
+const { title, content, icon } = Astro.props
+---
+
+<!-- Industries card -->
+<div class="w-full bg-info rounded-lg flex space-x-3 p-4">
+  <div class="flex-initial">
+    <Icon name={icon} class="text-white size-8" />
+  </div>
+  <div class="flex-1 space-y-2">
+    <p class="text-3xl text-white font-normal">{title}</p>
+    <p class="text-white text-md">{content}</p>
+  </div>
+</div>
+

@@ -11,20 +11,23 @@
 //
 // Project: drolx.github.io
 // Author: Godwin peter. O (me@godwin.dev)
-// Created At: Sat 21 Dec 2024 18:52:16
+// Created At: Sat 21 Dec 2024 12:49:44
 // Modified By: Godwin peter. O (me@godwin.dev)
-// Modified At: Sat 21 Dec 2024 18:52:16
+// Modified At: Sat 21 Dec 2024 12:49:44
 
-import type { APIRoute } from 'astro'
+import { getCollection } from 'astro:content'
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts'
+import rss from '@astrojs/rss'
 
-const getRobotsTxt = (sitemapURL: URL) => `
-User-agent: *
-Allow: /
-
-Sitemap: ${sitemapURL.href}
-`
-
-export const GET: APIRoute = ({ site }) => {
-  const sitemapURL = new URL('sitemap-index.xml', site)
-  return new Response(getRobotsTxt(sitemapURL))
+export async function GET(context: any) {
+  const posts = await getCollection('blog')
+  return rss({
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    site: context.site,
+    items: posts.map((post) => ({
+      ...post.data,
+      link: `/blog/${post.id}/`,
+    })),
+  })
 }

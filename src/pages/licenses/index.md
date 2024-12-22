@@ -1,8 +1,8 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../components/BlogPost.astro
 title: "drolx Licenses"
 author: "Godwin Peter .O"
-publishDate: "26-Sep-2024"
+publishedAt: "26-Sep-2024"
 ---
 
 Available licenses from drolx labs

@@ -1,197 +1,63 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Relaunch from "../assets/relaunch_day.svg";
+import SiteLayout from '@/layouts/SiteLayout.astro'
+import LandingIndusCard from '@/components/landing/LandingIndusCard.astro'
+import IndustriesData from '@/data/industries.json'
+import LandingText from '@/data/landing-text.json'
 ---
 
-<!-- component -->
-<Layout title="Coming Soon">
-	<div class="relative overflow-hidden">
-		<div
-			class="bg-white pt-10 pb-14 sm:pt-16 lg:overflow-hidden lg:pt-24 lg:pb-24"
-		>
-			<div class="mx-auto max-w-5xl lg:px-8">
-				<div class="lg:grid lg:grid-cols-2 lg:gap-8">
-					<div
-						class="mx-auto max-w-md px-4 text-center sm:max-w-2xl sm:px-6 lg:flex lg:items-center lg:px-0 lg:text-left"
-					>
-						<div class="lg:py-24">
-							<h1
-								class="mt-4 text-4xl font-bold tracking-tight text-black sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl"
-							>
-								<span class="block text-blue-400"
-									>{"Inovate"}</span
-								>
-								<span class="block text-4xl text-black"
-									>Transform, Scale</span
-								>
-							</h1>
-							<p
-								class="mt-3 text-base text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl"
-							>
-								Our Website will launch soon. Join the waitlist
-								to try the beta before it's publicly available.
-							</p>
-							<!-- <div class="mt-10 sm:mt-12">
-								<form
-									class="sm:mx-auto sm:max-w-xl lg:mx-0"
-									action="https://api.web3forms.com/submit"
-								>
-									<div class="sm:flex">
-										<input
-											type="hidden"
-											name="access_key"
-											value="YOUR_ACCESS_KEy_HERE"
-										/>
-										<input
-											type="hidden"
-											name="subject"
-											value="New Waitlist"
-										/>
-										<div class="min-w-0 flex-1">
-											<label for="email" class="sr-only"
-												>Email address</label
-											><input
-												id="email"
-												type="email"
-												placeholder="Enter your email"
-												class="block w-full rounded-md border-0 bg-gray-200 px-4 py-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400"
-												value=""
-												autocomplete="off"
-											/>
-										</div>
-										<div class="mt-3 sm:mt-0 sm:ml-3">
-											<button
-												type="submit"
-												class="block w-full rounded-md bg-blue-400 py-3 px-4 font-medium text-white shadow hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-gray-900"
-												>Join Waitlist</button
-											>
-										</div>
-									</div>
-								</form>
-							</div> -->
-							<div class="flex flex-col gap-3 mt-5 text-gray-500">
-								<div class="flex gap-1">
-									<svg
-										class="w-6 h-6 text-gray-800 dark:text-white"
-										aria-hidden="true"
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										fill="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											d="M7.978 4a2.553 2.553 0 0 0-1.926.877C4.233 6.7 3.699 8.751 4.153 10.814c.44 1.995 1.778 3.893 3.456 5.572 1.68 1.679 3.577 3.018 5.57 3.459 2.062.456 4.115-.073 5.94-1.885a2.556 2.556 0 0 0 .001-3.861l-1.21-1.21a2.689 2.689 0 0 0-3.802 0l-.617.618a.806.806 0 0 1-1.14 0l-1.854-1.855a.807.807 0 0 1 0-1.14l.618-.62a2.692 2.692 0 0 0 0-3.803l-1.21-1.211A2.555 2.555 0 0 0 7.978 4Z"
-										></path>
-									</svg>
-									<span>+2348030776365</span>
-								</div>
-								<div class="flex gap-1">
-									<svg
-										class="w-6 h-6 text-gray-800 dark:text-white"
-										aria-hidden="true"
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										fill="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											d="M7.978 4a2.553 2.553 0 0 0-1.926.877C4.233 6.7 3.699 8.751 4.153 10.814c.44 1.995 1.778 3.893 3.456 5.572 1.68 1.679 3.577 3.018 5.57 3.459 2.062.456 4.115-.073 5.94-1.885a2.556 2.556 0 0 0 .001-3.861l-1.21-1.21a2.689 2.689 0 0 0-3.802 0l-.617.618a.806.806 0 0 1-1.14 0l-1.854-1.855a.807.807 0 0 1 0-1.14l.618-.62a2.692 2.692 0 0 0 0-3.803l-1.21-1.211A2.555 2.555 0 0 0 7.978 4Z"
-										></path>
-									</svg>
-									<span>+2348062957703</span>
-								</div>
-								<div class="flex gap-1">
-									<svg
-										class="w-6 h-6 text-gray-800 dark:text-white"
-										aria-hidden="true"
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										fill="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											d="M17 6h-2V5h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2h-.541A5.965 5.965 0 0 1 14 10v4a1 1 0 1 1-2 0v-4c0-2.206-1.794-4-4-4-.075 0-.148.012-.22.028C7.686 6.022 7.596 6 7.5 6A4.505 4.505 0 0 0 3 10.5V16a1 1 0 0 0 1 1h7v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3h5a1 1 0 0 0 1-1v-6c0-2.206-1.794-4-4-4Zm-9 8.5H7a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2Z"
-										></path>
-									</svg>
-									<span>hello@drolx.com</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="mt-12 hidden lg:block w-full flex items-center">
-						<img src={Relaunch.src} alt="Launch Art" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<footer class="bg-white">
-		<div
-			class="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8"
-		>
-			<nav
-				class="-mx-5 -my-2 flex flex-wrap justify-center"
-				aria-label="Footer"
-			>
-				<div class="px-5 py-2">
-					<a
-						href="#"
-						class="text-base text-gray-500 hover:text-gray-900"
-						>About</a
-					>
-				</div>
-				<div class="px-5 py-2">
-					<a
-						href="#"
-						class="text-base text-gray-500 hover:text-gray-900"
-						>Licenses</a
-					>
-				</div>
-				<div class="px-5 py-2">
-					<a
-						href="#"
-						class="text-base text-gray-500 hover:text-gray-900"
-						>Privacy</a
-					>
-				</div>
-			</nav>
-			<div class="mt-8 flex justify-center space-x-6">
-				<a
-					href="https://twitter.com/drolxLabs"
-					class="text-gray-400 hover:text-gray-500"
-					><span class="sr-only">Twitter</span><svg
-						fill="currentColor"
-						viewBox="0 0 24 24"
-						class="h-6 w-6"
-						aria-hidden="true"
-						><path
-							d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
-						></path></svg
-					></a
-				><a
-					href="https://github.com/drolx"
-					class="text-gray-400 hover:text-gray-500"
-					><span class="sr-only">GitHub</span><svg
-						fill="currentColor"
-						viewBox="0 0 24 24"
-						class="h-6 w-6"
-						aria-hidden="true"
-						><path
-							fill-rule="evenodd"
-							d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-							clip-rule="evenodd"></path></svg
-					></a
-				>
-			</div>
-			<p class="mt-8 text-center text-base text-gray-400">
-				&copy;
-				{new Date().getFullYear()}
-				<a href="/">{"drolx Labs"}</a>
-				{", All rights reserved."}
-			</p>
-		</div>
-	</footer>
-</Layout>
+<SiteLayout title="Home">
+  <div
+    class="container mx-auto flex flex-col space-y-6 px-6 py-10 lg:h-[32rem] lg:flex-row lg:items-center lg:py-16"
+  >
+    <div class="w-full lg:w-1/2">
+      <div class="lg:max-w-lg">
+        <h1
+          class="text-4xl font-black tracking-wide text-primary-500 dark:text-white lg:text-5xl"
+        >
+          Innovate.
+        </h1>
+        <h1
+          class="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl"
+        >
+          Transform. Scale.
+        </h1>
+        <div class="mt-8 space-y-5">
+          <p class="text-xl text-gray-700">Empowering businesses with cutting-edge SaaS solutions, software development, and cloud services.</p>
+          <button type="button" class="text-white bg-accent-500 hover:bg-secondary-400 font-semibold rounded-lg text-lg px-5 py-2.5 me-2 mb-2">Request Quote</button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="hidden h-96 w-full items-center justify-center lg:flex lg:w-1/2"
+    >
+      <img
+        class="mx-auto h-full w-full rounded-md object-cover lg:max-w-2xl"
+        src="/images/hero-image.svg"
+        alt="glasses photo"
+      />
+    </div>
+  </div>
+  <div class="flex flex-col bg-neutral-500 py-8">
+    <p class="mb-8 text-4xl font-black self-center text-grey-700">{'What We Offer'}</p>
+    <div class="flex flex-col md:flex-row space-x-4 px-4 justify-between">
+      <div class="flex-1 flex flex-col space-y-4 px-4 lg:px-6">
+        <p class="text-3xl font-semibold text-gray-700">{LandingText.solutionTitle}</p>
+        <p class="text-lg text-gray-700">{LandingText.solutionContent}</p>
+         <img
+        class="mx-auto h-full w-full rounded-md object-cover lg:max-w-2xl"
+          src="/images/dashboard-content.png"
+        alt="dashboard content"
+      />
+
+
+      </div>
+      <div class="flex-1 flex flex-col space-y-4 px-1 lg:px-4 items-center py-6 md:py-1">
+        {
+        IndustriesData.map(item => (
+          <LandingIndusCard title={item.title} content={item.content} icon={item.icon} /> 
+        ))
+        }
+      </div>
+    </div>
+  </div>
+</SiteLayout>

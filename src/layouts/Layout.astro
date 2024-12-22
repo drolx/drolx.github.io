@@ -1,46 +1,115 @@
 ---
-import { Seo } from "astro-seo-meta"
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts'
 
 interface Props {
-	title: string;
+  title: string
+  description?: string
+  image?: string
+  class?: string
 }
 
-const { title } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const {
+  title,
+  description,
+  image = '/images/placeholder-640x480.png',
+  class: clazz,
+} = Astro.props
+
+const tagId = import.meta.env.PUBLIC_MEASUREMENT_ID
+const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Site description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-		<meta name="generator" content={Astro.generator} />
-		<link rel="sitemap" href="/sitemap-index.xml" />
-		<title>{title} :: drolx labs - Software development & services</title>
-		<Seo
-			title={title + ' :: drolx labs'}
-			description="Software products and services - telematics, logistics, transportation and other enterprise solutions"
-			keywords={["website", "blog", "software", "Nigeria", "App development", "Google Play", "App Store", "Software Development"]}
-			icon="/favicon.ico"
-			themeColor="#000000"
-			colorScheme="light"
-			facebook={{
-				image: "/social/facebook.png",
-				url: "https://facebook.com/drolxLabs",
-				type: "website",
-			}}
-			twitter={{
-				image: "/social/twitter.png",
-				site: "@drolxLabs",
-				card: "summary",
-			}}
-		/>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Site description" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{layoutTitle}</title>
+    <meta name="title" content={layoutTitle} />
+    <meta name="description" content={description} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <meta name="author" content="Godwin peter .O" />
+		<meta name="copyright" content="drolx-source-1.0" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={layoutTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={layoutTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <script>
+      import 'flowbite';
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=' + tagId}></script>
+    <script type="text/partytown" is:inline>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', tagId);
+    </script>
+
+    <!-- in <head> before GTM code -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        console.log("GTM");
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", tagId);
+    </script>
+    </head>
+  <body class:list={[
+		  clazz,
+		  'bg-gray-50 dark:bg-gray-800',
+	    'scrollbar scrollbar-w-1 scrollbar-thumb-rounded-[0.25rem]',
+	    'scrollbar-track-slate-200  scrollbar-thumb-gray-400',
+	    'dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700',
+  ]}>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src={'https://www.googletagmanager.com/ns.html?id=' + tagId }
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      >
+      </iframe>
+    </noscript>
+
+    <slot />
+  </body>
 </html>
-<style is:global>
-</style>
+<style is:global></style>
