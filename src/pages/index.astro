@@ -31,9 +31,10 @@ import LandingText from '@/data/landing-text.json'
       class="hidden h-96 w-full items-center justify-center lg:flex lg:w-1/2"
     >
       <img
-        class="mx-auto h-full w-full rounded-md object-cover lg:max-w-2xl"
+        class="mx-auto h-auto w-full rounded-md lg:max-w-2xl"
+        style="object-fit: contain;"
         src="/images/hero-image.svg"
-        alt="glasses photo"
+        alt="dashboard content"
       />
     </div>
   </div>
@@ -43,15 +44,15 @@ import LandingText from '@/data/landing-text.json'
       <div class="flex-1 flex flex-col space-y-4 px-4 lg:px-6">
         <p class="text-3xl font-semibold text-gray-700">{LandingText.solutionTitle}</p>
         <p class="text-lg text-gray-700">{LandingText.solutionContent}</p>
-         <img
-        class="mx-auto h-full w-full rounded-md object-cover lg:max-w-2xl"
+        <div class="h-full flex justify-center items-center py-8 lg:py-2">
+          <img
+          class="mx-auto w-full rounded-md object-scale-down lg:max-w-2xl"
           src="/images/dashboard-content.png"
-        alt="dashboard content"
-      />
-
-
+          alt="dashboard content"
+        />
+        </div>
       </div>
-      <div class="flex-1 flex flex-col space-y-4 px-1 lg:px-4 items-center py-6 md:py-1">
+      <div class="flex-1 flex flex-col space-y-6 lg:px-4 items-center py-6 md:py-1">
         {
         IndustriesData.map(item => (
           <LandingIndusCard title={item.title} content={item.content} icon={item.icon} /> 
