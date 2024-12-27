@@ -18,3 +18,4 @@
 export const SITE_TITLE = 'drolx labs'
 export const SITE_DESCRIPTION = 'Software and Cloud Solutions'
 export const SITE_AUTHOR = 'Godwin peter .O'
+export const SITE_URL = 'https://drolx.com'
