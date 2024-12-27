@@ -20,11 +20,11 @@ import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import icon from 'astro-icon'
-import opengraphImages, { presets } from 'astro-opengraph-images'
 import { defineConfig } from 'astro/config'
+import { SITE_URL } from './src/consts'
 
 export default defineConfig({
-  site: 'https://drolx.com',
+  site: SITE_URL,
   integrations: [
     mdx(),
     sitemap(),
@@ -36,6 +36,5 @@ export default defineConfig({
         forward: ['dataLayer.push'],
       },
     }),
-    opengraphImages({ presets: presets.simpleBlog }),
   ],
 })
