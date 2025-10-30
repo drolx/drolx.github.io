@@ -13,22 +13,22 @@
     "lint:fix": "biome check --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.0.3",
-    "@astrojs/partytown": "^2.1.2",
-    "@astrojs/rss": "^4.0.10",
-    "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^5.1.4",
-    "astro": "^5.1.1",
+    "@astrojs/check": "0.9.5",
+    "@astrojs/mdx": "4.3.9",
+    "@astrojs/partytown": "2.1.4",
+    "@astrojs/rss": "4.0.13",
+    "@astrojs/sitemap": "3.6.0",
+    "@astrojs/tailwind": "6.0.2",
+    "astro": "5.15.2",
     "astro-icon": "^1.1.4",
-    "flowbite": "^2.5.1",
-    "tailwindcss": "^3.4.17",
+    "flowbite": "^3.1.2",
+    "tailwindcss": "^3.4.18",
     "tw-to-css": "^0.0.12",
-    "typescript": "^5.7.2"
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@iconify-json/mdi": "^1.2.2",
-    "@tailwindcss/typography": "^0.5.15"
+    "@biomejs/biome": "2.3.2",
+    "@iconify-json/mdi": "^1.2.3",
+    "@tailwindcss/typography": "^0.5.19"
   }
 }

@@ -17,10 +17,10 @@ const year = new Date().getFullYear()
         <div class="py-2 flex gap-3 self-center lg:self-end">
            {
           [
-          { url: 'https://x.com/drolxLabs', icon: 'mdi:twitter' },
-          { url: 'https://facebook.com/drolxLabs', icon: 'mdi:facebook' },
-          { url: 'https://instagram.com/drolxLabs', icon: 'mdi:instagram' },
-          { url: 'https://linkedin.com/company/drolx-labs', icon: 'mdi:linkedin' }
+          { url: 'https://x.com/drolxLab', icon: 'mdi:twitter' },
+          { url: 'https://facebook.com/drolxLab', icon: 'mdi:facebook' },
+          { url: 'https://instagram.com/drolxLab', icon: 'mdi:instagram' },
+          { url: 'https://linkedin.com/company/drolx-lab', icon: 'mdi:linkedin' }
           ].map(item => (
           <a href={item.url} class="text-white transition-colors duration-300 hover:text-secondary-300">
                   <Icon name={item.icon} class="size-6" /> 
@@ -64,7 +64,7 @@ const year = new Date().getFullYear()
           <p class="text-lg font-bold text-white">{"Products"}</p>
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
-              ["Object Tracking", "Trace", "Tang"].map((item) => (
+              ["ello 360", "ello Trac", "We School"].map((item) => (
                 <a
                   href="#"
                   class="text-white transition-colors duration-300 hover:text-blue-500"
@@ -134,9 +134,9 @@ const year = new Date().getFullYear()
         &copy; {'drolx labs'} {year}, All Rights Reserved.
       </p>
             <div class="flex mt-3 -mx-2 sm:mt-0">
-                <a href="#" class="mx-2 text-sm text-white" aria-label="Reddit">Licenses</a>
-                <a href="#" class="mx-2 text-sm text-white" aria-label="Reddit">Privacy</a>
-                <a href="#" class="mx-2 text-sm text-white" aria-label="Reddit">Cookies</a>
+                <a href="/licenses" class="mx-2 text-sm text-white" aria-label="Licenses">Licenses</a>
+                <a href="#" class="mx-2 text-sm text-white" aria-label="Privacy">Privacy</a>
+                <a href="#" class="mx-2 text-sm text-white" aria-label="Cookies">Cookies</a>
             </div>
         </div>
   </div>
