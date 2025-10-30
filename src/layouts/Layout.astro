@@ -86,6 +86,26 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-TDRZ8NRG");
     </script>
+
+    <!-- support chat script -->
+    <script>
+      window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":"Chat with us"};
+      (function(d,t) {
+        var BASE_URL="https://sp.drolx.com";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'g3pLgjWBeP4zGFPCRGgPAqht',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+
     </head>
   <body class:list={[
 		  clazz,
