@@ -57,7 +57,6 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
       import 'flowbite';
     </script>
 
-    <script defer is:inline src="https://analytics.drolx.com/script.js" data-website-id="51802f26-5b28-4ff3-95ee-3fa53165c5c5"></script>
     <!-- Google tag (gtag.js) -->
     <!-- <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=G-TV4J9YCNL0'}></script>
     <script type="text/partytown" is:inline define:vars={{ tagId, tagManagerId }}>
@@ -85,8 +84,8 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-TDRZ8NRG");
-</script>
--->
+    </script>
+    -->
 
     <!-- support chat script -->
     <!--
@@ -106,9 +105,11 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
           })
         }
       })(document,"script");
-</script>
--->
+    </script>
+    -->
 
+    <!-- drolx Tracking Snippet -->
+    <script src="https://analytics.drolx.com/api/script.js" data-site-id="1" defer></script>
     </head>
   <body class:list={[
 		  clazz,
