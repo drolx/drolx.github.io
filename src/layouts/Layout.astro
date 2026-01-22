@@ -109,7 +109,13 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     -->
 
     <!-- drolx Tracking Snippet -->
-    <script src="https://analytics.drolx.com/api/script.js" data-site-id="1" defer></script>
+    <script
+    src="https://analytics.drolx.com/api/script.js"
+    data-site-id="1"
+    data-track-errors="true"
+    data-session-replay="true"
+    defer>
+    </script>
     </head>
   <body class:list={[
 		  clazz,
