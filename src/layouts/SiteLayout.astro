@@ -14,6 +14,8 @@ const { title, description, image } = Astro.props
 
 <Layout title={title} description={description} image={image}>
   <SiteHeader />
-  <slot />
+  <main class="min-h-[50dvh]">
+    <slot />
+  </main>
   <SiteFooter />
 </Layout>
