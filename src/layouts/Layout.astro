@@ -15,8 +15,8 @@ const openGraphImageUrl = new URL(
   image ?? '/images/og-image.png',
   Astro.url,
 ).toString()
-// const tagId = import.meta.env.TAG_ID
-// const tagManagerId = import.meta.env.PUBLIC_TAG_MANAGER_ID
+const tagId = import.meta.env.TAG_ID
+const tagManagerId = import.meta.env.PUBLIC_TAG_MANAGER_ID
 const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
 ---
 
@@ -58,64 +58,47 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <!-- <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=G-TV4J9YCNL0'}></script>
+    <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=G-TV4J9YCNL0'}></script>
     <script type="text/partytown" is:inline define:vars={{ tagId, tagManagerId }}>
         // Google Analytics
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-TV4J9YCNL0');
+        // window.dataLayer = window.dataLayer || [];
+        // function gtag(){dataLayer.push(arguments);}
+        // gtag('js', new Date());
+        // gtag('config', 'G-TV4J9YCNL0');
 
         // Before GTM code
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
+        // window.dataLayer = window.dataLayer || [];
+        // function gtag() {
+        //   dataLayer.push(arguments);
+        // }
 
         // Google Tag Manager
         (function (w, d, s, l, i) {
-        console.log("GTM");
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-TDRZ8NRG");
+          console.log("GTM");
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-TDRZ8NRG");
     </script>
-    -->
 
-    <!-- support chat script -->
-    <!--
-    <script type="text/javascript" is:inline>
-      window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":"Chat with us"};
-      (function(d,t) {
-        var BASE_URL="https://sp.drolx.com";
-        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=BASE_URL+"/packs/js/sdk.js";
-        g.defer = true;
-        g.async = true;
-        s.parentNode.insertBefore(g,s);
-        g.onload=function(){
-          window.chatwootSDK.run({
-            websiteToken: 'g3pLgjWBeP4zGFPCRGgPAqht',
-            baseUrl: BASE_URL
-          })
-        }
-      })(document,"script");
+    <!-- drolx Analytics Tracking Snippet -->
+    <script type="text/partytown" is:inline>
+      (function() {
+        var el = document.createElement("script");
+        el.src = "https://app.rybbit.io/api/script.js";
+        el.defer = true;
+        el.setAttribute("data-site-id", "1");
+        el.setAttribute("data-track-errors", "true");
+        el.setAttribute("data-session-replay", "true");
+        document.head.appendChild(el);
+      })();
     </script>
-    -->
 
-    <!-- drolx Tracking Snippet -->
-    <script
-    src="https://analytics.drolx.com/api/script.js"
-    data-site-id="1"
-    data-track-errors="true"
-    data-session-replay="true"
-    defer>
-    </script>
     </head>
   <body class:list={[
 		  clazz,
@@ -124,7 +107,6 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
 	    'dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700',
   ]}>
     <!-- Google Tag Manager (noscript) -->
-    <!--
     <noscript>
       <iframe
         src={'https://www.googletagmanager.com/ns.html?id=GTM-TDRZ8NRG'}
@@ -134,7 +116,6 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
       >
       </iframe>
     </noscript>
-    -->
     <slot />
   </body>
 </html>
