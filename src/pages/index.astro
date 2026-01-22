@@ -41,7 +41,7 @@ const skills: SkillItem[] = [
           Innovate.
         </h1>
         <h1
-          class="text-4xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl"
+          class="text-4xl font-semibold tracking-wide text-primary-500 dark:text-white lg:text-4xl"
         >
           Transform. Scale.
         </h1>
@@ -164,13 +164,13 @@ const skills: SkillItem[] = [
 
   <!-- Service We Offer -->
   <div class="py-16 container mx-auto flex flex-col items-center gap-8">
-    <div class="text-5xl text-primary font-black mb-8">
+    <div class="text-4xl lg:text-5-xl text-primary font-black mb-8">
       {"Services We Offer"}
     </div>
-    <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+    <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 px-8 lg:px-0">
       {
         LandingText.services.map((service) => (
-          <div class="card card-border rounded-xl pb-2 bg-base-100 w-96 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div class="card card-border rounded-xl pb-2 bg-base-100 lg:w-96 shadow-xl hover:shadow-2xl transition-shadow duration-300">
             <div class="card-body flex flex-col gap-8">
               <div class="card-title">
                 <div class="flex flex-col justify-start gap-4">
@@ -193,9 +193,9 @@ const skills: SkillItem[] = [
   </div>
 
   <!-- Our Expertise -->
-  <div class="pt-16 pb-4 container mx-auto flex flex-col items-center gap-8">
-    <div class="text-5xl text-primary font-black mb-8">{"Our Expertise"}</div>
-    <div class="grid grid-cols-6 grid-rows-3 gap-16">
+  <div class="py-16 container mx-auto flex flex-col items-center gap-8">
+    <div class="text-4xl lg:text-5-xl text-primary font-black mb-8">{"Our Expertise"}</div>
+    <div class="grid grid-cols-3 lg:grid-cols-6 gap-16 px-8 lg:px-0">
       {
         skills.map((skill) => (
           <div class="tooltip" data-tip={skill.label}>
