@@ -3,10 +3,10 @@ import { type CollectionEntry, getCollection } from 'astro:content'
 import { render } from 'astro:content'
 import BlogLayout from '../../layouts/BlogLayout.astro'
 
-type Props = CollectionEntry<'article'>
+type Props = CollectionEntry<'caseStudy'>
 
 export async function getStaticPaths() {
-  const posts = await getCollection('article')
+  const posts = await getCollection('caseStudy')
 
   return posts.map((post) => ({
     params: { slug: post.id },

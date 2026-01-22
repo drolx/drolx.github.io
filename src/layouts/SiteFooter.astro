@@ -1,92 +1,52 @@
 ---
-import type { RouteItem } from '@/types'
-import { Icon } from 'astro-icon/components'
+import type { RouteItem } from "@/types";
+import { Icon } from "astro-icon/components";
+import LandingText from "@/data/landing-text.json";
+import SubscribeButton from "@/components/SubscribeButton.astro";
 
-const year = new Date().getFullYear()
+const year = new Date().getFullYear();
 const companyRoutes: RouteItem[] = [
-  { label: 'About Us', url: '/company/about' },
-  { label: 'Case Studies', url: '/case-studies' },
-  { label: 'Solutions', url: '/solutions' },
-  { label: 'Our Clients', url: '/company/our-clients' },
-  { label: 'Partners', url: '/company/partners' },
-]
+  { label: "About Us", url: "/company/about" },
+  { label: "Case Studies", url: "/case-studies" },
+  { label: "Solutions", url: "/solutions" },
+  { label: "Our Clients", url: "/company/our-clients" },
+  { label: "Partners", url: "/company/partners" },
+];
 const resourceRoutes: RouteItem[] = [
-  { label: 'Articles', url: '/articles' },
-  { label: 'Support Center', url: '/support' },
-  { label: 'Contact', url: '/support/contact' },
-  { label: 'FAQ\'s', url: '/support/faqs' },
-  { label: 'Status', url: '#' },
-]
+  { label: "Articles", url: "/articles" },
+  { label: "Support Center", url: "/support" },
+  { label: "Contact", url: "/support/contact" },
+  { label: "FAQ's", url: "/support/faqs" },
+  { label: "Status", url: "#" },
+];
 const serviceRoutes: RouteItem[] = [
-  { label: 'Product Development', url: '#' },
-  { label: 'Cloud Infrastructure', url: '#' },
-  { label: 'Digital Transformation', url: '#' },
-  { label: 'Cloud Security', url: '#' },
-]
+  { label: "Product Development", url: "#" },
+  { label: "Cloud Infrastructure", url: "#" },
+  { label: "Digital Transformation", url: "#" },
+  { label: "Cloud Security", url: "#" },
+];
 const extraRoutes: RouteItem[] = [
-  { label: 'Licenses', url: '/licenses' },
-  { label: 'Terms', url: '/terms-of-service' },
-  { label: 'Privacy Policy', url: '/privacy-policy' },
-  { label: 'Cookies', url: '/cookies' },
-]
+  { label: "Licenses", url: "/licenses" },
+  { label: "Terms", url: "/terms-of-service" },
+  { label: "Privacy Policy", url: "/privacy-policy" },
+  { label: "Cookies", url: "/cookies" },
+];
 ---
 
-<footer class="bg-secondary-500">
-  <div class="container mx-auto px-6 py-8">
-    <div class="mb-16 flex flex-col sm:flex-row justify-between align-top">
-      <div class="flex flex-col sm:justify-center">
-         <a href="#" class="self-center md:self-auto">
-          <Icon name="logow" class="h-10 w-auto" />
+<footer class="bg-secondary-600">
+  <div class="container mx-auto px-6 lg:px-0 pb-8 pt-16">
+    <div class="flex flex-col md:flex-row gap-8">
+      <!-- Left Content -->
+      <div class="lg:max-w-96 flex flex-col gap-8 sm:justify-center">
+        <a href="#" class="self-center md:self-auto">
+          <Icon name="logow" class="h-16 w-auto" />
         </a>
-        <p class="mt-4 max-w-sm text-white">{"Empowering businesses with cutting-edge SaaS solutions, software development, and cloud services"}</p>
+        <p class="max-w-sm text-white">{LandingText.tagLine}</p>
+        <SubscribeButton />
       </div>
-      <div class="flex flex-col">
-        <div class="py-2 flex gap-3 self-center lg:self-end">
-           {
-          [
-          { url: 'https://x.com/drolxLab', icon: 'mdi:twitter' },
-          { url: 'https://facebook.com/drolxLab', icon: 'mdi:facebook' },
-          { url: 'https://instagram.com/drolxLab', icon: 'mdi:instagram' },
-          { url: 'https://linkedin.com/company/drolx-lab', icon: 'mdi:linkedin' }
-          ].map(item => (
-          <a href={item.url} class="text-white transition-colors duration-300 hover:text-secondary-300">
-                  <Icon name={item.icon} class="size-6" /> 
-                </a>
-              ))
-            }
 
-        </div>
-        <form class="mt-5">
-            <div>
-                <label for="search-dropdown" class="mb-2 text-sm font-medium sr-only">Your Email</label>
-                <div class="relative">
-                    <input type="text" id="search-dropdown" class="block p-2.5 min-w-80 lg:min-w-96 h-12 z-20 text-sm text-white placeholder-white bg-transparent rounded-lg rounded-s-white rounded-s-2 border border-gray-300 focus:ring-secondary-50 focus:border-secondary-50" placeholder="Email Address" required />
-                    <button type="submit" class="absolute top-0 end-0 py-2.5 px-5 h-full text-sm font-medium text-primary-600 bg-white rounded-lg border hover:bg-neutral-600 hover:text-white focus:ring-4 focus:outline-none">
-                      {'Subscribe'}
-                    </button>
-                </div>
-            </div>
-        </form>
-        <div class="flex flex-col items-end mt-4 space-y-2">
-            {
-          [
-            { label: '+234 803 077 6365', icon: 'mdi:phone' },
-            { label: '+234 806 295 7703', icon: 'mdi:phone' },
-            { label: 'hello@drolx.com', icon: 'mdi:email' }
-          ].map(item => (
-                <a href="#" class="text-white transition-colors duration-300 hover:text-secondary-300 flex space-x-2 items-center">
-                  <Icon name={item.icon} class="size-5" /> 
-                  <span>{item.label}</span>
-                </a>
-              ))
-            }
-        </div>
-      </div>
-    </div>
-    <hr class="my-2 border-white md:my-8" />
-    <div
-      class="grid grid-cols-2 gap-6 lg:grid-cols-4"
-    >
+      <!-- Right Navigation -->
+      <div class="flex-1 grid grid-cols-1 gap-6 lg:grid-cols-4">
         <div>
           <p class="text-lg font-bold text-white">{"Products"}</p>
           <div class="mt-5 flex flex-col items-start space-y-2">
@@ -106,21 +66,19 @@ const extraRoutes: RouteItem[] = [
           <p class="text-lg font-semibold text-white">{"Company"}</p>
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
-              companyRoutes.map(
-                (item) => (
-                  <a
-                    href={item.url}
-                    class="text-white transition-colors duration-300 hover:text-blue-500"
-                  >
-                    {item.label}
-                  </a>
-                ),
-              )
+              companyRoutes.map((item) => (
+                <a
+                  href={item.url}
+                  class="text-white transition-colors duration-300 hover:text-blue-500"
+                >
+                  {item.label}
+                </a>
+              ))
             }
           </div>
         </div>
         <div>
-          <p class="text-lg font-semibold text-white">{'Resources'}</p>
+          <p class="text-lg font-semibold text-white">{"Resources"}</p>
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
               resourceRoutes.map((item) => (
@@ -135,7 +93,7 @@ const extraRoutes: RouteItem[] = [
           </div>
         </div>
         <div>
-          <p class="text-lg font-semibold text-white">{'Services'}</p>
+          <p class="text-lg font-semibold text-white">{"Services"}</p>
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
               serviceRoutes.map((item) => (
@@ -147,31 +105,59 @@ const extraRoutes: RouteItem[] = [
                 </a>
               ))
             }
+          </div>
         </div>
-
       </div>
     </div>
     <hr class="my-4 border-white md:my-8" />
-<div class="flex flex-col items-center sm:flex-row sm:justify-between">
-<p class="mt-4 text-sm text-white sm:mt-0">
-        &copy; {'drolx Lab'} {year}, All Rights Reserved.
+    <div class="mb-16 flex gap-3 justify-center self-center lg:self-end">
+      {
+        [
+          { url: "https://x.com/drolxLab", icon: "mdi:twitter" },
+          { url: "https://facebook.com/drolxLab", icon: "mdi:facebook" },
+          { url: "https://instagram.com/drolxLab", icon: "mdi:instagram" },
+          {
+            url: "https://linkedin.com/company/drolx-lab",
+            icon: "mdi:linkedin",
+          },
+        ].map((item) => (
+          <a
+            href={item.url}
+            class="text-white transition-colors duration-300 hover:text-secondary-300"
+          >
+            <Icon name={item.icon} class="size-8" />
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex flex-col items-center sm:flex-row sm:justify-between">
+      <p class="mt-4 text-sm text-white sm:mt-0">
+        &copy; {"drolx Lab"}
+        {year}, All Rights Reserved.
       </p>
-            <div class="flex mt-3 -mx-2 sm:mt-0">
-              {extraRoutes.map((item) => (
-                <a href={item.url} class="mx-2 text-sm text-white" aria-label={item.label}>{item.label}</a>
-              ))}
-            </div>
-        </div>
+      <div class="flex mt-3 -mx-2 sm:mt-0">
+        {
+          extraRoutes.map((item) => (
+            <a
+              href={item.url}
+              class="mx-2 text-sm text-white"
+              aria-label={item.label}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </footer>
 
-
 <style>
-svg path {
-  fill: #fff;
-}
+  svg path {
+    fill: #fff;
+  }
 
-[astro-icon='logo'] [fill="currentColor"] {
-  fill: #fff;
-}
+  [astro-icon="logo"] [fill="currentColor"] {
+    fill: #fff;
+  }
 </style>

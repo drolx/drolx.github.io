@@ -6,12 +6,12 @@ return {
 
 			local license_data = {
 				author_name = "Godwin Peter .O",
-				author_mail = "me@godwin.dev",
-				cp_holders = "drolx Labs",
+				author_mail = "peter@drolx.com",
+				cp_holders = "drolx Lab",
 			}
 
 			local project_license = {
-				" Copyright (c) 2024 - #cp_year #cp_holders",
+				" Copyright (c) 2026 - #cp_year #cp_holders",
 				"",
 				" Licensed under the drolx Source License 1.0",
 				" you may not use this file except in compliance with the License.",

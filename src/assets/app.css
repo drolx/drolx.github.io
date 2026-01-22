@@ -1,0 +1,134 @@
+/* 
+    Copyright (c) 2026 - 2026 Godwin peter .O
+   
+    Licensed under the drolx Source License 1.0
+    you may not use this file except in compliance with the License.
+       https://drolx.com/licenses/source-license-1.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+   
+    Project: drolx.github.io
+    Author: Godwin peter .O (me@godwin.dev)
+    Created At: Thu 22 Jan 2026 02:45:45 PM UTC
+    Modified By: Godwin peter .O (me@godwin.dev)
+    Modified At: Thu 22 Jan 2026 02:45:45 PM UTC
+ */
+
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: light --default;
+  root: ":root";
+  logs: true;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(98% 0 0);
+  --color-base-300: oklch(95% 0 0);
+  --color-base-content: oklch(21% 0.006 285.885);
+  --color-primary: oklch(58.71% 0.226 261.49);
+  --color-primary-content: oklch(93% 0.034 272.788);
+  --color-secondary: oklch(47.8% 0.183 285.04);
+  --color-secondary-content: oklch(99.8% 0.183 285.04);
+  --color-accent: oklch(62.29% 0.154 155.05);
+  --color-accent-content: oklch(35% 0.154 155.05);
+  --color-neutral: oklch(14% 0.005 285.823);
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: oklch(64.67% 0.19 257.57);
+  --color-info-content: oklch(35.67% 0.19 257.57);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@theme {
+  /* --- Custom Colors --- */
+  --color-base: oklch(96.78% 0.015 257.2);
+  --color-info: oklch(64.67% 0.19 257.57);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-error: oklch(71% 0.194 13.428);
+
+  /* Primary Scale */
+  --color-primary-50: #f5fcff;
+  --color-primary-100: #e8f7ff;
+  --color-primary-200: #c9eaff;
+  --color-primary-300: #a8d8ff;
+  --color-primary-400: #66abff;
+  --color-primary-500: #2370ff;
+  --color-primary-600: #1e60e6;
+  --color-primary-700: #1347bf;
+  --color-primary-800: #0c3499;
+  --color-primary-900: #072273;
+  --color-primary-950: #03144a;
+
+  /* Secondary Scale */
+  --color-secondary-50: #f6f0fa;
+  --color-secondary-100: #eadff2;
+  --color-secondary-200: #c8b1e0;
+  --color-secondary-300: #a688cf;
+  --color-secondary-400: #6446ab;
+  --color-secondary-500: #281588;
+  --color-secondary-600: #23117a;
+  --color-secondary-700: #190b66;
+  --color-secondary-800: #110752;
+  --color-secondary-900: #0b043d;
+  --color-secondary-950: #050226;
+
+  /* Accent Scale */
+  --color-accent-50: #edfaf7;
+  --color-accent-100: #dcf5ef;
+  --color-accent-200: #aee8d9;
+  --color-accent-300: #82d9bf;
+  --color-accent-400: #3abd8d;
+  --color-accent-500: #01a15c;
+  --color-accent-600: #01914e;
+  --color-accent-700: #01783d;
+  --color-accent-800: #01612c;
+  --color-accent-900: #00471e;
+  --color-accent-950: #002e11;
+
+  /* Neutral Scale */
+  --color-neutral-50: #ffffff;
+  --color-neutral-100: #fcfeff;
+  --color-neutral-200: #fafdff;
+  --color-neutral-300: #f7fcff;
+  --color-neutral-400: #f2f9ff;
+  --color-neutral-500: #eef5ff;
+  --color-neutral-600: #c1cfe6;
+  --color-neutral-700: #869bbf;
+  --color-neutral-800: #566c99;
+  --color-neutral-900: #304473;
+  --color-neutral-950: #14224a;
+
+  /* --- Fonts --- */
+  --font-sans:
+    "Raleway", ui-sans-serif, system-ui, -apple-system, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-body:
+    "Raleway", ui-sans-serif, system-ui, -apple-system, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* --- Dark Mode (Class Strategy) --- */
+@variant dark (&:where(.dark, .dark *));

@@ -1,16 +1,37 @@
 ---
-import { Image } from 'astro:assets'
-import HeroImage from '@/assets/images/hero-image.svg'
-import DashImage from '@/assets/images/dash-content.png'
-import LandingIndusCard from '@/components/landing/LandingIndusCard.astro'
-import IndustriesData from '@/data/industries.json'
-import LandingText from '@/data/landing-text.json'
-import SiteLayout from '@/layouts/SiteLayout.astro'
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import HeroImage from "@/assets/images/hero.svg";
+import DashImage from "@/assets/images/dash-content.png";
+import LandingIndusCard from "@/components/landing/LandingIndusCard.astro";
+import IndustriesData from "@/data/industries.json";
+import LandingText from "@/data/landing-text.json";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import type { SkillItem } from "@/types";
+// Customer Images
+import CustomerImage0 from "@/assets/images/customer-0.webp";
+import CustomerImage1 from "@/assets/images/customer-1.webp";
+import CustomerImage2 from "@/assets/images/customer-2.webp";
+
+const skills: SkillItem[] = [
+  { label: "Linux", icon: "logos:linux-tux" },
+  { label: "Ansible", icon: "logos:ansible" },
+  { label: "dotnet", icon: "logos:dotnet" },
+  { label: "Java", icon: "logos:java" },
+  { label: "Kubernetes", icon: "logos:kubernetes" },
+  { label: "Docker", icon: "logos:docker-icon" },
+  { label: "Python", icon: "logos:python" },
+  { label: "Flutter", icon: "logos:flutter" },
+  { label: "VueJs", icon: "logos:vue" },
+  { label: "React", icon: "logos:react" },
+  { label: "NodeJs", icon: "logos:nodejs-icon" },
+  { label: "Typescript", icon: "logos:typescript-icon" },
+];
 ---
 
 <SiteLayout title="Home">
   <div
-    class="container mx-auto flex flex-col space-y-6 px-6 py-16 lg:h-[32rem] lg:flex-row lg:items-center"
+    class="container mx-auto flex flex-col space-y-6 px-6 py-16 lg:py-24 lg:h-[32rem] lg:flex-row lg:items-center"
   >
     <div class="w-full lg:w-1/2">
       <div class="lg:max-w-lg">
@@ -24,9 +45,12 @@ import SiteLayout from '@/layouts/SiteLayout.astro'
         >
           Transform. Scale.
         </h1>
-        <div class="mt-8 space-y-5">
-          <p class="text-xl text-gray-700">Empowering businesses with cutting-edge SaaS solutions, software development, and cloud services.</p>
-          <button type="button" class="text-white bg-accent-500 hover:bg-secondary-400 font-semibold rounded-lg text-lg px-5 py-2.5 me-2 mb-2">Request Quote</button>
+        <div class="mt-8 space-y-16">
+          <p class="text-xl text-gray-700">{LandingText.tagLine}</p>
+          <button
+            class="btn btn-lg btn-secondary hover:btn-accent me-2 mb-2 px-8 py-6"
+            >{"Get Started"}</button
+          >
         </div>
       </div>
     </div>
@@ -34,7 +58,7 @@ import SiteLayout from '@/layouts/SiteLayout.astro'
       class="hidden h-96 w-full items-center justify-center lg:flex lg:w-1/2"
     >
       <Image
-        class="mx-auto h-auto w-full rounded-md lg:max-w-2xl"
+        class="mx-auto h-auto w-full rounded-md lg:max-w-xl"
         style="object-fit: contain;"
         src={HeroImage}
         alt="drolx hero content"
@@ -42,28 +66,146 @@ import SiteLayout from '@/layouts/SiteLayout.astro'
     </div>
   </div>
   <div class="bg-neutral-500">
-  <div class="container mx-auto flex flex-col py-8">
-    <p class="mb-8 text-4xl font-black self-center text-grey-700">{'What We Offer'}</p>
-    <div class="flex flex-col md:flex-row space-x-4 px-4 justify-between">
-      <div class="flex-1 flex flex-col space-y-4 px-4 lg:px-6">
-        <p class="text-3xl font-semibold text-gray-700">{LandingText.solutionTitle}</p>
-        <p class="text-lg text-gray-700">{LandingText.solutionContent}</p>
-        <div class="h-full flex justify-center items-center py-8 lg:py-2">
-          <Image
-          class="mx-auto w-full rounded-md object-scale-down lg:max-w-2xl"
+    <div class="container mx-auto flex flex-col py-8">
+      <p class="mb-16 text-5xl font-black self-center text-neutral-900">
+        {"What We Offer"}
+      </p>
+      <div class="flex flex-col md:flex-row space-x-4 px-4 justify-between">
+        <div class="flex-1 flex flex-col space-y-4 px-4 lg:px-6">
+          <p class="text-4xl font-bold text-primary">
+            {LandingText.solutionTitle}
+          </p>
+          <p class="text-lg text-gray-700">{LandingText.solutionContent}</p>
+          <div class="h-full flex justify-center items-center py-8 lg:py-2">
+            <Image
+              class="mx-auto w-full rounded-md object-scale-down lg:max-w-2xl"
               src={DashImage}
-          alt="demo dashboard showcase"
-        />
+              alt="demo dashboard showcase"
+            />
+          </div>
+        </div>
+        <div
+          class="flex-1 flex flex-col space-y-6 lg:px-4 items-center py-6 md:py-1"
+        >
+          {
+            IndustriesData.map((item) => (
+              <LandingIndusCard
+                title={item.title}
+                content={item.content}
+                icon={item.icon}
+              />
+            ))
+          }
         </div>
       </div>
-      <div class="flex-1 flex flex-col space-y-6 lg:px-4 items-center py-6 md:py-1">
-        {
-        IndustriesData.map(item => (
-          <LandingIndusCard title={item.title} content={item.content} icon={item.icon} /> 
-        ))
-        }
+
+      <!-- Partners Projects -->
+      <div
+        class="relative mt-16 mb-8 bg-secondary md:rounded-lg w-full min-h-28"
+      >
+        <!-- Content -->
+        <div class="px-4 md:px-16 py-4 flex gap-8 items-center relative">
+          <!-- Client Icon -->
+          <div class="avatar-group -space-x-6">
+            <div class="avatar">
+              <div class="w-16">
+                <Image src={CustomerImage0} alt="customer 0" />
+              </div>
+            </div>
+            <div class="avatar">
+              <div class="w-16">
+                <Image src={CustomerImage1} alt="customer 1" />
+              </div>
+            </div>
+            <div class="avatar">
+              <div class="w-16">
+                <Image src={CustomerImage2} alt="customer 2" />
+              </div>
+            </div>
+            <div class="avatar avatar-placeholder">
+              <div class="bg-neutral text-neutral-content w-16">
+                <span>+12</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="flex-grow">
+            <div class="max-w-lg text-white text-lg">
+              {
+                "Over 15 + Clients have used our amazing solutions. See their case study here...."
+              }
+            </div>
+          </div>
+
+          <!-- Client Check -->
+          <button class="btn btn-lg">Check Here</button>
+        </div>
+        <!-- Background Content -->
+        <div
+          class="absolute z-0 top-0 left-1/2 opacity-30 inset-0 pointer-events-none"
+        >
+          <Icon
+            name="mdi:star"
+            class="absolute -top-8 -left-20 size-45 text-white"
+          />
+          <Icon
+            name="mdi:star"
+            class="absolute top-1 left-10 size-42 text-white"
+          />
+          <Icon
+            name="mdi:star"
+            class="absolute -top-10 left-32 size-46 text-white"
+          />
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Service We Offer -->
+  <div class="py-16 container mx-auto flex flex-col items-center gap-8">
+    <div class="text-5xl text-primary font-black mb-8">
+      {"Services We Offer"}
+    </div>
+    <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+      {
+        LandingText.services.map((service) => (
+          <div class="card card-border rounded-xl pb-2 bg-base-100 w-96 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <div class="card-body flex flex-col gap-8">
+              <div class="card-title">
+                <div class="flex flex-col justify-start gap-4">
+                  <Icon
+                    name={service.icon}
+                    class="size-10 text-secondary hover:text-neutral-600 transition-colors duration-300"
+                  />
+                  <h2 class="text-2xl font-semibold">{service.title}</h2>
+                </div>
+              </div>
+              <p class="text-lg font-light">{service.description}</p>
+              <div class="card-actions justify-start">
+                <button class="btn btn-lg btn-outline btn-secondary">Read More</button>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Our Expertise -->
+  <div class="pt-16 pb-4 container mx-auto flex flex-col items-center gap-8">
+    <div class="text-5xl text-primary font-black mb-8">{"Our Expertise"}</div>
+    <div class="grid grid-cols-6 grid-rows-3 gap-16">
+      {
+        skills.map((skill) => (
+          <div class="tooltip" data-tip={skill.label}>
+            <Icon
+              name={skill.icon}
+              class="size-16 hover:text-gray-3000 transition-colors duration-300"
+            />
+          </div>
+        ))
+      }
+    </div>
   </div>
 </SiteLayout>
