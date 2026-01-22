@@ -26,7 +26,12 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     <!-- Global Metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    
+    <!-- Favicon  -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png">
+
     <meta name="generator" content={Astro.generator}>
     <meta name="description" content="Site description">
 
@@ -41,7 +46,6 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     <meta name="author" content={SITE_AUTHOR}>
 		<meta name="copyright" content="drolx-source-1.0" >
     <meta name="keywords" content="drolx, software, tech, development, software solution, sass, product development, devOps, logistics, telematics, gps tracking">
-    <link rel="icon" href="/favicon.ico" />
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#281588">
     <meta property="og:url" content={`${site}${url}`}>
@@ -49,7 +53,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     <meta property="og:title" content={layoutTitle}>
     <meta property="og:image" content={openGraphImageUrl}>
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@drolxLabs">
+    <meta name="twitter:site" content="@drolxLab">
     <meta name="twitter:title" content={layoutTitle}>
     <meta name="twitter:image" content={openGraphImageUrl}>
 

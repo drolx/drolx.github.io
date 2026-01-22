@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+type Frontmatter = Props & {
+  frontmatter: Props;
+};
+const { frontmatter } = Astro.props as Frontmatter;
+---
+
+<SiteLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  image={frontmatter.heroImage}
+>
+  <div class="max-w-7xl mx-auto px-4 pt-8 pb-16">
+    <article class="pt-8 pb-16">
+      {
+        frontmatter.heroImage && (
+          <div class="flex justify-center mb-8">
+            <div class="hero-image">
+              <img
+                class="h-[250px] w-[640px] object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                src={frontmatter.heroImage}
+                alt="blog-image"
+              />
+            </div>
+          </div>
+        )
+      }
+      <div class="prose w-full">
+        <div class="flex justify-center">
+          <div class="title w-full">
+            <div class="date flex gap-2">
+              <FormattedDate date={frontmatter.publishedAt} />
+              {
+                frontmatter.updatedAt && (
+                  <div class="last-updated-on">
+                    Updated At: <FormattedDate date={frontmatter.updatedAt} />
+                  </div>
+                )
+              }
+            </div>
+            <h1>{frontmatter.title}</h1>
+            <div>{frontmatter.description}</div>
+            <hr />
+          </div>
+        </div>
+        <slot />
+      </div>
+    </article>
+  </div>
+</SiteLayout>

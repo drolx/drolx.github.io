@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+const title = "Articles & Insights";
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+---
+
+<SiteLayout title={title}>
+  <div class="max-w-7xl mx-auto px-4 py-16">
+    <div class="w-full mb-16">
+      <h2 class="text-base-100 text-4xl text-center font-bold">{title}</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        posts.map((post) => (
+          <article class="bg-white rounded-lg shadow hover:shadow-md transition overflow-hidden">
+            <img
+              src={post.data.heroImage}
+              alt="Blog cover"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-5">
+              <h2 class="text-lg font-semibold text-gray-900 mb-2">
+                {post.data.title}
+              </h2>
+              <p class="text-sm text-gray-600 mb-4">
+                {post.data.description}
+              </p>
+              <a
+                href={`/articles/${post.id}/`}
+                class="text-sm font-medium text-blue-600 hover:underline"
+              >
+                Read more →
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</SiteLayout>
