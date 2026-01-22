@@ -10,14 +10,13 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const { title, description, image, class: clazz } = Astro.props
-
 const { url, site } = Astro
 const openGraphImageUrl = new URL(
   image ?? '/images/og-image.png',
   Astro.url,
 ).toString()
-const tagId = import.meta.env.TAG_ID
-const tagManagerId = import.meta.env.PUBLIC_TAG_MANAGER_ID
+// const tagId = import.meta.env.TAG_ID
+// const tagManagerId = import.meta.env.PUBLIC_TAG_MANAGER_ID
 const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
 ---
 
@@ -59,7 +58,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=G-TV4J9YCNL0'}></script>
+    <!-- <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=G-TV4J9YCNL0'}></script>
     <script type="text/partytown" is:inline define:vars={{ tagId, tagManagerId }}>
         // Google Analytics
         window.dataLayer = window.dataLayer || [];
@@ -86,8 +85,10 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-TDRZ8NRG");
     </script>
+    -->
 
     <!-- support chat script -->
+    <!--
     <script type="text/javascript" is:inline>
       window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":"Chat with us"};
       (function(d,t) {
@@ -105,7 +106,10 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
         }
       })(document,"script");
     </script>
+    -->
 
+    <!-- drolx Tracking Snippet -->
+    <script src="https://analytics.drolx.com/api/script.js" data-site-id="1" defer></script>
     </head>
   <body class:list={[
 		  clazz,
@@ -114,6 +118,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
 	    'dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700',
   ]}>
     <!-- Google Tag Manager (noscript) -->
+    <!--
     <noscript>
       <iframe
         src={'https://www.googletagmanager.com/ns.html?id=GTM-TDRZ8NRG'}
@@ -123,6 +128,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
       >
       </iframe>
     </noscript>
+    -->
     <slot />
   </body>
 </html>
