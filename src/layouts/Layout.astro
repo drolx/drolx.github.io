@@ -1,5 +1,6 @@
 ---
-import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from '@/consts'
+import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+import "../assets/app.css";
 
 interface Props {
   title: string
@@ -57,25 +58,9 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     <meta name="twitter:title" content={layoutTitle}>
     <meta name="twitter:image" content={openGraphImageUrl}>
 
-    <script>
-      import 'flowbite';
-    </script>
-
     <!-- Google tag (gtag.js) -->
     <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=G-TV4J9YCNL0'}></script>
     <script type="text/partytown" is:inline define:vars={{ tagId, tagManagerId }}>
-        // Google Analytics
-        // window.dataLayer = window.dataLayer || [];
-        // function gtag(){dataLayer.push(arguments);}
-        // gtag('js', new Date());
-        // gtag('config', 'G-TV4J9YCNL0');
-
-        // Before GTM code
-        // window.dataLayer = window.dataLayer || [];
-        // function gtag() {
-        //   dataLayer.push(arguments);
-        // }
-
         // Google Tag Manager
         (function (w, d, s, l, i) {
           console.log("GTM");

@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="join self-center lg:self-end">
+  <div>
+    <label
+      class="input bg-transparent border-white text-white input-lg validator join-item"
+    >
+      <Icon name="mdi:email-outline" class="size-6 me-2" />
+      <input type="email" placeholder="Your Email" required />
+    </label>
+    <div class="validator-hint hidden">Enter valid email address</div>
+  </div>
+  <button
+    class="btn btn-lg btn-white text-secondary hover:btn-primary hover:text-white join-item"
+    >Subscribe</button
+  >
+</div>

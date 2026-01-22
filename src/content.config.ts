@@ -1,4 +1,4 @@
-// Copyright (c) 2024 - 2024 Godwin peter. O
+// Copyright (c) 2024 - 2026 Godwin peter. O
 //
 // Licensed under the drolx Source License 1.0
 // you may not use this file except in compliance with the License.
@@ -15,11 +15,11 @@
 // Modified By: Godwin peter. O (me@godwin.dev)
 // Modified At: Sat 21 Dec 2024 14:49:08
 
-import { defineCollection, z } from 'astro:content'
-import { glob } from 'astro/loaders'
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
-const blog = defineCollection({
-  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+const article = defineCollection({
+  loader: glob({ base: "./articles", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -27,6 +27,16 @@ const blog = defineCollection({
     updatedAt: z.coerce.date().optional(),
     heroImage: z.string().optional(),
   }),
-})
+});
 
-export const collections = { blog }
+const caseStudy = defineCollection({
+  loader: glob({ base: "./case-studies", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishedAt: z.coerce.date(),
+    updatedAt: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+  }),
+});
+export const collections = { article, caseStudy };

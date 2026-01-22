@@ -3,3 +3,8 @@ export interface RouteItem {
   url: string;
   children?: RouteItem[];
 }
+
+export type SkillItem = {
+  label: string;
+  icon: string;
+};
