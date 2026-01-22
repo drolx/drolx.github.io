@@ -15,19 +15,19 @@
 // Modified By: Godwin peter. O (me@godwin.dev)
 // Modified At: Sat 21 Dec 2024 12:49:44
 
-import { getCollection } from 'astro:content'
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts'
-import rss from '@astrojs/rss'
+import { getCollection } from "astro:content";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import rss from "@astrojs/rss";
 
 export async function GET(context: any) {
-  const posts = await getCollection('blog')
+  const posts = await getCollection("article");
   return rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     site: context.site,
     items: posts.map((post) => ({
       ...post.data,
-      link: `/blog/${post.id}/`,
+      link: `/articles/${post.id}/`,
     })),
-  })
+  });
 }
