@@ -1,37 +1,37 @@
 {
-  "name": "@drolx/website",
-  "type": "module",
-  "version": "0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "clean": "bunx rimraf node_modules .astro bun.* **/bun.* **/dist/*",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "lint": "biome lint --write .",
-    "lint:fix": "biome check --write --unsafe .",
-    "generate-assets": "pwa-assets-generator"
-  },
-  "dependencies": {
-    "@astrojs/check": "0.9.6",
-    "@astrojs/mdx": "4.3.13",
-    "@astrojs/partytown": "2.1.4",
-    "@astrojs/rss": "4.0.15",
-    "@astrojs/sitemap": "3.7.0",
-    "astro": "5.16.11",
-    "astro-icon": "1.1.5",
-    "daisyui": "5.5.14",
-    "tailwindcss": "4.1.18",
-    "tw-to-css": "0.0.12",
-    "typescript": "5.9.3"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.3.11",
-    "@iconify-json/mdi": "1.2.3",
-    "@iconify-json/logos": "1.2.10",
-    "@tailwindcss/typography": "0.5.19",
-    "@tailwindcss/vite": "4.1.18",
-    "@vite-pwa/assets-generator": "1.0.2"
-  }
+	"name": "@drolx/website",
+	"type": "module",
+	"version": "0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"clean": "bunx rimraf node_modules .astro bun.* **/bun.* **/dist/*",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"lint": "biome lint --write .",
+		"lint:fix": "biome check --write .",
+		"generate-assets": "pwa-assets-generator"
+	},
+	"dependencies": {
+		"@astrojs/check": "0.9.6",
+		"@astrojs/mdx": "4.3.13",
+		"@astrojs/partytown": "2.1.4",
+		"@astrojs/rss": "4.0.15",
+		"@astrojs/sitemap": "3.7.0",
+		"astro": "5.16.11",
+		"astro-icon": "1.1.5",
+		"daisyui": "5.5.14",
+		"tailwindcss": "4.1.18",
+		"tw-to-css": "0.0.12",
+		"typescript": "5.9.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.11",
+		"@iconify-json/mdi": "1.2.3",
+		"@iconify-json/logos": "1.2.10",
+		"@tailwindcss/typography": "0.5.19",
+		"@tailwindcss/vite": "4.1.18",
+		"@vite-pwa/assets-generator": "1.0.2"
+	}
 }
