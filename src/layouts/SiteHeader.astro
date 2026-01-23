@@ -1,86 +1,201 @@
 ---
-// import type { RouteItem } from '@/types'
-import { Icon } from 'astro-icon/components'
+import type { RouteItem } from "@/types";
+import { Icon } from "astro-icon/components";
 
-/* const routes: RouteItem[] = [
-  { label: 'Home', url: '/' },
-  { label: 'Products', url: '/products' },
-  { label: 'Services', url: '/services' },
-  { label: 'Company', url: '#' },
-  { label: 'Case Studies', url: '/case-studies' },
-] */
+const menuLists: RouteItem[] = [
+  {
+    url: "/",
+    label: "Home",
+  },
+  {
+    url: "/products",
+    label: "Products",
+  },
+  {
+    url: "/services",
+    label: "Services",
+    children: [
+      {
+        url: "#",
+        label: "Software Development",
+      },
+      {
+        url: "#",
+        label: "Cloud Solutions",
+      },
+      {
+        url: "#",
+        label: "IOT Solutions",
+      },
+      {
+        url: "#",
+        label: "Digital Transformation",
+      },
+      {
+        url: "#",
+        label: "Digital Security",
+      },
+    ],
+  },
+  {
+    url: "/company",
+    label: "Company",
+    children: [
+      {
+        url: "/company/about",
+        label: "About Us",
+      },
+      {
+        url: "/company/contact",
+        label: "Contact",
+      },
+      {
+        url: "/case-studies",
+        label: "Case Studies",
+      },
+    ],
+  },
+  {
+    url: "/support",
+    label: "Resources",
+    children: [
+      {
+        url: "/support",
+        label: "Support",
+      },
+      {
+        url: "/support/faqs",
+        label: "FAQ's",
+      },
+      {
+        url: "/articles",
+        label: "Articles",
+      },
+    ],
+  },
+];
+
+function menuIsActive(path: string): boolean {
+  const currentPath = Astro.url.pathname;
+  const isHome = currentPath === "/" || currentPath.startsWith("/#");
+
+  if (path === "/") {
+    return isHome;
+  }
+
+  if (isHome) {
+    return false;
+  }
+
+  return currentPath.startsWith(path);
+}
 ---
 
-<header>
-  <nav class="border-gray-200 bg-neutral-500 px-4 py-2.5 dark:bg-gray-800 lg:px-6">
-    <div
-      class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between"
-    >
-      <a href="#" class="flex items-center">
-        <Icon name="logo" class="h-8 lg:h-12 w-auto" />
-      </a>
-      <div class="flex items-center lg:order-2">
-        <a
-          href="#"
-          class="mr-2 rounded-lg bg-primary-500 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 lg:px-5 lg:py-2.5"
-          >Get started</a
-        >
-        <button
-          data-collapse-toggle="mobile-menu-2"
-          type="button"
-          class="ml-1 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 lg:hidden"
-          aria-controls="mobile-menu-2"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <Icon name="menu" class="size-6" />
-          <Icon name="mdi:window-close" class="size-6 hidden" />
-        </button>
+<div class="drawer sticky top-0 z-99">
+  <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
+  <div class="w-full bg-neutral-500 drawer-content flex flex-col">
+    <nav class="navbar text-neutral-800 px-4 lg:px-16 py-1 shadow-sm">
+      <div class="mx-auto container flex items-center justify-between">
+        <!-- LOGO -->
+        <a href="/" class="flex items-center">
+          <Icon name="logo" class="h-8 lg:h-12 w-auto" />
+        </a>
+
+        <div class="hidden md:block">
+          <ul class="menu menu-md menu-horizontal px-1 space-x-2">
+            {
+              menuLists.map((menu) =>
+                !menu.children ? (
+                  <li>
+                    <a
+                      class={`py-3 px-4 rounded-lg hover:bg-primary-300 ${menuIsActive(menu.url) ? "menu-active bg-base-100 text-primary" : ""}`}
+                      href={menu.url}
+                    >
+                      {menu.label}
+                    </a>
+                  </li>
+                ) : (
+                  <li class={``}>
+                    <details>
+                      <summary
+                        class={`${menuIsActive(menu.url) ? "menu-active bg-base-100 text-primary" : ""} px-4 py-3 rounded-lg hover:bg-primary-300 focus:transparent`}
+                      >
+                        {menu.label}
+                      </summary>
+                      <ul class="bg-base-100 text-neutral-800 space-x-2 p-2 min-w-[200px]">
+                        {menu.children &&
+                          menu.children.length > 0 &&
+                          menu.children.map((childMenu) => (
+                            <li
+                              class={`mb-2 rounded-lg hover:bg-primary-300 ${menuIsActive(childMenu.url) ? "menu-active bg-secondary-400" : ""}`}
+                            >
+                              <a href={childMenu.url}>{childMenu.label}</a>
+                            </li>
+                          ))}
+                      </ul>
+                    </details>
+                  </li>
+                ),
+              )
+            }
+          </ul>
+        </div>
+        <div class="hidden md:flex items-center gap-4">
+          <button class="btn btn-primary rounded-lg">
+            {"Schedule Call"}
+          </button>
+        </div>
+        <div class="flex-none lg:hidden">
+          <label
+            for="mobile-drawer"
+            aria-label="open sidebar"
+            class="btn btn-square btn-ghost"
+          >
+            <Icon name="menu" class="text-2xl" />
+          </label>
+        </div>
       </div>
-      <div
-        class="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
-        id="mobile-menu-2"
-      >
-        <ul
-          class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8"
-        >
-          <li>
-            <a
-              href="/"
-              class="block rounded bg-secondary-400 py-2 pl-3 pr-4 text-white dark:text-white lg:bg-transparent lg:p-0 lg:text-primary-700"
-              aria-current="page">Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="/products"
-              class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700 lg:dark:hover:bg-transparent lg:dark:hover:text-white"
-              >Products</a
-            >
-          </li>
-          <li>
-            <a
-              href="/services"
-              class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700 lg:dark:hover:bg-transparent lg:dark:hover:text-white"
-              >Services</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700 lg:dark:hover:bg-transparent lg:dark:hover:text-white"
-              >Company</a
-            >
-          </li>
-          <li>
-            <a
-              href="/case-studies"
-              class="block border-b border-gray-100 py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-primary-700 lg:dark:hover:bg-transparent lg:dark:hover:text-white"
-              >Case Studies</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="drawer-side z-90">
+    <label for="mobile-drawer" aria-label="close sidebar" class="drawer-overlay"
+    ></label>
+    <ul class="menu bg-base-200 rounded-box min-h-full w-64">
+      <li>
+        <div class="mb-8 flex justify-center items-center p-8 w-full">
+          <a
+            href="#"
+            class="btn btn-primary hover:btn-accent w-full text-white rounded-md"
+            >{"Schedule Call"}</a
+          >
+        </div>
+      </li>
+      {
+        menuLists.map((menu) =>
+          !menu.children ? (
+            <li>
+              <a href={menu.url}>{menu.label}</a>
+            </li>
+          ) : (
+            <li>
+              <span class="menu-dropdown-toggle menu-dropdown-show">
+                {menu.label}
+              </span>
+              <ul class="menu-dropdown menu-dropdown-show">
+                {menu.children &&
+                  menu.children.length > 0 &&
+                  menu.children.map((childMenu) => (
+                    <li>
+                      <a href={childMenu.url}>{childMenu.label}</a>
+                    </li>
+                  ))}
+              </ul>
+            </li>
+          ),
+        )
+      }
+    </ul>
+  </div>
+</div>
