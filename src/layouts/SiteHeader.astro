@@ -115,14 +115,14 @@ function menuIsActive(path: string): boolean {
                     </a>
                   </li>
                 ) : (
-                  <li class={``}>
+                  <li class={`dropdown dropdown-hover`}>
                     <details>
                       <summary
                         class={`${menuIsActive(menu.url) ? "menu-active bg-base-100 text-primary" : ""} px-4 py-3 rounded-lg hover:bg-primary-300 focus:transparent`}
                       >
                         {menu.label}
                       </summary>
-                      <ul class="bg-base-100 text-neutral-800 space-x-2 p-2 min-w-[200px]">
+                      <ul class="dropdown-content bg-base-100 text-neutral-800 space-x-2 p-2 min-w-[200px]">
                         {menu.children &&
                           menu.children.length > 0 &&
                           menu.children.map((childMenu) => (
