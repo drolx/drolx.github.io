@@ -16,11 +16,11 @@
 //  Modified At: Thu 22 Jan 2026 02:41:53 PM UTC
 
 import {
-  defineConfig,
-  minimal2023Preset as preset,
-} from "@vite-pwa/assets-generator/config";
+	defineConfig,
+	minimal2023Preset as preset,
+} from '@vite-pwa/assets-generator/config';
 
 export default defineConfig({
-  preset,
-  images: ["public/logo.svg"],
+	preset,
+	images: ['public/logo.svg'],
 });

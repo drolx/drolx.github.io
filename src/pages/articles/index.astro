@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import SiteLayout from "../../layouts/SiteLayout.astro";
+import { getCollection } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
 
-const title = "Articles & Insights";
-const posts = (await getCollection("article")).sort(
-  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+const title = 'Articles & Insights';
+const posts = (await getCollection('article')).sort(
+	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
 );
 ---
 

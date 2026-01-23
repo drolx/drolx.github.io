@@ -5,7 +5,7 @@ author: "Godwin Peter .O"
 publishedAt: "16-Jan-2026"
 ---
 
-# drolx Product License
+# drolx Product License (BSL 1.1)
 
 Based on Business Source License 1.1
 

@@ -1,24 +1,24 @@
 ---
 import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
-import "../assets/app.css";
+import '../assets/app.css';
 
 interface Props {
-  title: string
-  description?: string
-  image?: string
-  class?: string
+	title: string;
+	description?: string;
+	image?: string;
+	class?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const { title, description, image, class: clazz } = Astro.props
-const { url, site } = Astro
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const { title, description, image, class: clazz } = Astro.props;
+const { url, site } = Astro;
 const openGraphImageUrl = new URL(
-  image ?? '/images/og-image.png',
-  Astro.url,
-).toString()
-const tagId = import.meta.env.TAG_ID
-const tagManagerId = import.meta.env.PUBLIC_TAG_MANAGER_ID
-const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
+	image ?? '/images/og-image.png',
+	Astro.url,
+).toString();
+const tagId = import.meta.env.TAG_ID;
+const tagManagerId = import.meta.env.PUBLIC_TAG_MANAGER_ID;
+const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`;
 ---
 
 <!doctype html>
@@ -43,7 +43,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`
     <title>{layoutTitle}</title>
     <meta name="title" content={layoutTitle}>
     <meta name="description" content={description}>
-    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-0.xml" />
     <meta name="author" content={SITE_AUTHOR}>
 		<meta name="copyright" content="drolx-source-1.0" >
     <meta name="keywords" content="drolx, software, tech, development, software solution, sass, product development, devOps, logistics, telematics, gps tracking">

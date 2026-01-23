@@ -5,7 +5,9 @@ author: "Godwin Peter .O"
 publishedAt: "16-Jan-2026"
 ---
 
-# drolx Project License (Business Source License 1.1)
+# drolx Project License (BSL 1.1)
+
+Based on Business Source License 1.1
 
 **Copyright (c) 2026 drolx Lab. All rights reserved.**
 This License governs your use of the software (“Licensed Work”) provided by drolx Lab.

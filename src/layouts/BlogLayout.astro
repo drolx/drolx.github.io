@@ -1,11 +1,11 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import SiteLayout from "@/layouts/SiteLayout.astro";
-import FormattedDate from "../components/FormattedDate.astro";
+import type { CollectionEntry } from 'astro:content';
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 
-type Props = CollectionEntry<"article">["data"];
+type Props = CollectionEntry<'article'>['data'];
 type Frontmatter = Props & {
-  frontmatter: Props;
+	frontmatter: Props;
 };
 const { frontmatter } = Astro.props as Frontmatter;
 ---

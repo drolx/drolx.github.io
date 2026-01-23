@@ -1,31 +1,31 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import HeroImage from "@/assets/images/hero.svg";
-import DashImage from "@/assets/images/dash-content.png";
-import LandingIndusCard from "@/components/landing/LandingIndusCard.astro";
-import IndustriesData from "@/data/industries.json";
-import LandingText from "@/data/landing-text.json";
-import SiteLayout from "@/layouts/SiteLayout.astro";
-import type { SkillItem } from "@/types";
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 // Customer Images
-import CustomerImage0 from "@/assets/images/customer-0.webp";
-import CustomerImage1 from "@/assets/images/customer-1.webp";
-import CustomerImage2 from "@/assets/images/customer-2.webp";
+import CustomerImage0 from '@/assets/images/customer-0.webp';
+import CustomerImage1 from '@/assets/images/customer-1.webp';
+import CustomerImage2 from '@/assets/images/customer-2.webp';
+import DashImage from '@/assets/images/dash-content.png';
+import HeroImage from '@/assets/images/hero.svg';
+import LandingIndusCard from '@/components/landing/LandingIndusCard.astro';
+import IndustriesData from '@/data/industries.json';
+import LandingText from '@/data/landing-text.json';
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import type { SkillItem } from '@/types';
 
 const skills: SkillItem[] = [
-  { label: "Linux", icon: "logos:linux-tux" },
-  { label: "Ansible", icon: "logos:ansible" },
-  { label: "dotnet", icon: "logos:dotnet" },
-  { label: "Java", icon: "logos:java" },
-  { label: "Kubernetes", icon: "logos:kubernetes" },
-  { label: "Docker", icon: "logos:docker-icon" },
-  { label: "Python", icon: "logos:python" },
-  { label: "Flutter", icon: "logos:flutter" },
-  { label: "VueJs", icon: "logos:vue" },
-  { label: "React", icon: "logos:react" },
-  { label: "NodeJs", icon: "logos:nodejs-icon" },
-  { label: "Typescript", icon: "logos:typescript-icon" },
+	{ label: 'Linux', icon: 'logos:linux-tux' },
+	{ label: 'Ansible', icon: 'logos:ansible' },
+	{ label: 'dotnet', icon: 'logos:dotnet' },
+	{ label: 'Java', icon: 'logos:java' },
+	{ label: 'Kubernetes', icon: 'logos:kubernetes' },
+	{ label: 'Docker', icon: 'logos:docker-icon' },
+	{ label: 'Python', icon: 'logos:python' },
+	{ label: 'Flutter', icon: 'logos:flutter' },
+	{ label: 'VueJs', icon: 'logos:vue' },
+	{ label: 'React', icon: 'logos:react' },
+	{ label: 'NodeJs', icon: 'logos:nodejs-icon' },
+	{ label: 'Typescript', icon: 'logos:typescript-icon' },
 ];
 ---
 

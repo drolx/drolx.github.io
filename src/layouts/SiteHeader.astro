@@ -1,93 +1,93 @@
 ---
-import type { RouteItem } from "@/types";
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
+import type { RouteItem } from '@/types';
 
 const menuLists: RouteItem[] = [
-  {
-    url: "/",
-    label: "Home",
-  },
-  {
-    url: "/products",
-    label: "Products",
-  },
-  {
-    url: "/services",
-    label: "Services",
-    children: [
-      {
-        url: "#",
-        label: "Software Development",
-      },
-      {
-        url: "#",
-        label: "Cloud Solutions",
-      },
-      {
-        url: "#",
-        label: "IOT Solutions",
-      },
-      {
-        url: "#",
-        label: "Digital Transformation",
-      },
-      {
-        url: "#",
-        label: "Digital Security",
-      },
-    ],
-  },
-  {
-    url: "/company",
-    label: "Company",
-    children: [
-      {
-        url: "/company/about",
-        label: "About Us",
-      },
-      {
-        url: "/company/contact",
-        label: "Contact",
-      },
-      {
-        url: "/case-studies",
-        label: "Case Studies",
-      },
-    ],
-  },
-  {
-    url: "/support",
-    label: "Resources",
-    children: [
-      {
-        url: "/support",
-        label: "Support",
-      },
-      {
-        url: "/support/faqs",
-        label: "FAQ's",
-      },
-      {
-        url: "/articles",
-        label: "Articles",
-      },
-    ],
-  },
+	{
+		url: '/',
+		label: 'Home',
+	},
+	{
+		url: '/products',
+		label: 'Products',
+	},
+	{
+		url: '/services',
+		label: 'Services',
+		children: [
+			{
+				url: '#',
+				label: 'Software Development',
+			},
+			{
+				url: '#',
+				label: 'Cloud Solutions',
+			},
+			{
+				url: '#',
+				label: 'IOT Solutions',
+			},
+			{
+				url: '#',
+				label: 'Digital Transformation',
+			},
+			{
+				url: '#',
+				label: 'Digital Security',
+			},
+		],
+	},
+	{
+		url: '/company',
+		label: 'Company',
+		children: [
+			{
+				url: '/company/about',
+				label: 'About Us',
+			},
+			{
+				url: '/company/contact',
+				label: 'Contact',
+			},
+			{
+				url: '/case-studies',
+				label: 'Case Studies',
+			},
+		],
+	},
+	{
+		url: '/support',
+		label: 'Resources',
+		children: [
+			{
+				url: '/support',
+				label: 'Support',
+			},
+			{
+				url: '/support/faqs',
+				label: "FAQ's",
+			},
+			{
+				url: '/articles',
+				label: 'Articles',
+			},
+		],
+	},
 ];
 
 function menuIsActive(path: string): boolean {
-  const currentPath = Astro.url.pathname;
-  const isHome = currentPath === "/" || currentPath.startsWith("/#");
+	const currentPath = Astro.url.pathname;
+	const isHome = currentPath === '/' || currentPath.startsWith('/#');
 
-  if (path === "/") {
-    return isHome;
-  }
+	if (path === '/') {
+		return isHome;
+	}
 
-  if (isHome) {
-    return false;
-  }
+	if (isHome) {
+		return false;
+	}
 
-  return currentPath.startsWith(path);
+	return currentPath.startsWith(path);
 }
 ---
 
