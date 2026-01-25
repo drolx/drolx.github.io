@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  icon?: string;
+  dots?: boolean;
+}
+
+const { icon = "mdi:square-rounded", dots = true } = Astro.props;
+---
+
+{
+  dots && (
+    <div class="z-1 absolute static inset-30 left-20 opacity-20">
+      <div
+        class="absolute inset-0"
+        style="
+        background-image: radial-gradient(
+        circle,
+        rgba(237, 237, 240, 0.887) 1px,
+        transparent 1px
+        );
+        background-size: 35px 30px;
+    "
+      />
+    </div>
+  )
+}
+<!-- Decorative Icon -->
+{
+  icon && (
+    <div class="z-5 absolute top-20 right-20 opacity-15 hidden lg:block">
+      <div class="w-64 h-64 rounded-full border-8 border-white flex items-center justify-center">
+        <Icon name={icon} class="text-9xl" />
+      </div>
+    </div>
+  )
+}

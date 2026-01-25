@@ -1,11 +1,13 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import FormattedDate from "../components/FormattedDate.astro";
-import MainLayout from "./MainLayout.astro";
+import type { CollectionEntry } from 'astro:content';
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import MainLayout from './MainLayout.astro';
 
-type Props = CollectionEntry<"article">["data"];
+type Props = CollectionEntry<'article'>['data'];
 type Frontmatter = Props & {
-  frontmatter: Props;
+	frontmatter: Props;
 };
 const { frontmatter } = Astro.props as Frontmatter;
 ---
@@ -15,6 +17,16 @@ const { frontmatter } = Astro.props as Frontmatter;
   description={frontmatter.description}
   image={frontmatter.heroImage}
 >
+  <SecondaryHero title={frontmatter.title} description={frontmatter.description}>
+    <SecondaryHeroStyle icon="mdi:adjust" />
+    <div slot="inner">
+      <!--
+      <button class="btn btn-lg btn-primary rounded-lg px-8 capitalize">
+        {"Get Started"}
+      </button>
+      -->
+    </div>
+  </SecondaryHero>
   <div class="max-w-7xl mx-auto px-4 pt-8 pb-16">
     <article class="pt-8 pb-16">
       {
@@ -30,10 +42,10 @@ const { frontmatter } = Astro.props as Frontmatter;
           </div>
         )
       }
-      <div class="prose w-full">
+      <div class="prose w-full ">
         <div class="flex justify-center">
           <div class="title w-full">
-            <div class="date flex gap-4">
+            <div class="date flex gap-2">
               <FormattedDate date={frontmatter.publishedAt} />
               {
                 frontmatter.updatedAt && (
@@ -42,10 +54,7 @@ const { frontmatter } = Astro.props as Frontmatter;
                   </div>
                 )
               }
-              {frontmatter.author && <spna>{frontmatter.author}</spna>}
             </div>
-            <h1>{frontmatter.title}</h1>
-            <div>{frontmatter.description}</div>
             <hr />
           </div>
         </div>

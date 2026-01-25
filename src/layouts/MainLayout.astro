@@ -1,5 +1,5 @@
 ---
-import Layout from './Layout.astro';
+import CoreLayout from './CoreLayout.astro';
 import SiteFooter from './SiteFooter.astro';
 import SiteHeader from './SiteHeader.astro';
 
@@ -12,10 +12,10 @@ interface Props {
 const { title, description, image } = Astro.props;
 ---
 
-<Layout title={title} description={description} image={image}>
+<CoreLayout title={title} description={description} image={image}>
   <SiteHeader />
   <main class="min-h-[50dvh]">
     <slot />
   </main>
   <SiteFooter />
-</Layout>
+</CoreLayout>
