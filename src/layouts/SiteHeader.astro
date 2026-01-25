@@ -1,101 +1,102 @@
 ---
-import { Icon } from "astro-icon/components";
-import type { RouteItem } from "@/types";
+import { Icon } from 'astro-icon/components';
+import { BASE_ARTICLE_PATH, BASE_CASE_STUDY_PATH } from '@/consts';
+import type { RouteItem } from '@/types';
 
 export const serviceRoutes: RouteItem[] = [
-  {
-    url: "/services/software-development",
-    label: "Software Development",
-  },
-  {
-    url: "#",
-    label: "Cloud Solutions",
-  },
-  {
-    url: "#",
-    label: "IOT Solutions",
-  },
-  {
-    url: "#",
-    label: "Cloud Security",
-  },
-  {
-    url: "#",
-    label: "Digital Transformation",
-  },
+	{
+		url: '/services/software-development',
+		label: 'Software Development',
+	},
+	{
+		url: '#',
+		label: 'Cloud Solutions',
+	},
+	{
+		url: '#',
+		label: 'IOT Solutions',
+	},
+	{
+		url: '#',
+		label: 'Cloud Security',
+	},
+	{
+		url: '#',
+		label: 'Digital Transformation',
+	},
 ];
 
 export const companyRoutes: RouteItem[] = [
-  {
-    url: "/company/about-us",
-    label: "About Us",
-  },
-  {
-    url: "/company/contact",
-    label: "Contact",
-  },
-  {
-    url: "/company/our-customers",
-    label: "Customers",
-  },
-  {
-    url: "/company/partners",
-    label: "Partners",
-  },
+	{
+		url: '/company/about-us',
+		label: 'About Us',
+	},
+	{
+		url: '/company/contact',
+		label: 'Contact',
+	},
+	{
+		url: '/company/our-customers',
+		label: 'Customers',
+	},
+	{
+		url: '/company/partners',
+		label: 'Partners',
+	},
 ];
 
 const menuLists: RouteItem[] = [
-  {
-    url: "/",
-    label: "Home",
-  },
-  {
-    url: "/products",
-    label: "Products",
-  },
-  {
-    url: "/services",
-    label: "Services",
-    children: serviceRoutes,
-  },
-  {
-    url: "/company",
-    label: "Company",
-    children: companyRoutes,
-  },
-  {
-    url: "/resources",
-    label: "Resources",
-    children: [
-      {
-        url: "/case-studies",
-        label: "Case Studies",
-      },
-      {
-        url: "/resources/faqs",
-        label: "FAQ's",
-      },
-      {
-        url: "/articles",
-        label: "Articles",
-      },
-    ],
-  },
+	{
+		url: '/',
+		label: 'Home',
+	},
+	{
+		url: '/products',
+		label: 'Products',
+	},
+	{
+		url: '/services',
+		label: 'Services',
+		children: serviceRoutes,
+	},
+	{
+		url: '/company',
+		label: 'Company',
+		children: companyRoutes,
+	},
+	{
+		url: '/resources',
+		label: 'Resources',
+		children: [
+			{
+				url: BASE_CASE_STUDY_PATH,
+				label: 'Case Studies',
+			},
+			{
+				url: BASE_ARTICLE_PATH,
+				label: 'Articles',
+			},
+			{
+				url: '/resources/faqs',
+				label: "FAQ's",
+			},
+		],
+	},
 ];
 
 function menuIsActive(path: string): boolean {
-  const currentPath = Astro.url.pathname;
-  const isHome = currentPath === "/" || currentPath.startsWith("/#");
+	const currentPath = Astro.url.pathname;
+	const isHome = currentPath === '/' || currentPath.startsWith('/#');
 
-  if (path === "/") {
-    return isHome;
-  }
+	if (path === '/') {
+		return isHome;
+	}
 
-  if (isHome) {
-    return false;
-  }
+	if (isHome) {
+		return false;
+	}
 
-  return currentPath.startsWith(path);
+	return currentPath.startsWith(path);
 }
 ---
 
@@ -149,7 +150,7 @@ function menuIsActive(path: string): boolean {
           </ul>
         </div>
         <div class="hidden md:flex items-center gap-4">
-          <a class="btn btn-primary rounded-lg" href="/schedule-call">
+          <a class="btn btn-primary rounded-lg hover:btn-accent" href="/schedule-call">
             {"Schedule Call"}
           </a>
         </div>

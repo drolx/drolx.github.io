@@ -21,5 +21,5 @@ export const SITE_DESCRIPTION =
 export const SITE_AUTHOR = "Godwin peter .O";
 export const SITE_URL = "https://drolx.com";
 
-export const BASE_ARTICLE_PATH = "/articles";
-export const BASE_CASE_STUDY_PATH = "/case-studies";
+export const BASE_ARTICLE_PATH = "/resources/articles";
+export const BASE_CASE_STUDY_PATH = "/resources/case-studies";
