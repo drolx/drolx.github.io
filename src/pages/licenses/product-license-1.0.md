@@ -1,14 +1,12 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../layouts/ContentLayout.astro
 title: "Product License 1.0"
-description: ""
+description: "Based on Business Source License 1.1"
 author: "Godwin Peter .O"
 publishedAt: "16-Jan-2026"
 ---
 
 # drolx Product License (BSL 1.1)
-
-Based on Business Source License 1.1
 
 ## 1. Licensor
 

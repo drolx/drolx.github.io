@@ -1,7 +1,7 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../layouts/ContentLayout.astro
 title: "Source Available License 1.0"
-description: ""
+description: "Based on Reciprocal Public License 1.5"
 author: "Godwin Peter .O"
 publishedAt: "26-Sep-2024"
 ---
