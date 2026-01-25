@@ -3,6 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 title: "drolx Licenses"
 author: "Godwin Peter .O"
 publishedAt: "16-Jan-2026"
+description: ""
 ---
 
 ## Licenses

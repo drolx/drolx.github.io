@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: "Project License 1.0"
+description: ""
 author: "Godwin Peter .O"
 publishedAt: "16-Jan-2026"
 ---

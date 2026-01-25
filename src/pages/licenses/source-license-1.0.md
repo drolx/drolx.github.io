@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: "Source Available License 1.0"
+description: ""
 author: "Godwin Peter .O"
 publishedAt: "26-Sep-2024"
 ---

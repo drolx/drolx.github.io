@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/BlogLayout.astro
+layout: ../layouts/ContentLayout.astro
 title: "Terms of Service"
 description: "drolx Lab terms of service"
 publishedAt: "Jan 16 2026"
