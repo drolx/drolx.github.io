@@ -1,7 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
-
-
+import { Icon } from "astro-icon/components";
+import FormattedDate from "./FormattedDate.astro";
 
 interface Props {
   baseUrl: string;
@@ -11,6 +10,7 @@ interface Props {
   heroImage?: string;
   publishedAt?: Date;
   author?: string;
+  tags?: string;
 }
 
 const {
@@ -19,6 +19,7 @@ const {
   description,
   heroImage = "/images/og-image.png",
   id,
+  publishedAt,
 } = Astro.props;
 ---
 
@@ -26,11 +27,21 @@ const {
   class="bg-white rounded-lg shadow hover:shadow-md transition overflow-hidden"
 >
   <img src={heroImage} alt="Blog cover" class="w-full h-48 object-cover" />
-  <div class="p-5">
-    <h2 class="text-lg font-semibold text-gray-900 mb-2">
+  <div class="pt-4 px-4">
+    <h2 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">
       {title}
     </h2>
-    <p class="text-sm text-gray-600 mb-4">{description}</p>
+    <p class="text-sm text-gray-600 line-clamp-2">{description}</p>
+  </div>
+  <footer class="mt-2 py-2 px-4 flex justify-between items-center">
+    <div class="flex items-center gap-x-2 text-xs py-2 px-3">
+      {publishedAt && <FormattedDate date={publishedAt} />}
+      <span
+        :to="'#'"
+        class="relative z-10 rounded-md bg-primary-200 px-3 py-1.5 font-medium text-base-500 hover:bg-secondary-100"
+        >Category</span
+      >
+    </div>
     <a
       href={`${baseUrl}/${id}/`}
       class="btn btn-sm btn-primary btn-ghost font-medium hover:btn-default"
@@ -38,5 +49,5 @@ const {
       <span>Read more</span>
       <Icon name="mdi:arrow-right-thin" class="text-xs" />
     </a>
-  </div>
+  </footer>
 </article>

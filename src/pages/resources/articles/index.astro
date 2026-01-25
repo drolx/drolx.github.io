@@ -31,6 +31,7 @@ const posts = (await getCollection("article")).sort(
             heroImage={post.data.heroImage}
             author={post.data.author}
             publishedAt={post.data.publishedAt}
+            tags={post.data.tags}
           />
         ))
       }

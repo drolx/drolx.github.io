@@ -26,7 +26,7 @@ const schema = z.object({
   updatedAt: z.coerce.date().optional(),
   author: z.string().optional(),
   heroImage: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.string().optional(),
 });
 
 const pageContent = defineCollection({

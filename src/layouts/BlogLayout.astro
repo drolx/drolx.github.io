@@ -8,6 +8,13 @@ type Frontmatter = Props & {
   frontmatter: Props;
 };
 const { frontmatter } = Astro.props as Frontmatter;
+
+const processTags = (value?: string): string[] => {
+  if (value === undefined) return [];
+  const items = value.split(",");
+
+  return items.length > 7 ? items.slice(0, items.length - 1) : items;
+};
 ---
 
 <MainLayout
@@ -16,7 +23,7 @@ const { frontmatter } = Astro.props as Frontmatter;
   image={frontmatter.heroImage}
 >
   <div class="max-w-7xl mx-auto px-4 pt-8 pb-16">
-    <article class="pt-8 pb-16">
+    <article class="pt-8 pb-16 flex flex-col items-center">
       {
         frontmatter.heroImage && (
           <div class="flex justify-center mb-8">
@@ -30,7 +37,7 @@ const { frontmatter } = Astro.props as Frontmatter;
           </div>
         )
       }
-      <div class="prose w-full">
+      <div class="prose lg:min-w-3xl">
         <div class="flex justify-center">
           <div class="title w-full">
             <div class="date flex gap-4">
@@ -44,8 +51,17 @@ const { frontmatter } = Astro.props as Frontmatter;
               }
               {frontmatter.author && <spna>{frontmatter.author}</spna>}
             </div>
-            <h1>{frontmatter.title}</h1>
-            <div>{frontmatter.description}</div>
+            <h1 class="line-clamp-2">{frontmatter.title}</h1>
+            <div class="line-clamp-3">{frontmatter.description}</div>
+            <div class="py-1 space-x-2">
+              {
+                processTags(frontmatter.tags).map((tag) => (
+                  <span class="text-sm text-primary-400 font-normal rounded-sm bg-primary-100 px-3 py-1.5">
+                    {tag}
+                  </span>
+                ))
+              }
+            </div>
             <hr />
           </div>
         </div>

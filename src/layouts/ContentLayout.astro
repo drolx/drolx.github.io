@@ -19,15 +19,8 @@ const { frontmatter } = Astro.props as Frontmatter;
 >
   <SecondaryHero title={frontmatter.title} description={frontmatter.description}>
     <SecondaryHeroStyle icon="mdi:adjust" />
-    <div slot="inner">
-      <!--
-      <button class="btn btn-lg btn-primary rounded-lg px-8 capitalize">
-        {"Get Started"}
-      </button>
-      -->
-    </div>
   </SecondaryHero>
-  <div class="max-w-7xl mx-auto px-4 pt-4 pb-16">
+  <div class="max-w-7xl mx-auto px-4 pt-4 pb-16 flex flex-col items-center">
     <article>
       {
         frontmatter.heroImage && (
@@ -42,7 +35,7 @@ const { frontmatter } = Astro.props as Frontmatter;
           </div>
         )
       }
-      <div class="prose w-full">
+      <div class="prose lg:min-w-3xl">
         <div class="w-full flex justify-center">
           <div class="w-full">
             <div class="date flex gap-2">

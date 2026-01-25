@@ -17,7 +17,7 @@ const posts = (await getCollection('caseStudy')).sort(
 
 <MainLayout title={title}>
   <SecondaryHero {title} {description}>
-    <SecondaryHeroStyle icon="mdi:projector-screen-off-outline" />
+    <SecondaryHeroStyle icon="mdi:projector-screen-outline" />
   </SecondaryHero>
   <div class="max-w-7xl mx-auto px-4 py-16">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -31,6 +31,7 @@ const posts = (await getCollection('caseStudy')).sort(
             heroImage={post.data.heroImage}
             author={post.data.author}
             publishedAt={post.data.publishedAt}
+            tags={post.data.tags}
           />
         ))
       }
