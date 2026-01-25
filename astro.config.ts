@@ -28,6 +28,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  redirects: {
+    "/blog/[...slug]": "/articles/[...slug]",
+    "/company": "/company/about",
+    "/services": "/services/software-development",
+  },
   integrations: [
     mdx(),
     sitemap(),

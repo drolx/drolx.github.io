@@ -27,8 +27,8 @@ const { frontmatter } = Astro.props as Frontmatter;
       -->
     </div>
   </SecondaryHero>
-  <div class="max-w-7xl mx-auto px-4 pt-8 pb-16">
-    <article class="pt-8 pb-16">
+  <div class="max-w-7xl mx-auto px-4 pt-4 pb-16">
+    <article>
       {
         frontmatter.heroImage && (
           <div class="flex justify-center mb-8">
@@ -42,9 +42,9 @@ const { frontmatter } = Astro.props as Frontmatter;
           </div>
         )
       }
-      <div class="prose w-full ">
-        <div class="flex justify-center">
-          <div class="title w-full">
+      <div class="prose w-full">
+        <div class="w-full flex justify-center">
+          <div class="w-full">
             <div class="date flex gap-2">
               <FormattedDate date={frontmatter.publishedAt} />
               {

@@ -1,0 +1,21 @@
+---
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'Software Development';
+export const description =
+	'Rapidly implement your business ideas into real profit';
+---
+
+<MainLayout {title}>
+    <SecondaryHero {title} {description}>
+        <SecondaryHeroStyle icon="mdi:code" />
+        <div slot="inner">
+        <button class="btn btn-lg btn-secondary rounded-lg px-4 capitalize">
+            {"Get Started"}
+        </button>
+        </div>
+  </SecondaryHero>
+  <div>Services</div>
+</MainLayout>

@@ -1,0 +1,42 @@
+---
+import { Icon } from 'astro-icon/components';
+
+
+
+interface Props {
+  baseUrl: string;
+  id: string;
+  title: string;
+  description: string;
+  heroImage?: string;
+  publishedAt?: Date;
+  author?: string;
+}
+
+const {
+  baseUrl,
+  title,
+  description,
+  heroImage = "/images/og-image.png",
+  id,
+} = Astro.props;
+---
+
+<article
+  class="bg-white rounded-lg shadow hover:shadow-md transition overflow-hidden"
+>
+  <img src={heroImage} alt="Blog cover" class="w-full h-48 object-cover" />
+  <div class="p-5">
+    <h2 class="text-lg font-semibold text-gray-900 mb-2">
+      {title}
+    </h2>
+    <p class="text-sm text-gray-600 mb-4">{description}</p>
+    <a
+      href={`${baseUrl}/${id}/`}
+      class="btn btn-sm btn-primary btn-outline font-medium hover:btn-default"
+    >
+      <span>Read more</span>
+      <Icon name="mdi:arrow-right-thin" class="text-xs" />
+    </a>
+  </div>
+</article>

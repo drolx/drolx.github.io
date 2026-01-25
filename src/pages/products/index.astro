@@ -1,7 +1,16 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro';
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'Products';
+export const description =
+	'Various cloud services we offer as a service or entriprise deployment for private cloud';
 ---
 
-<SiteLayout title="Products">
+<MainLayout {title}>
+  <SecondaryHero {title} {description}>
+    <SecondaryHeroStyle icon="mdi:printer-point-of-sale-outline" />
+  </SecondaryHero>
   <div>Products</div>
-</SiteLayout>
+</MainLayout>

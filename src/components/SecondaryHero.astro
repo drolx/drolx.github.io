@@ -58,12 +58,11 @@ const breadcrumbs = pathSegments.map((path) => {
       </ul>
     </div>
     <div class="max-w-2xl">
-      <h1 class="text-4xl lg:text-6xl font-bold mb-6">{title}</h1>
-      <p class="text-lg lg:text-xl opacity-95 mb-8">
+      <h1 class="text-4xl lg:text-6xl font-bold mb-4">{title}</h1>
+      <p class="text-lg lg:text-xl opacity-95 mb-6">
         {description}
       </p>
     </div>
-
     <slot name="inner" />
   </div>
   <slot />

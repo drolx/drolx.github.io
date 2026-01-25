@@ -1,17 +1,17 @@
 [
-	{
-		"title": "IOT & Telematics",
-		"icon": "mdi:access-point",
-		"content": "Streamline operations, boost sales, and enhance customer satisfaction and Manage your entire store from a single, intuitive dashboard"
-	},
-	{
-		"title": "Logistics",
-		"icon": "mdi:truck",
-		"content": "Get real-time insights into your practice's performance and patient health metrics in one intuitive dashboard, Automate administrative tasks to focus more on patient care."
-	},
-	{
-		"title": "Transportation",
-		"icon": "mdi:bus",
-		"content": "A streamlines management through features like real-time tracking, route optimization, and fleet management. Key benefits improving customer satisfaction."
-	}
+  {
+    "title": "IOT & Telematics",
+    "icon": "mdi:access-point",
+    "content": "Streamline operations, boost sales, and enhance customer satisfaction and Manage your entire store from a single, intuitive dashboard"
+  },
+  {
+    "title": "Logistics & Transportation",
+    "icon": "mdi:bus",
+    "content": "A streamlines management through features like real-time tracking, route optimization, and fleet management. Key benefits improving customer satisfaction"
+  },
+  {
+    "title": "Retail & Sales",
+    "icon": "mdi:truck",
+    "content": "Get real-time insights into your business utilizing tools like CRM, ERP, other custom solutions and features like inventory, POS, online store, etc"
+  }
 ]
