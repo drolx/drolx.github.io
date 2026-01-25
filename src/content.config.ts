@@ -15,28 +15,33 @@
 // Modified By: Godwin peter. O (me@godwin.dev)
 // Modified At: Sat 21 Dec 2024 14:49:08
 
-import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
+
+const schema = z.object({
+  layout: z.string().optional(),
+  title: z.string(),
+  description: z.string(),
+  publishedAt: z.coerce.date(),
+  updatedAt: z.coerce.date().optional(),
+  author: z.string().optional(),
+  heroImage: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+});
+
+const pageContent = defineCollection({
+  loader: glob({ base: "./src/pages", pattern: "**/*.{md,mdx}" }),
+  schema,
+});
 
 const article = defineCollection({
-	loader: glob({ base: './articles', pattern: '**/*.{md,mdx}' }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		publishedAt: z.coerce.date(),
-		updatedAt: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
-	}),
+  loader: glob({ base: "./articles", pattern: "**/*.{md,mdx}" }),
+  schema,
 });
 
 const caseStudy = defineCollection({
-	loader: glob({ base: './case-studies', pattern: '**/*.{md,mdx}' }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		publishedAt: z.coerce.date(),
-		updatedAt: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
-	}),
+  loader: glob({ base: "./case-studies", pattern: "**/*.{md,mdx}" }),
+  schema,
 });
-export const collections = { article, caseStudy };
+
+export const collections = { pageContent, article, caseStudy };

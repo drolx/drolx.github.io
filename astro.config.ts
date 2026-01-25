@@ -15,28 +15,28 @@
 //  Modified By: Godwin peter .O (me@godwin.dev)
 //  Modified At: Thu 22 Jan 2026 02:42:22 PM UTC
 
-import mdx from '@astrojs/mdx';
-import partytown from '@astrojs/partytown';
-import sitemap from '@astrojs/sitemap';
-import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'astro/config';
-import icon from 'astro-icon';
-import { SITE_URL } from './src/consts';
+import mdx from "@astrojs/mdx";
+import partytown from "@astrojs/partytown";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
+import icon from "astro-icon";
+import { SITE_URL } from "./src/consts";
 
 export default defineConfig({
-	site: SITE_URL,
-	vite: {
-		plugins: [tailwindcss()],
-	},
-	integrations: [
-		mdx(),
-		sitemap(),
-		icon({ iconDir: 'src/assets/icons' }),
-		partytown({
-			config: {
-				debug: false,
-				forward: ['dataLayer.push'],
-			},
-		}),
-	],
+  site: SITE_URL,
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [
+    mdx(),
+    sitemap(),
+    icon({ iconDir: "src/assets/icons" }),
+    partytown({
+      config: {
+        debug: false,
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
 });
