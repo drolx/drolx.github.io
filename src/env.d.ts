@@ -16,9 +16,9 @@
 // Modified At: Sun 22 Dec 2024 15:27:47
 
 interface ImportMetaEnv {
-  readonly PUBLIC_MEASUREMENT_ID: string
+	readonly PUBLIC_MEASUREMENT_ID: string;
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv
+	readonly env: ImportMetaEnv;
 }

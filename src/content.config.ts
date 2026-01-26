@@ -18,25 +18,30 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
+const schema = z.object({
+  layout: z.string().optional(),
+  title: z.string(),
+  description: z.string(),
+  publishedAt: z.coerce.date(),
+  updatedAt: z.coerce.date().optional(),
+  author: z.string().optional(),
+  heroImage: z.string().optional(),
+  tags: z.string().optional(),
+});
+
+const pageContent = defineCollection({
+  loader: glob({ base: "./src/pages", pattern: "**/*.{md,mdx}" }),
+  schema,
+});
+
 const article = defineCollection({
   loader: glob({ base: "./articles", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    publishedAt: z.coerce.date(),
-    updatedAt: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-  }),
+  schema,
 });
 
 const caseStudy = defineCollection({
   loader: glob({ base: "./case-studies", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    publishedAt: z.coerce.date(),
-    updatedAt: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-  }),
+  schema,
 });
-export const collections = { article, caseStudy };
+
+export const collections = { pageContent, article, caseStudy };

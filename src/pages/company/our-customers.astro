@@ -1,0 +1,18 @@
+---
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'Our Customers';
+export const description =
+	'A simple overview of some of the organizations that empower to strive for perfection';
+---
+
+<MainLayout {title}>
+  <SecondaryHero {title} {description}>
+    <SecondaryHeroStyle icon="mdi:people-group" />
+    <div slot="inner" class="py-4"></div>
+  </SecondaryHero>
+  <div></div>
+</MainLayout>
+

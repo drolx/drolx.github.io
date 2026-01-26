@@ -1,0 +1,28 @@
+{
+  "name": "drolx Lab",
+  "phones": ["+234 806 2957703", "+234 803 0776365"],
+  "email": "hello@drolx.com",
+  "address": "ikeja, Lagos, Nigeria",
+  "socials": {
+    "facebook": {
+      "label": "Facebook",
+      "icon": "mdi:facebook",
+      "url": "https://facebook.com/drolxLab"
+    },
+    "twitter": {
+      "label": "Twitter (Formerly X)",
+      "icon": "mdi:twitter",
+      "url": "https://x.com/drolxLab"
+    },
+    "instagram": {
+      "label": "Instagram",
+      "icon": "mdi:instagram",
+      "url": "https://instagram.com/drolxLab"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "icon": "mdi:linkedin",
+      "url": "https://linkedin.com/in/drolxLab"
+    }
+  }
+}

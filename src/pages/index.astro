@@ -1,35 +1,38 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import HeroImage from "@/assets/images/hero.svg";
-import DashImage from "@/assets/images/dash-content.png";
-import LandingIndusCard from "@/components/landing/LandingIndusCard.astro";
-import IndustriesData from "@/data/industries.json";
-import LandingText from "@/data/landing-text.json";
-import SiteLayout from "@/layouts/SiteLayout.astro";
-import type { SkillItem } from "@/types";
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 // Customer Images
-import CustomerImage0 from "@/assets/images/customer-0.webp";
-import CustomerImage1 from "@/assets/images/customer-1.webp";
-import CustomerImage2 from "@/assets/images/customer-2.webp";
+import CustomerImage0 from '@/assets/images/customer-0.webp';
+import CustomerImage1 from '@/assets/images/customer-1.webp';
+import CustomerImage2 from '@/assets/images/customer-2.webp';
+import DashImage from '@/assets/images/dash-content.png';
+import HeroImage from '@/assets/images/hero.svg';
+import ContactCard from '@/components/ContactCard.astro';
+import LandingIndusCard from '@/components/landing/LandingIndusCard.astro';
+import IndustriesData from '@/data/industries.json';
+import LandingText from '@/data/landing-text.json';
+import MainLayout from '@/layouts/MainLayout.astro';
+import type { SkillItem } from '@/types';
+
+export const title = 'Home';
 
 const skills: SkillItem[] = [
-  { label: "Linux", icon: "logos:linux-tux" },
-  { label: "Ansible", icon: "logos:ansible" },
-  { label: "dotnet", icon: "logos:dotnet" },
-  { label: "Java", icon: "logos:java" },
-  { label: "Kubernetes", icon: "logos:kubernetes" },
-  { label: "Docker", icon: "logos:docker-icon" },
-  { label: "Python", icon: "logos:python" },
-  { label: "Flutter", icon: "logos:flutter" },
-  { label: "VueJs", icon: "logos:vue" },
-  { label: "React", icon: "logos:react" },
-  { label: "NodeJs", icon: "logos:nodejs-icon" },
-  { label: "Typescript", icon: "logos:typescript-icon" },
+	{ label: 'Linux', icon: 'logos:linux-tux' },
+	{ label: 'Ansible', icon: 'logos:ansible' },
+	{ label: 'dotnet', icon: 'logos:dotnet' },
+	{ label: 'Java', icon: 'logos:java' },
+	{ label: 'Kubernetes', icon: 'logos:kubernetes' },
+	{ label: 'Docker', icon: 'logos:docker-icon' },
+	{ label: 'Python', icon: 'logos:python' },
+	{ label: 'Flutter', icon: 'logos:flutter' },
+	{ label: 'VueJs', icon: 'logos:vue' },
+	{ label: 'React', icon: 'logos:react' },
+	{ label: 'NodeJs', icon: 'logos:nodejs-icon' },
+	{ label: 'Typescript', icon: 'logos:typescript-icon' },
 ];
 ---
 
-<SiteLayout title="Home">
+<MainLayout title={title}>
   <div
     class="container mx-auto flex flex-col space-y-6 px-6 py-16 lg:py-24 lg:h-[32rem] lg:flex-row lg:items-center"
   >
@@ -47,10 +50,10 @@ const skills: SkillItem[] = [
         </h1>
         <div class="mt-8 space-y-16">
           <p class="text-xl text-gray-700">{LandingText.tagLine}</p>
-          <button
-            class="btn btn-lg btn-secondary hover:btn-accent me-2 mb-2 px-8 py-6"
-            >{"Get Started"}</button
-          >
+          <a
+            class="btn btn-lg btn-secondary hover:btn-primary me-2 mb-2 px-8 py-6"
+            href="/get-started"
+            >{"Get Started"}<a/>
         </div>
       </div>
     </div>
@@ -61,7 +64,7 @@ const skills: SkillItem[] = [
         class="mx-auto h-auto w-full rounded-md lg:max-w-xl"
         style="object-fit: contain;"
         src={HeroImage}
-        alt="drolx hero content"
+        alt="Hero Image"
       />
     </div>
   </div>
@@ -101,7 +104,7 @@ const skills: SkillItem[] = [
 
       <!-- Partners Projects -->
       <div
-        class="relative mt-16 mb-8 bg-secondary md:rounded-lg w-full min-h-28"
+        class="relative overflow-hidden mt-16 mb-8 bg-secondary md:rounded-lg w-full min-h-28"
       >
         <!-- Content -->
         <div class="px-4 md:px-16 py-4 flex gap-8 items-center relative">
@@ -201,7 +204,7 @@ const skills: SkillItem[] = [
           <div class="tooltip" data-tip={skill.label}>
             <Icon
               name={skill.icon}
-              class="size-16 hover:text-gray-3000 transition-colors duration-300"
+              class="size-16 p-2 rounded-lg hover:text-gray-300 hover:shadow-sm transition-colors duration-300"
             />
           </div>
         ))
@@ -217,86 +220,9 @@ const skills: SkillItem[] = [
           {"How Can We Help?" }
         </h2>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <!-- Support Card -->
-        <div
-          class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow"
-        >
-          <div class="card-body">
-            <div class="flex items-start gap-4 mb-4">
-              <div
-                class="bg-primary/16 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
-              >
-                <Icon name="mdi:help-circle" class="text-3xl text-primary" />
-              </div>
-              <div>
-                <h3 class="card-title text-xl mb-2">Support</h3>
-              </div>
-            </div>
-            <p class="text-base-content/70 mb-4">
-              Technical support for existing customers. Our team is available
-              24/7 to assist with any issues or questions.
-            </p>
-            <a
-              href="mailto:support@drolx.com"
-              class="link link-primary font-semibold no-underline hover:underline"
-            >
-              support@drolx.com
-            </a>
-            <a
-              href="tel:+2348062957703"
-              class="link link-primary font-semibold no-underline hover:underline"
-            >
-              +234 806-295-7703
-            </a>
-            <br>
-            <br>
-          </div>
-        </div>
-
-        <!-- Sales & Enquiry Card -->
-        <div
-          class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow"
-        >
-          <div class="card-body">
-            <div class="flex items-start gap-4 mb-4">
-              <div
-                class="bg-secondary/16 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
-              >
-                <Icon name="mdi:message-text" class="text-3xl text-secondary" />
-              </div>
-              <div>
-                <h3 class="card-title text-xl mb-2">Sales & Enquiry</h3>
-              </div>
-            </div>
-            <p class="text-base-content/70 mb-4">
-              Interested in our solutions? Contact our sales team to learn more
-              about how drolx Lab can help your business.
-            </p>
-            <a
-              href="mailto:hello@drolx.com"
-              class="link link-secondary font-semibold no-underline hover:underline"
-            >
-              hello@drolx.com
-            </a>
-            <a
-              href="tel:+2348030776365"
-              class="link link-secondary font-semibold no-underline hover:underline"
-            >
-              +234 803-077-6365
-            </a>
-            <a
-              href="tel:+2348062957703"
-              class="link link-secondary font-semibold no-underline hover:underline"
-            >
-              +234 806-295-7703
-            </a>
-          </div>
-        </div>
-      </div>
+      <ContactCard />
     </div>
   </section>
 
 
-</SiteLayout>
+</MainLayout>

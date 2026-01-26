@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import MainLayout from './MainLayout.astro';
+
+type Props = CollectionEntry<'article'>['data'];
+type Frontmatter = Props & {
+	frontmatter: Props;
+};
+const { frontmatter } = Astro.props as Frontmatter;
+---
+
+<MainLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  image={frontmatter.heroImage}
+>
+  <SecondaryHero title={frontmatter.title} description={frontmatter.description}>
+    <SecondaryHeroStyle icon="mdi:adjust" />
+  </SecondaryHero>
+  <div class="max-w-7xl mx-auto px-4 pt-4 pb-16 flex flex-col items-center">
+    <article>
+      {
+        frontmatter.heroImage && (
+          <div class="flex justify-center mb-8">
+            <div class="hero-image">
+              <img
+                class="h-62.5 w-160 object-cover rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+                src={frontmatter.heroImage}
+                alt="blog-image"
+              />
+            </div>
+          </div>
+        )
+      }
+      <div class="prose lg:min-w-3xl">
+        <div class="w-full flex justify-center">
+          <div class="w-full">
+            <div class="date flex gap-2">
+              <FormattedDate date={frontmatter.publishedAt} />
+              {
+                frontmatter.updatedAt && (
+                  <div class="last-updated-on">
+                    Updated At: <FormattedDate date={frontmatter.updatedAt} />
+                  </div>
+                )
+              }
+            </div>
+            <hr />
+          </div>
+        </div>
+        <slot />
+      </div>
+    </article>
+  </div>
+</MainLayout>

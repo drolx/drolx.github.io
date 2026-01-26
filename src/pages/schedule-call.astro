@@ -1,0 +1,17 @@
+---
+import SecondaryHero from "@/components/SecondaryHero.astro";
+import SecondaryHeroStyle from "@/components/SecondaryHeroStyle.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+
+export const title = "Schedule Call";
+export const description = "Set a time for a more lengthy discussion to understand your requirements";
+---
+
+<MainLayout {title}>
+  <SecondaryHero {title} {description}>
+    <SecondaryHeroStyle icon="mdi:calendar-multiple-check" />
+    <div slot="inner" class="py-4"></div>
+  </SecondaryHero>
+  <div>{"Schedule"}</div>
+</MainLayout>
+

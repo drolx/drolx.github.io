@@ -1,7 +1,17 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro'
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'Our Partners';
+export const description =
+	'An overview of related partners and providers that enable us to offer effective solutions';
 ---
 
-<SiteLayout title="Partners">
-  <div>{"company.partners"}</div>
-</SiteLayout>
+<MainLayout {title}>
+  <SecondaryHero {title} {description}>
+    <SecondaryHeroStyle icon="mdi:nature-people-outline" />
+    <div slot="inner" class="py-4"></div>
+  </SecondaryHero>
+  <div></div>
+</MainLayout>

@@ -1,0 +1,20 @@
+---
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'Digital Transformation';
+export const description = 'We work with our customer towards a near zero paper based process for any workflow';
+---
+
+<MainLayout {title}>
+    <SecondaryHero {title} {description}>
+        <SecondaryHeroStyle icon="mdi:newspaper-variant-multiple" />
+        <div slot="inner">
+        <button class="btn btn-lg btn-secondary rounded-lg px-4 capitalize">
+            {"Get Started"}
+        </button>
+        </div>
+  </SecondaryHero>
+  <div></div>
+</MainLayout>

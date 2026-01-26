@@ -1,0 +1,180 @@
+---
+import { Icon } from 'astro-icon/components';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'About - drolx Lab';
+
+type TeamPersonnel = {
+  name: string;
+  role: string;
+  image?: string;
+};
+
+const personnels: TeamPersonnel[] = [
+  {
+    name: "Solomon A. Agboola",
+    role: "CEO & Co-Founder",
+  },
+  {
+    name: "Godwin Peter .O",
+    role: "Lead Developer",
+  },
+  {
+    name: "Gbenga Onigbajumo",
+    role: "Senior Developer",
+  },
+  {
+    name: "Nathan Emeka",
+    role: "Lead Designer",
+  },
+];
+
+---
+
+<MainLayout title={title}>
+  
+  <!--  OUR STORY SECTION  -->
+  <section class="bg-base-100 py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Story Text -->
+        <div>
+          <h2 class="text-3xl lg:text-5xl text-neutral-800 font-bold mb-6">Our Story</h2>
+          <div class="space-y-4 text-base-content/70 leading-relaxed">
+            <p>We are a Nigerian startup company dedicated to engineering enterprise-grade software and cloud solutions 
+              that drive digital transformation, especially with our deep domain experience in Logistics, 
+              Transportation, Telematics/IoT and Education. We bridge the gap between complex operational 
+              challenges and scalable technology, positioning ourselves not just as a vendor, but as a strategic 
+              partner for organizations requiring production-ready cloud software and IoT-enabled ecosystems.
+            </p>
+            <p>
+              Our core expertise lies in the intersection of Product Engineering, DevOps, and Connected
+              Operations (Telematics/IoT). Unlike traditional development shops, drolx Lab combines
+              deep domain experience in Logistics and Transportation with a rigorous "cloud-native"
+              delivery model. We empower enterprises to move beyond legacy manual processes by
+              deploying secure, containerized platforms that offer real-time visibility, automation, and
+              measurable cost efficiency.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Illustration -->
+        <div class="flex justify-center lg:justify-end">
+          <div
+            class="card bg-base-200 w-full max-w-md p-8 border-2 border-primary-200 rounded-3xl shadow-xs hover:shadow-md"
+          >
+            <div class="flex justify-center items-center h-64">
+              <div class="relative">
+                <div
+                  class="w-48 h-48 bg-primary-200 rounded-3xl flex items-center justify-center"
+                >
+                  <Icon name="mdi:chart-line" class="text-7xl text-primary" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION & VISION  -->
+  <section class="bg-base-100 py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Our Mission -->
+        <div class="card bg-base-100 shadow-lg border border-base-300">
+          <div class="card-body p-8">
+            <div
+              class="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mb-4"
+            >
+              <Icon name="mdi:target" class="text-4xl text-[#1e4976]" />
+            </div>
+            <h3 class="card-title text-2xl mb-4">Our Mission</h3>
+            <p class="text-base-content/70 leading-relaxed">
+              Our mission is to build secure, scalable software and platforms that seamlessly
+              integrate asset telemetry, workforce workflows, analytics, and end-customer experiences
+              delivered with pragmatic devOps and strong support
+            </p>
+          </div>
+        </div>
+
+        <!-- Our Vision -->
+        <div class="card bg-base-100 shadow-lg border border-base-300">
+          <div class="card-body p-8">
+            <div
+              class="bg-secondary/20 w-16 h-16 rounded-full flex items-center justify-center mb-4"
+            >
+              <Icon name="mdi:eye" class="text-4xl text-secondary" />
+            </div>
+            <h3 class="card-title text-2xl mb-4">Our Vision</h3>
+            <p class="text-base-content/70 leading-relaxed">
+              Our primary vision is to empower organizations across transportation, logistics and
+              education with software and connected-systems that make operations predictable,
+              measurable, and cost-effective
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET OUR TEAM -->
+  <section class="bg-base-100 py-10 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-4">Meet Our Team</h2>
+        <p class="text-base-content/70">
+          Passionate professionals dedicated to your success
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Team Member 1 -->
+         {personnels.map(member => (
+        <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+          <figure class="bg-primary h-64 flex items-center justify-center">
+            <img
+              src="/images/placeholder.webp"
+              :alt="member.name"
+              class="w-full h-full object-cover"
+            />
+          </figure>
+          <div class="card-body">
+            <h3 class="card-title">{member.name}</h3>
+            <p class="text-sm text-base-content/70 mb-3">{member.role}</p>
+          </div>
+        </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="bg-primary-700 text-white py-20 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+        Join Our of Satisfied Customers
+      </h2>
+      <p class="text-lg mb-10 opacity-90">
+        Experience the drolx difference and transform your business today
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/get-started"
+          class="btn btn-lg btn-secondary text-white hover:bg-white hover:text-secondary rounded-lg px-8"
+        >
+          {"Get Started"}
+        </a>
+        <a
+          href="/schedule-call"
+          class="btn btn-lg btn-white text-primary hover:btn-accent hover:text-white rounded-lg px-8"
+        >
+          {"Schedule Call"}
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+</MainLayout>

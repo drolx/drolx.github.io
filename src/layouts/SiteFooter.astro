@@ -1,41 +1,36 @@
 ---
-import type { RouteItem } from "@/types";
-import { Icon } from "astro-icon/components";
-import LandingText from "@/data/landing-text.json";
-import SubscribeButton from "@/components/SubscribeButton.astro";
+import { Icon } from 'astro-icon/components';
+import SubscribeButton from '@/components/SubscribeButton.astro';
+import LandingText from '@/data/landing-text.json';
+import type { RouteItem } from '@/types';
+import {
+	companyRoutes as headerCompanyRoutes,
+	serviceRoutes,
+} from './SiteHeader.astro';
 
 const year = new Date().getFullYear();
 const companyRoutes: RouteItem[] = [
-  { label: "About Us", url: "/company/about" },
-  { label: "Case Studies", url: "/case-studies" },
-  { label: "Solutions", url: "/solutions" },
-  { label: "Our Clients", url: "/company/our-clients" },
-  { label: "Partners", url: "/company/partners" },
+	{ label: 'Solutions', url: '/services' },
+	...headerCompanyRoutes,
 ];
 const resourceRoutes: RouteItem[] = [
-  { label: "Articles", url: "/articles" },
-  { label: "Support Center", url: "/support" },
-  { label: "Contact", url: "/support/contact" },
-  { label: "FAQ's", url: "/support/faqs" },
-  { label: "Status", url: "#" },
-];
-const serviceRoutes: RouteItem[] = [
-  { label: "Product Development", url: "#" },
-  { label: "Cloud Infrastructure", url: "#" },
-  { label: "Digital Transformation", url: "#" },
-  { label: "Cloud Security", url: "#" },
+	{ label: 'Articles', url: '/resources/articles' },
+	{ label: 'Case Studies', url: '/resources/case-studies' },
+	{ label: 'Contact', url: '/company/contact' },
+	{ label: "FAQ's", url: '/resources/faqs' },
+	{ label: 'Status', url: '#' },
 ];
 const extraRoutes: RouteItem[] = [
-  { label: "Licenses", url: "/licenses" },
-  { label: "Terms", url: "/terms-of-service" },
-  { label: "Privacy Policy", url: "/privacy-policy" },
-  { label: "Cookies", url: "/cookies" },
+	{ label: 'Licenses', url: '/licenses' },
+	{ label: 'Terms', url: '/terms-of-service' },
+	{ label: 'Privacy Policy', url: '/privacy-policy' },
+	{ label: 'Cookies', url: '/cookies' },
 ];
 ---
 
 <footer class="bg-secondary-600">
   <div class="container mx-auto px-6 lg:px-0 pb-8 pt-16">
-    <div class="flex flex-col md:flex-row gap-8">
+    <div class="flex flex-col md:flex-row gap-8 lg:px-8">
       <!-- Left Content -->
       <div class="lg:max-w-96 flex flex-col gap-8 sm:justify-center">
         <a href="#" class="self-center md:self-auto">

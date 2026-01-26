@@ -1,0 +1,21 @@
+---
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'Cloud Solutions';
+export const description =
+	'We provide various effective options on desired cloud or intranet service architecture & deployments';
+---
+
+<MainLayout {title}>
+    <SecondaryHero {title} {description}>
+        <SecondaryHeroStyle icon="mdi:cloud-sync-outline" />
+        <div slot="inner">
+        <button class="btn btn-lg btn-secondary rounded-lg px-4 capitalize">
+            {"Get Started"}
+        </button>
+        </div>
+  </SecondaryHero>
+  <div></div>
+</MainLayout>

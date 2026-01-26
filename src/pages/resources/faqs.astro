@@ -1,0 +1,17 @@
+---
+import SecondaryHero from "@/components/SecondaryHero.astro";
+import SecondaryHeroStyle from "@/components/SecondaryHeroStyle.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+export const title = "FAQ's";
+export const description =
+  "Frequently ask questions from our customers, that we can answer";
+---
+
+<MainLayout {title}>
+  <SecondaryHero {title} {description}>
+    <SecondaryHeroStyle icon="mdi:question-answer" />
+    <div slot="inner" class="py-4"></div>
+  </SecondaryHero>
+  <div>{"Our FAQ's"}</div>
+</MainLayout>
