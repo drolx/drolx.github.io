@@ -1,22 +1,25 @@
 {
-	"solutionTitle": "Our Solutions cut across different Industries",
-	"solutionContent": "At drolx Lab, we're committed to delivering innovative solutions that drive growth and efficiency. Our technology-driven approach empowers businesses of all sizes to overcome challenges and achieve their goals.",
-	"tagLine": "Empowering businesses with cutting-edge Software solutions, software development, and cloud services",
-	"services": [
-		{
-			"title": "Software Development",
-			"icon": "mdi:code-block-braces",
-			"description": "we create and improve a product to meet market needs and consumer demands. It encompasses several stages, from ideation to launch."
-		},
-		{
-			"title": "Cloud Solutions & Services",
-			"icon": "mdi:cloud-cog-outline",
-			"description": "Cloud infrastructure refers to the collection of hardware and software components that support the delivery of cloud computing services."
-		},
-		{
-			"title": "Digital Transformation",
-			"icon": "mdi:lightbulb-on-outline",
-			"description": "We integrate digital technology into all areas of a business, fundamentally changing how it operates and delivers value to customers."
-		}
-	]
+  "solutionTitle": "Our Solutions cut across different Industries",
+  "solutionContent": "At drolx Lab, we're committed to delivering innovative solutions that drive growth and efficiency. Our technology-driven approach empowers businesses of all sizes to overcome challenges and achieve their goals.",
+  "tagLine": "Empowering businesses with cutting-edge Software solutions, software development, and cloud services",
+  "services": [
+    {
+      "title": "Software Development",
+      "icon": "mdi:code-block-braces",
+      "url": "/services/software-development",
+      "description": "we create and improve a product to meet market needs and consumer demands. It encompasses several stages, from ideation to launch."
+    },
+    {
+      "title": "Cloud Solutions & Services",
+      "icon": "mdi:cloud-cog-outline",
+      "url": "/services/cloud-solutions",
+      "description": "Cloud infrastructure refers to the collection of hardware and software components that support the delivery of cloud computing services."
+    },
+    {
+      "title": "Digital Transformation",
+      "icon": "mdi:lightbulb-on-outline",
+      "url": "/services/digital-transformation",
+      "description": "We integrate digital technology into all areas of a business, fundamentally changing how it operates and delivers value to customers."
+    }
+  ]
 }
