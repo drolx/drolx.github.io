@@ -1,0 +1,32 @@
+---
+import type { PostProps } from '@/types/posts';
+import ArticleItem from './ArticleItem.astro';
+
+interface Props {
+	baseUrl: string;
+	posts: PostProps[];
+}
+
+const { baseUrl, posts } = Astro.props;
+---
+
+<div class="max-w-7xl mx-auto px-8 lg:px-4 py-16">
+    <!-- Article Search -->
+    <div></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        posts.map((post) => (
+          <ArticleItem
+            {baseUrl}
+            id={post.id}
+            title={post.title}
+            description={post.description}
+            heroImage={post.heroImage}
+            author={post.author}
+            publishedAt={post.publishedAt}
+            tags={post.tags}
+          />
+        ))
+      }
+    </div>
+  </div>
