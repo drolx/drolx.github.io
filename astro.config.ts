@@ -29,7 +29,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   redirects: {
-    "/blog/[...slug]": "/articles/[...slug]",
     "/company": "/company/about",
     "/services": "/services/software-development",
   },
