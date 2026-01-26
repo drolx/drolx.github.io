@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import ArticleList from '@/components/ArticleList.astro';
+import ArticleListView from '@/components/ArticleListView.astro';
 import SecondaryHero from '@/components/SecondaryHero.astro';
 import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
 import { BASE_CASE_STUDY_PATH } from '@/consts';
@@ -28,5 +28,5 @@ const posts = collectionPayload.map((post) => ({
   <SecondaryHero {title} {description}>
     <SecondaryHeroStyle icon="mdi:projector-screen-outline" />
   </SecondaryHero>
-   <ArticleList baseUrl={BASE_CASE_STUDY_PATH} {posts} />
+   <ArticleListView baseUrl={BASE_CASE_STUDY_PATH} {posts} />
 </MainLayout>
