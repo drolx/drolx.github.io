@@ -3,7 +3,7 @@ title: "My digital brain"
 description: "The Digital Brain: Why Obsidian is the Architect’s Choice for Knowledge Management"
 publishedAt: "Jan 23 2026"
 author: "Godwin Peter .O"
-heroImage: "/images/placeholder-640x480.png"
+heroImage: "/images/placeholder.webp"
 tags: "technology, note taking, exploration"
 ---
 

@@ -3,7 +3,8 @@ title: "Astro is just so cool"
 description: "Astro The All-in-One Content Framework is Redefining Web Development"
 publishedAt: "Jan 23 2026"
 author: "Godwin Peter .O"
-heroImage: "/images/placeholder-640x480.png"
+heroImage: "/images/placeholder.webp"
+tags: "web, javascript, technology"
 ---
 
 In the ever-evolving landscape of JavaScript frameworks, **Astro** has carved out a unique space by challenging the "JavaScript-heavy" status quo. While popular tools like Next.js and Nuxt.js focus on turning your entire website into a complex application, Astro takes a step back to prioritize what matters most for the modern web: **speed, simplicity, and content.**

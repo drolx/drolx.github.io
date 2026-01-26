@@ -3,7 +3,8 @@ title: "Your favourite S3 you've never known"
 description: "A Deep Dive into GarageFS for S3-Compatible Storage"
 publishedAt: "Jan 23 2026"
 author: "Godwin Peter .O"
-heroImage: "/images/placeholder-640x480.png"
+heroImage: "/images/placeholder.webp"
+tags: "technology, docker, compose"
 ---
 
 In the era of self-hosting and private clouds, the bottleneck often isn't compute power, but how we manage and scale data. For those building a resilient infrastructure on a budget—or on older hardware—**GarageFS** (commonly referred to simply as **Garage**) has emerged as a lightweight, distributed storage powerhouse.

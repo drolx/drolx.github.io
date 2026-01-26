@@ -3,7 +3,8 @@ title: "Secure git workflow using ssh"
 description: "Secure Your Workflow by Mastering Git with SSH"
 publishedAt: "Jan 23 2026"
 author: "Godwin Peter .O"
-heroImage: "/images/placeholder-640x480.png"
+heroImage: "/images/placeholder.webp"
+tags: "technology, git, ssh, github"
 ---
 
 In the world of version control, speed and security aren't just "nice-to-haves"—they are the bedrock of a professional development environment. While HTTPS is often the default for beginners, **SSH (Secure Shell)** is the industry standard for developers who prioritize seamless automation and robust protection.
