@@ -1,42 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import siteInfo from "../data/site-info.json";
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-  <!-- Support Card -->
-  <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-    <div class="card-body">
-      <div class="flex items-start gap-4 mb-4">
-        <div
-          class="bg-primary/16 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
-        >
-          <Icon name="mdi:help-circle" class="text-3xl text-primary" />
-        </div>
-        <div>
-          <h3 class="card-title text-xl mb-2">Support</h3>
-        </div>
-      </div>
-      <p class="text-base-content/70 mb-4">
-        Technical support for existing customers. Our team is available 24/7 to
-        assist with any issues or questions.
-      </p>
-      <a
-        href="mailto:support@drolx.com"
-        class="link link-primary font-semibold no-underline hover:underline"
-      >
-        support@drolx.com
-      </a>
-      <a
-        href="tel:+2348062957703"
-        class="link link-primary font-semibold no-underline hover:underline"
-      >
-        +234 806-295-7703
-      </a>
-      <br />
-      <br />
-    </div>
-  </div>
-
   <!-- Sales & Enquiry Card -->
   <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
     <div class="card-body">
@@ -55,23 +22,54 @@ import { Icon } from "astro-icon/components";
         how drolx Lab can help your business.
       </p>
       <a
-        href="mailto:hello@drolx.com"
+        href={`mailto:${siteInfo.email}`}
         class="link link-secondary font-semibold no-underline hover:underline"
       >
-        hello@drolx.com
+        {siteInfo.email}
+      </a>
+      {
+        siteInfo.phones.map((phone) => (
+          <a
+            href={`tel:${phone}`}
+            class="link link-secondary font-semibold no-underline hover:underline"
+          >
+            {phone}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+  <!-- Support Card -->
+  <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+    <div class="card-body">
+      <div class="flex items-start gap-4 mb-4">
+        <div
+          class="bg-primary/16 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
+        >
+          <Icon name="mdi:help-circle" class="text-3xl text-primary" />
+        </div>
+        <div>
+          <h3 class="card-title text-xl mb-2">Support</h3>
+        </div>
+      </div>
+      <p class="text-base-content/70 mb-4">
+        Technical support for existing customers. Our team is available 24/7 to
+        assist with any issues or questions.
+      </p>
+      <a
+        href={`mailto:${siteInfo.supportEmail}`}
+        class="link link-primary font-semibold no-underline hover:underline"
+      >
+        {siteInfo.supportEmail}
       </a>
       <a
-        href="tel:+2348030776365"
-        class="link link-secondary font-semibold no-underline hover:underline"
+        href={`tel:${siteInfo.phones[0]}`}
+        class="link link-primary font-semibold no-underline hover:underline"
       >
-        +234 803-077-6365
+        {siteInfo.phones[0]}
       </a>
-      <a
-        href="tel:+2348062957703"
-        class="link link-secondary font-semibold no-underline hover:underline"
-      >
-        +234 806-295-7703
-      </a>
+      <br />
+      <br />
     </div>
   </div>
 </div>

@@ -1,38 +1,42 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
-export const title = 'About - drolx Lab';
+export const title = 'About Us';
 
 type TeamPersonnel = {
-  name: string;
-  role: string;
-  image?: string;
+	name: string;
+	role: string;
+	image?: string;
 };
 
 const personnels: TeamPersonnel[] = [
-  {
-    name: "Solomon A. Agboola",
-    role: "CEO & Co-Founder",
-  },
-  {
-    name: "Godwin Peter .O",
-    role: "Lead Developer",
-  },
-  {
-    name: "Gbenga Onigbajumo",
-    role: "Senior Developer",
-  },
-  {
-    name: "Nathan Emeka",
-    role: "Lead Designer",
-  },
+	{
+		name: 'Solomon A. Agboola',
+		role: 'CEO & Co-Founder',
+	},
+	{
+		name: 'Godwin Peter .O',
+		role: 'Lead Developer',
+	},
+	{
+		name: 'Gbenga Onigbajumo',
+		role: 'Senior Developer',
+	},
+	{
+		name: 'Nathan Emeka',
+		role: 'Lead Designer',
+	},
 ];
-
 ---
 
 <MainLayout title={title}>
-  
+  <div class="w-full">
+    <div class="lg:max-w-6xl mx-auto pt-8">
+      <Breadcrumbs />
+    </div>
+  </div>
   <!--  OUR STORY SECTION  -->
   <section class="bg-base-100 py-20 px-4">
     <div class="max-w-7xl mx-auto">

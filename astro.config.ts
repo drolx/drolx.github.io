@@ -29,8 +29,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   redirects: {
-    "/company": "/company/about",
+    "/company": "/company/about-us",
     "/services": "/services/software-development",
+    "/resources": "/resources/faqs",
   },
   integrations: [
     mdx(),

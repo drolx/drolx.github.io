@@ -1,5 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import { processTags } from "@/utils/content";
 import FormattedDate from "../components/FormattedDate.astro";
 import MainLayout from "./MainLayout.astro";
 
@@ -8,13 +10,6 @@ type Frontmatter = Props & {
   frontmatter: Props;
 };
 const { frontmatter } = Astro.props as Frontmatter;
-
-const processTags = (value?: string): string[] => {
-  if (value === undefined) return [];
-  const items = value.split(",");
-
-  return items.length > 7 ? items.slice(0, items.length - 1) : items;
-};
 ---
 
 <MainLayout
@@ -22,8 +17,13 @@ const processTags = (value?: string): string[] => {
   description={frontmatter.description}
   image={frontmatter.heroImage}
 >
-  <div class="max-w-7xl mx-auto px-4 pt-8 pb-16">
-    <article class="pt-8 pb-16 flex flex-col items-center">
+  <div class="w-full">
+    <div class="lg:max-w-6xl mx-auto pt-8">
+      <Breadcrumbs />
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 pb-4">
+    <article class="pt-8 pb-4 flex flex-col items-center">
       {
         frontmatter.heroImage && (
           <div class="flex justify-center mb-8">
@@ -56,7 +56,7 @@ const processTags = (value?: string): string[] => {
             <div class="py-1 space-x-2">
               {
                 processTags(frontmatter.tags).map((tag) => (
-                  <span class="text-sm text-primary-400 font-normal rounded-sm bg-primary-100 px-3 py-1.5">
+                  <span class="text-sm capitalize text-primary-700 font-normal shadow-xs hover:shadow-sm rounded-sm bg-primary-100 px-3 py-1.5">
                     {tag}
                   </span>
                 ))

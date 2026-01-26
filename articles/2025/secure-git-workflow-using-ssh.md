@@ -1,5 +1,5 @@
 ---
-title: "Secure git workflow using ssh"
+title: "Secure Git Workflow Using SSH"
 description: "Secure Your Workflow by Mastering Git with SSH"
 publishedAt: "Jul 03 2025"
 author: "Godwin Peter .O"
