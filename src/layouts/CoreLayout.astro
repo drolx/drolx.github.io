@@ -9,6 +9,7 @@ interface Props {
 	class?: string;
 }
 
+const isProduction = import.meta.env.PROD;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image, class: clazz } = Astro.props;
 const { url, site } = Astro;
@@ -46,7 +47,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`;
     <link rel="sitemap" type="application/xml" href="/sitemap-0.xml" />
     <meta name="author" content={SITE_AUTHOR}>
 		<meta name="copyright" content="drolx-source-1.0" >
-    <meta name="keywords" content="drolx, software, tech, development, software solution, sass, product development, devOps, logistics, telematics, gps tracking">
+    <meta name="keywords" content="drolx, software, tech, development, software solution, cloud services, cloud security, sass, product development, devOps, logistics, retail, telematics, gps tracking">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#281588">
     <meta property="og:url" content={`${site}${url}`}>
@@ -58,7 +59,8 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`;
     <meta name="twitter:title" content={layoutTitle}>
     <meta name="twitter:image" content={openGraphImageUrl}>
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Analytics scripts -->
+    {isProduction && (
     <script type="text/partytown" is:inline async src={'https://www.googletagmanager.com/gtag/js?id=G-TV4J9YCNL0'}></script>
     <script type="text/partytown" is:inline define:vars={{ tagId, tagManagerId }}>
         // Google Tag Manager
@@ -74,8 +76,6 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`;
           f.parentNode.insertBefore(j, f);
         })(window, document, "script", "dataLayer", "GTM-TDRZ8NRG");
     </script>
-
-    <!-- drolx Analytics Tracking Snippet -->
     <script type="text/partytown" is:inline>
       (function() {
         var el = document.createElement("script");
@@ -86,8 +86,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`;
         el.setAttribute("data-session-replay", "true");
         document.head.appendChild(el);
       })();
-    </script>
-
+    </script>)}
     </head>
   <body class:list={[
 		  clazz,
@@ -96,6 +95,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`;
 	    'dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-700',
   ]}>
     <!-- Google Tag Manager (noscript) -->
+    {isProduction && (
     <noscript>
       <iframe
         src={'https://www.googletagmanager.com/ns.html?id=GTM-TDRZ8NRG'}
@@ -105,6 +105,7 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`;
       >
       </iframe>
     </noscript>
+    )}
     <slot />
   </body>
 </html>
