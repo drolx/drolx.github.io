@@ -1,7 +1,7 @@
 ---
 title: "Secure git workflow using ssh"
 description: "Secure Your Workflow by Mastering Git with SSH"
-publishedAt: "Jan 23 2026"
+publishedAt: "Jul 03 2025"
 author: "Godwin Peter .O"
 heroImage: "/images/placeholder.webp"
 tags: "technology, git, ssh, github"
