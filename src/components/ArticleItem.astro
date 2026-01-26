@@ -1,26 +1,30 @@
 ---
-import { Icon } from "astro-icon/components";
-import FormattedDate from "./FormattedDate.astro";
+import { Icon } from 'astro-icon/components';
+import { processTags } from '@/utils/content';
+import FormattedDate from './FormattedDate.astro';
 
 interface Props {
-  baseUrl: string;
-  id: string;
-  title: string;
-  description: string;
-  heroImage?: string;
-  publishedAt?: Date;
-  author?: string;
-  tags?: string;
+	baseUrl: string;
+	id: string;
+	title: string;
+	description: string;
+	heroImage?: string;
+	publishedAt?: Date;
+	author?: string;
+	tags?: string;
 }
 
 const {
-  baseUrl,
-  title,
-  description,
-  heroImage = "/images/og-image.png",
-  id,
-  publishedAt,
+	baseUrl,
+	title,
+	description,
+	heroImage = '/images/og-image.png',
+	id,
+	publishedAt,
+	tags,
 } = Astro.props;
+
+const mainTags = processTags(tags);
 ---
 
 <article
@@ -36,11 +40,11 @@ const {
   <footer class="mt-2 py-2 px-4 flex justify-between items-center">
     <div class="flex items-center gap-x-2 text-xs py-2 px-3">
       {publishedAt && <FormattedDate date={publishedAt} />}
-      <span
+      {mainTags.length && mainTags[0] && <span
         :to="'#'"
-        class="relative z-10 rounded-md bg-primary-200 px-3 py-1.5 font-medium text-base-500 hover:bg-secondary-100"
-        >Category</span
-      >
+        class="relative z-10 rounded-md bg-primary-200 px-3 py-1.5 font-medium capitalize text-base-500 hover:bg-secondary-100"
+        >{mainTags[0]}</span>
+      }
     </div>
     <a
       href={`${baseUrl}/${id}/`}

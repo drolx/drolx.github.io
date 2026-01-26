@@ -1,5 +1,5 @@
 ---
-title: "Pepper Local: A position data aggregator"
+title: "Pepper Local: A Position Data Aggregator"
 description: "Exploration of pepper local as a python based position data aggregator"
 publishedAt: "Jan 08 2026"
 author: "Godwin Peter .O"

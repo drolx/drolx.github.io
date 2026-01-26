@@ -1,5 +1,6 @@
 ---
 import { getRouteObjects } from '@/utils/routes';
+import Breadcrumbs from './Breadcrumbs.astro';
 
 interface Props {
   title: string;
@@ -7,26 +8,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const pathname = Astro.url.pathname;
-const pathSegments = pathname
-  .split("/")
-  .filter(Boolean)
-  .reduce<string[]>(
-    (acc, _, i, arr) => {
-      acc.push("/" + arr.slice(0, i + 1).join("/"));
-      return acc;
-    },
-    ["/"],
-  );
 
-const pages = await getRouteObjects();
-const breadcrumbs = pathSegments.map((path) => {
-	const item = pages.find(x => x.url === path);
-  return {
-    path,
-    label: item?.title ?? 'No Label',
-  };
-});
 ---
 
 <section
@@ -42,22 +24,8 @@ const breadcrumbs = pathSegments.map((path) => {
 >
   <div class="max-w-7xl mx-auto relative z-10">
     <!-- Breadcrumb -->
-    <div class="text-sm breadcrumbs mb-8">
-      <ul>
-        {
-          breadcrumbs.map((breadItem, index) =>
-            index !== breadcrumbs.length - 1 ? (
-              <li>
-                <a href={breadItem.path}>{breadItem.label ?? "Missing"}</a>
-              </li>
-            ) : (
-              <li>{breadItem.label ?? "Missing"}</li>
-            ),
-          )
-        }
-      </ul>
-    </div>
-    <div class="max-w-2xl">
+    <Breadcrumbs />
+    <div class="max-w-2xl mt-8">
       <h1 class="text-4xl lg:text-6xl font-bold mb-4">{title}</h1>
       <p class="text-lg lg:text-xl opacity-95 mb-6 line-clamp-2">
         {description}
