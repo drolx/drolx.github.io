@@ -1,10 +1,22 @@
 ---
-import SecondaryHero from '@/components/SecondaryHero.astro';
-import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
-import MainLayout from '../../layouts/MainLayout.astro';
+import { Icon } from "astro-icon/components";
+import ContactCard from "@/components/ContactCard.astro";
+import SecondaryHero from "@/components/SecondaryHero.astro";
+import SecondaryHeroStyle from "@/components/SecondaryHeroStyle.astro";
+import siteInfo from "../../data/site-info.json";
+import MainLayout from "../../layouts/MainLayout.astro";
 
-export const title = 'Contact Us';
-export const description = 'Talk us today for services & solutions we can provide to you';
+export const title = "Contact Us";
+export const description =
+  "Talk us today for services & solutions we can provide to you";
+
+const whyContact = [
+  "Expert consultation & recommedation",
+  "Custom pricing and package",
+  "Technical support and troubleshooting",
+  "Free idea exploration",
+  "Partnership and enterprise inquiries",
+];
 ---
 
 <MainLayout title={title}>
@@ -12,5 +24,129 @@ export const description = 'Talk us today for services & solutions we can provid
     <SecondaryHeroStyle icon="mdi:headset" />
     <div slot="inner" class="py-4"></div>
   </SecondaryHero>
-  <div>Contact Us</div>
+
+  <!-- HOW CAN WE HELP  -->
+  <section class="bg-base-200 py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+          {"How Can We Help?"}
+        </h2>
+      </div>
+      <ContactCard />
+    </div>
+  </section>
+
+  <!-- READY TO START  -->
+  <section class="bg-base-200 py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+          Ready To Kickstart your ideas?
+        </h2>
+        <p class="text-lg text-base-content/70">
+          Let's discuss how drolx Lab can transform your ideas
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Office Information Card -->
+        <div class="card bg-base-100 shadow-lg">
+          <div class="card-body p-8">
+            <h3 class="card-title text-2xl mb-6">Office Information</h3>
+
+            <div class="space-y-6">
+              <!-- Address -->
+              <div class="flex items-start gap-4">
+                <Icon
+                  name="mdi:map-marker"
+                  class="text-2xl text-primary flex-shrink-0 mt-1"
+                />
+                <div>
+                  <h4 class="font-semibold mb-1">Company Address</h4>
+                  <p class="text-base-content/70">
+                    {siteInfo.address}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="flex items-start gap-4">
+                <Icon
+                  name="mdi:phone"
+                  class="text-2xl text-primary flex-shrink-0 mt-1"
+                />
+                <div>
+                  <h4 class="font-semibold mb-1">Contact Phone</h4>
+                  <p class="text-sm text-base-content/60">
+                    {siteInfo.phones[1]}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex items-start gap-4">
+                <Icon
+                  name="mdi:email"
+                  class="text-2xl text-primary flex-shrink-0 mt-1"
+                />
+                <div>
+                  <h4 class="font-semibold mb-1">Email Address</h4>
+                  <p class="text-base-content/70">{siteInfo.email}</p>
+                </div>
+              </div>
+
+              <!-- Working Hours -->
+              <div class="flex items-start gap-4">
+                <Icon
+                  name="mdi:clock"
+                  class="text-2xl text-primary flex-shrink-0 mt-1"
+                />
+                <div>
+                  <h4 class="font-semibold mb-1">Working Hours</h4>
+                  <p class="text-base-content/70">
+                    Monday - Friday: 9:00 AM - 5:00 PM
+                  </p>
+                  <p class="text-base-content/70">
+                    Saturday: 10:00 AM - 3:00 PM
+                  </p>
+                  <p class="text-sm text-base-content/60 mt-1">
+                    24/7 Technical Support Available
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why Contact Us Card -->
+        <div class="card bg-primary text-white shadow-lg">
+          <div class="card-body p-8">
+            <h3 class="card-title text-2xl mb-6">Why Talk to Us?</h3>
+            <div class="space-y-4">
+              {
+                whyContact.map((content) => (
+                  <div class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="text-2xl text-success flex-shrink-0 mt-0.5"
+                    />
+                    <p class="opacity-95">{content}</p>
+                  </div>
+                ))
+              }
+            </div>
+
+            <div class="mt-8">
+              <button
+                class="btn bg-white text-primary hover:bg-gray-100 border-none rounded-md w-full"
+              >
+                Schedule A Call
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </MainLayout>
