@@ -3,14 +3,13 @@ import SecondaryHero from '@/components/SecondaryHero.astro';
 import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
-export const title = 'Software Development';
-export const description =
-	'Rapidly implement your business ideas into financial profit';
+export const title = 'IOT Solutions';
+export const description = 'Transforming connected IOT devices into tool for business insight and success';
 ---
 
 <MainLayout {title}>
     <SecondaryHero {title} {description}>
-        <SecondaryHeroStyle icon="mdi:code" />
+        <SecondaryHeroStyle icon="mdi:mobile-devices" />
         <div slot="inner">
         <button class="btn btn-lg btn-secondary rounded-lg px-4 capitalize">
             {"Get Started"}
