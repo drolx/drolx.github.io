@@ -5,9 +5,17 @@ import SecondaryHeroStyle from "@/components/SecondaryHeroStyle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 export const title = "Schedule Call";
-export const description = "Set a time for a more lengthy discussion to understand your requirements";
+export const description =
+  "Set a time for a more lengthy discussion to understand your requirements";
 
 const topics = [
+  {
+    id: "demo",
+    label: "Demo Walk Through",
+    description:
+      "Let's showcase existing solution that might meet your expectation",
+    icon: "mdi:laptop",
+  },
   {
     id: "clarity",
     label: "Requirement Clarity",
@@ -62,135 +70,75 @@ const timeSlots = [
         <div class="card-body">
           <h2 class="card-title text-2xl mb-8">Schedule Your Call</h2>
 
-          <form id="scheduleForm" class="space-y-8">
-            <!-- Personal Information -->
-            <div class="form-control w-full">
-              <label class="label">
-                <span class="label-text font-semibold">Full Name</span>
-              </label>
+          <form id="scheduleForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
               <input
                 type="text"
-                placeholder="John Doe"
-                class="input input-bordered w-full"
-                required
+                placeholder="Full Name"
+                class="input w-full col-span-2"
               />
+              <select class="select appearance-none w-full">
+                <option disabled selected>Pick Topic</option>
+                {topics.map((topic) => <option>{topic.label}</option>)}
+              </select>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="form-control w-full">
-                <label class="label">
-                  <span class="label-text font-semibold">Email</span>
+              <div>
+                <label class="input validator w-full">
+                  <Icon name="mdi:email" class="size-5 text-neutral-800" />
+                  <input type="email" placeholder="your@domain.com" required />
                 </label>
-                <input
-                  type="email"
-                  placeholder="john@example.com"
-                  class="input input-bordered w-full"
-                  required
-                />
+                <div class="validator-hint hidden">
+                  Enter valid email address
+                </div>
               </div>
-              <div class="form-control w-full">
-                <label class="label">
-                  <span class="label-text font-semibold">Phone</span>
+              <div>
+                <label class="input validator w-full">
+                  <Icon name="mdi:phone" class="size-5 text-neutral-800" />
+                  <input
+                    type="tel"
+                    class="tabular-nums"
+                    required
+                    placeholder="Phone"
+                    pattern="[0-9]*"
+                    minlength="10"
+                    maxlength="14"
+                    title="Must be a least 10 digits"
+                  />
                 </label>
-                <input
-                  type="tel"
-                  placeholder="+234 XXX XXX XXXX"
-                  class="input input-bordered w-full"
-                  required
-                />
-              </div>
-            </div>
-
-            <div class="form-control w-full">
-              <label class="label">
-                <span class="label-text font-semibold">Company</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Your Company Name"
-                class="input input-bordered w-full"
-              />
-            </div>
-
-            <!-- Topic Selection -->
-            <div class="form-control w-full">
-              <label class="label">
-                <span class="label-text font-semibold">Call Topic</span>
-              </label>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                {
-                  topics.map((topic) => (
-                    <label class="flex items-start gap-3 p-4 border border-base-300 rounded-lg hover:bg-base-200 cursor-pointer transition">
-                      <input
-                        type="radio"
-                        name="topic"
-                        value={topic.id}
-                        class="radio radio-primary mt-1"
-                        required
-                      />
-                      <div>
-                        <p class="font-semibold text-sm">{topic.label}</p>
-                        <p class="text-xs text-base-content/70">
-                          {topic.description}
-                        </p>
-                      </div>
-                    </label>
-                  ))
-                }
+                <div class="validator-hint hidden">Must be 10 digits</div>
               </div>
             </div>
 
             <!-- Date & Time Selection -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="form-control w-full">
-                <label class="label">
-                  <span class="label-text font-semibold">Preferred Date</span>
-                </label>
-                <input
-                  type="date"
-                  class="input input-bordered w-full"
-                  required
-                />
-              </div>
-              <div class="form-control w-full">
-                <label class="label">
-                  <span class="label-text font-semibold">Preferred Time</span>
-                </label>
-                <select class="select select-bordered w-full" required>
-                  <option disabled selected>Select a time</option>
-                  {timeSlots.map((slot) => (
-                    <option value={slot}>{slot}</option>
-                  ))}
-                </select>
-              </div>
+              <input type="date" class="input w-full" />
+              <select class="select select-bordered w-full" required>
+                <option disabled selected>Select a time</option>
+                {timeSlots.map((slot) => <option value={slot}>{slot}</option>)}
+              </select>
             </div>
 
             <!-- Additional Requirements -->
-            <div class="form-control w-full">
-              <label class="label">
-                <span class="label-text font-semibold">
-                  Additional Requirements (Optional)
-                </span>
-              </label>
+            <fieldset class="fieldset w-full">
+              <legend class="fieldset-legend"
+                >Additional Requirements (Optional)</legend
+              >
               <textarea
-                class="textarea textarea-bordered w-full h-32"
+                class="textarea h-48 w-full"
                 placeholder="Tell us more about your project or specific requirements..."
               ></textarea>
-            </div>
+              <div class="label">Optional</div>
+            </fieldset>
 
             <!-- Submit Button -->
             <div class="flex gap-4">
-              <button
-                type="submit"
-                class="btn btn-primary btn-lg flex-1"
-              >
+              <button type="submit" class="btn btn-primary btn-lg flex-1">
                 <Icon name="mdi:calendar-plus" class="size-5" />
                 Schedule Call
               </button>
-              <button
-                type="reset"
-                class="btn btn-outline btn-lg flex-1"
-              >
+              <button type="reset" class="btn btn-outline btn-lg flex-1">
                 Clear
               </button>
             </div>
@@ -207,18 +155,23 @@ const timeSlots = [
               What to Expect
             </h3>
             <ul class="space-y-3 mt-4">
-              {[
-                "Professional consultation with our experts",
-                "In-depth discussion of your requirements",
-                "Personalized recommendations",
-                "Timeline and cost estimation",
-                "Next steps and action plan",
-              ].map((item) => (
-                <li class="flex items-start gap-3">
-                  <Icon name="mdi:check-circle" class="size-5 flex-shrink-0 mt-0.5" />
-                  <span>{item}</span>
-                </li>
-              ))}
+              {
+                [
+                  "Professional consultation with our experts",
+                  "In-depth discussion of your requirements",
+                  "Personalized recommendations",
+                  "Timeline and cost estimation",
+                  "Next steps and action plan",
+                ].map((item) => (
+                  <li class="flex items-start gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="size-5 flex-shrink-0 mt-0.5"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
@@ -254,10 +207,13 @@ const timeSlots = [
   </section>
 
   <script>
-    document.getElementById("scheduleForm")?.addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("Thank you for scheduling a call! We'll send you a confirmation email shortly.");
-    });
+    document
+      .getElementById("scheduleForm")
+      ?.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert(
+          "Thank you for scheduling a call! We'll send you a confirmation email shortly.",
+        );
+      });
   </script>
 </MainLayout>
-
