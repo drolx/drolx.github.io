@@ -13,6 +13,11 @@ const companyRoutes: RouteItem[] = [
 	{ label: 'Solutions', url: '/solutions' },
 	...headerCompanyRoutes,
 ];
+const productRoutes = [
+  { label: 'ello 360', url: '/products/ello-360' },
+  { label: 'ello Trac', url: '/products/ello-trac' },
+  { label: 'We School', url: '/products/we-school' },
+]
 const resourceRoutes: RouteItem[] = [
 	{ label: 'Articles', url: '/resources/articles' },
 	{ label: 'Case Studies', url: '/resources/case-studies' },
@@ -46,12 +51,12 @@ const extraRoutes: RouteItem[] = [
           <p class="text-lg font-bold text-white">{"Products"}</p>
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
-              ["ello 360", "ello Trac", "We School"].map((item) => (
+              productRoutes.map((item) => (
                 <a
-                  href="#"
+                  href={item.url}
                   class="text-white transition-colors duration-300 hover:text-blue-500"
                 >
-                  {item}
+                  {item.label}
                 </a>
               ))
             }
