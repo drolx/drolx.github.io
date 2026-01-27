@@ -5,12 +5,12 @@ import LandingText from '@/data/landing-text.json';
 import type { RouteItem } from '@/types';
 import {
 	companyRoutes as headerCompanyRoutes,
-	serviceRoutes,
+	solutionRoutes,
 } from './SiteHeader.astro';
 
 const year = new Date().getFullYear();
 const companyRoutes: RouteItem[] = [
-	{ label: 'Solutions', url: '/services' },
+	{ label: 'Solutions', url: '/solutions' },
 	...headerCompanyRoutes,
 ];
 const resourceRoutes: RouteItem[] = [
@@ -88,10 +88,10 @@ const extraRoutes: RouteItem[] = [
           </div>
         </div>
         <div>
-          <p class="text-lg font-semibold text-white">{"Services"}</p>
+          <p class="text-lg font-semibold text-white">{"Solutions"}</p>
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
-              serviceRoutes.map((item) => (
+              solutionRoutes.map((item) => (
                 <a
                   href={item.url}
                   class="text-white transition-colors duration-300 hover:text-blue-500"

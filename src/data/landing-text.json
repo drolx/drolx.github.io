@@ -7,19 +7,19 @@
     {
       "title": "Software Development",
       "icon": "mdi:code-block-braces",
-      "url": "/services/software-development",
+      "url": "/solutions/software-development",
       "description": "we create and improve a product to meet market needs and consumer demands. It encompasses several stages, from ideation to launch."
     },
     {
       "title": "Cloud Solutions & Services",
       "icon": "mdi:cloud-cog-outline",
-      "url": "/services/cloud-solutions",
+      "url": "/solutions/cloud-solutions",
       "description": "Cloud infrastructure refers to the collection of hardware and software components that support the delivery of cloud computing services."
     },
     {
       "title": "Digital Transformation",
       "icon": "mdi:lightbulb-on-outline",
-      "url": "/services/digital-transformation",
+      "url": "/solutions/digital-transformation",
       "description": "We integrate digital technology into all areas of a business, fundamentally changing how it operates and delivers value to customers."
     }
   ]

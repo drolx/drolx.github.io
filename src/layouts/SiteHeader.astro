@@ -3,25 +3,25 @@ import { Icon } from 'astro-icon/components';
 import { BASE_ARTICLE_PATH, BASE_CASE_STUDY_PATH } from '@/consts';
 import type { RouteItem } from '@/types';
 
-export const serviceRoutes: RouteItem[] = [
+export const solutionRoutes: RouteItem[] = [
 	{
-		url: '/services/software-development',
+		url: '/solutions/software-development',
 		label: 'Software Development',
 	},
 	{
-		url: '/services/cloud-solutions',
+		url: '/solutions/cloud-solutions',
 		label: 'Cloud Solutions',
 	},
 	{
-		url: '/services/iot-solutions',
+		url: '/solutions/iot-solutions',
 		label: 'IOT Solutions',
 	},
 	{
-		url: '/services/cloud-security',
+		url: '/solutions/cloud-security',
 		label: 'Cloud Security',
 	},
 	{
-		url: '/services/digital-transformation',
+		url: '/solutions/digital-transformation',
 		label: 'Digital Transformation',
 	},
 ];
@@ -55,9 +55,9 @@ const menuLists: RouteItem[] = [
 		label: 'Products',
 	},
 	{
-		url: '/services',
-		label: 'Services',
-		children: serviceRoutes,
+		url: '/solutions',
+		label: 'Solutions',
+		children: solutionRoutes,
 	},
 	{
 		url: '/company',
