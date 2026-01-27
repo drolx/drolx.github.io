@@ -15,20 +15,31 @@
 // Modified By: Godwin peter. O (me@godwin.dev)
 // Modified At: Sat 21 Dec 2024 12:49:44
 
-import { getCollection } from 'astro:content';
-import rss from '@astrojs/rss';
-import type { APIRoute } from 'astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+import { getCollection } from "astro:content";
+import rss from "@astrojs/rss";
+import type { APIRoute } from "astro";
+import {
+  BASE_ARTICLE_PATH,
+  BASE_CASE_STUDY_PATH,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+} from "@/consts";
 
 export const GET: APIRoute = async (context) => {
-	const posts = await getCollection('article');
-	return rss({
-		title: SITE_TITLE,
-		description: SITE_DESCRIPTION,
-		site: context.site ?? context.request.url,
-		items: posts.map((post) => ({
-			...post.data,
-			link: `/articles/${post.id}/`,
-		})),
-	});
+  const articles = await getCollection("article");
+  const articlePosts = articles.map((post) => ({
+    ...post.data,
+    link: `${BASE_ARTICLE_PATH}/${post.id}/`,
+  }));
+  const caseStudies = await getCollection("caseStudy");
+  const caseStudyPosts = caseStudies.map((post) => ({
+    ...post.data,
+    link: `${BASE_CASE_STUDY_PATH}/${post.id}/`,
+  }));
+  return rss({
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    site: context.site ?? context.request.url,
+    items: [...articlePosts, ...caseStudyPosts],
+  });
 };
