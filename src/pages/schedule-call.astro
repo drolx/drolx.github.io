@@ -63,19 +63,18 @@ const timeSlots = [
     <SecondaryHeroStyle icon="mdi:calendar-multiple-check" />
   </SecondaryHero>
 
-  <section class="py-16 px-4">
+  <section class="py-6 px-4">
     <div class="max-w-5xl mx-auto">
       <!-- Schedule Form -->
-      <div class="card bg-base-100 shadow-lg mb-12">
+      <div class="card bg-base-100 shadow-lg mb-8">
         <div class="card-body">
-          <h2 class="card-title text-2xl mb-8">Schedule Your Call</h2>
-
+          <h2 class="card-title text-2xl mb-6">{"Schedule Your Call"}</h2>
           <form id="scheduleForm" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
               <input
                 type="text"
                 placeholder="Full Name"
-                class="input w-full col-span-2"
+                class="input w-full lg:col-span-2"
               />
               <select class="select appearance-none w-full">
                 <option disabled selected>Pick Topic</option>
@@ -126,20 +125,17 @@ const timeSlots = [
                 >Additional Requirements (Optional)</legend
               >
               <textarea
-                class="textarea h-48 w-full"
+                class="textarea h-32 w-full"
                 placeholder="Tell us more about your project or specific requirements..."
               ></textarea>
               <div class="label">Optional</div>
             </fieldset>
 
             <!-- Submit Button -->
-            <div class="flex gap-4">
-              <button type="submit" class="btn btn-primary btn-lg flex-1">
+            <div class="flex px-1 justify-center">
+              <button type="submit" class="btn btn-primary btn-lg flex-1 lg:max-w-96">
                 <Icon name="mdi:calendar-plus" class="size-5" />
-                Schedule Call
-              </button>
-              <button type="reset" class="btn btn-outline btn-lg flex-1">
-                Clear
+                <span>{"Schedule Call"}</span>
               </button>
             </div>
           </form>
