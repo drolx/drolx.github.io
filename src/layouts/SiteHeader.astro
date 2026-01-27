@@ -86,7 +86,7 @@ const menuLists: RouteItem[] = [
 
 function menuIsActive(path: string): boolean {
 	const currentPath = Astro.url.pathname;
-	const isHome = currentPath === '/' || currentPath.startsWith('/#');
+	const isHome = currentPath === '/' || currentPath === '' ||  currentPath.startsWith('/#');
 
 	if (path === '/') {
 		return isHome;
