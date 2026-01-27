@@ -29,7 +29,7 @@ const breadcrumbs = pathSegments.map((path) => {
       breadcrumbs.map((breadItem, index) =>
         index !== breadcrumbs.length - 1 ? (
           <li>
-            <a href={breadItem.path}>{breadItem.label ?? "Missing"}</a>
+            <a href={breadItem.path} aria-label={breadItem.label}>{breadItem.label ?? "Missing"}</a>
           </li>
         ) : (
           <li>{breadItem.label ?? "Missing"}</li>

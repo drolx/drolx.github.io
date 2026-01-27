@@ -1,137 +1,143 @@
 ---
-import { Icon } from 'astro-icon/components';
-import SolutionCta from '@/components/SolutionCta.astro';
-import MainLayout from '../../layouts/MainLayout.astro';
+import { Icon } from "astro-icon/components";
+import BreadcrumbSection from "@/components/BreadcrumbSection.astro";
+import SolutionCta from "@/components/SolutionCta.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
 
-export const title = 'ello 360';
+export const title = "ello 360";
 export const description =
-	'Comprehensive IoT and logistics platform for transportation and field operations';
+  "Comprehensive IoT and logistics platform for transportation and field operations";
 
 const workflows = [
-	{
-		name: 'Stream',
-		description: 'Real-time data streaming and processing',
-		icon: 'mdi:water',
-	},
-	{
-		name: 'Fleet',
-		description: 'Complete fleet management and optimization',
-		icon: 'mdi:truck',
-	},
-	{
-		name: 'Freight',
-		description: 'Freight and cargo tracking and management',
-		icon: 'mdi:package-variant',
-	},
-	{
-		name: 'Retail',
-		description: 'Point of sale and inventory management',
-		icon: 'mdi:store',
-	},
-	{
-		name: 'Courier',
-		description: 'Last-mile delivery and parcel tracking',
-		icon: 'mdi:mailbox',
-	},
-	{
-		name: 'Transit',
-		description: 'Public transportation operations',
-		icon: 'mdi:bus',
-	},
+  {
+    name: "Stream",
+    description: "Real-time data streaming and processing",
+    icon: "mdi:water",
+  },
+  {
+    name: "Fleet",
+    description: "Complete fleet management and optimization",
+    icon: "mdi:truck",
+  },
+  {
+    name: "Freight",
+    description: "Freight and cargo tracking and management",
+    icon: "mdi:package-variant",
+  },
+  {
+    name: "Retail",
+    description: "Point of sale and inventory management",
+    icon: "mdi:store",
+  },
+  {
+    name: "Courier",
+    description: "Last-mile delivery and parcel tracking",
+    icon: "mdi:mailbox",
+  },
+  {
+    name: "Transit",
+    description: "Public transportation operations",
+    icon: "mdi:bus",
+  },
 ];
 
 const features = [
-	{
-		title: 'IoT Integration',
-		description: 'Seamless integration with GPS trackers and IoT devices',
-		items: [
-			'IoT attribute mapping',
-			'Custom integrations',
-			'Device telemetry',
-			'Real-time data sync',
-		],
-	},
-	{
-		title: 'Operations Management',
-		description: 'Complete workflow and task management',
-		items: [
-			'Live tracking',
-			'Task monitoring',
-			'Route optimization',
-			'Dispatch management',
-		],
-	},
-	{
-		title: 'Inventory & Assets',
-		description: 'Track inventory and asset movements',
-		items: [
-			'Inventory tracking',
-			'Asset management',
-			'Stock levels',
-			'Movement history',
-		],
-	},
-	{
-		title: 'Order Management',
-		description: 'End-to-end order processing',
-		items: [
-			'Sales orders',
-			'Purchase orders',
-			'Forwarding orders',
-			'Order tracking',
-		],
-	},
-	{
-		title: 'Financial Management',
-		description: 'Billing and financial operations',
-		items: [
-			'Invoicing',
-			'Insurance management',
-			'Payment tracking',
-			'Financial reports',
-		],
-	},
-	{
-		title: 'Compliance & Monitoring',
-		description: 'Ensure operations compliance',
-		items: [
-			'Violation monitoring',
-			'Shortage tracking',
-			'Loss management',
-			'Audit trails',
-		],
-	},
+  {
+    title: "IoT Integration",
+    description: "Seamless integration with GPS trackers and IoT devices",
+    items: [
+      "IoT attribute mapping",
+      "Custom integrations",
+      "Device telemetry",
+      "Real-time data sync",
+    ],
+  },
+  {
+    title: "Operations Management",
+    description: "Complete workflow and task management",
+    items: [
+      "Live tracking",
+      "Task monitoring",
+      "Route optimization",
+      "Dispatch management",
+    ],
+  },
+  {
+    title: "Inventory & Assets",
+    description: "Track inventory and asset movements",
+    items: [
+      "Inventory tracking",
+      "Asset management",
+      "Stock levels",
+      "Movement history",
+    ],
+  },
+  {
+    title: "Order Management",
+    description: "End-to-end order processing",
+    items: [
+      "Sales orders",
+      "Purchase orders",
+      "Forwarding orders",
+      "Order tracking",
+    ],
+  },
+  {
+    title: "Financial Management",
+    description: "Billing and financial operations",
+    items: [
+      "Invoicing",
+      "Insurance management",
+      "Payment tracking",
+      "Financial reports",
+    ],
+  },
+  {
+    title: "Compliance & Monitoring",
+    description: "Ensure operations compliance",
+    items: [
+      "Violation monitoring",
+      "Shortage tracking",
+      "Loss management",
+      "Audit trails",
+    ],
+  },
 ];
 
 const industries = [
-	{ name: 'Logistics', icon: 'mdi:truck-fast' },
-	{ name: 'Transportation', icon: 'mdi:bus-multiple' },
-	{ name: 'Retail', icon: 'mdi:store' },
-	{ name: 'Food & Beverage', icon: 'mdi:food-fork-drink' },
-	{ name: 'Courier Services', icon: 'mdi:mailbox' },
-	{ name: 'Utilities', icon: 'mdi:lightning-bolt' },
+  { name: "Logistics", icon: "mdi:truck-fast" },
+  { name: "Transportation", icon: "mdi:bus-multiple" },
+  { name: "Retail", icon: "mdi:store" },
+  { name: "Food & Beverage", icon: "mdi:food-fork-drink" },
+  { name: "Courier Services", icon: "mdi:mailbox" },
+  { name: "Utilities", icon: "mdi:lightning-bolt" },
 ];
 ---
 
 <MainLayout {title} {description}>
+  <BreadcrumbSection />
+
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-primary to-primary-700 text-white py-20 px-4">
+  <section
+    class="bg-gradient-to-r from-primary to-primary-700 text-white py-20 px-4"
+  >
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
           <h1 class="text-5xl font-bold mb-4">ello 360</h1>
           <p class="text-xl opacity-90 mb-6">
-            The complete IoT and logistics platform designed for modern businesses
+            The complete IoT and logistics platform designed for modern
+            businesses
           </p>
           <p class="text-lg opacity-75 mb-8">
-            Unified solution for fleet management, asset tracking, and operations
-            optimization across multiple industries.
+            Unified solution for fleet management, asset tracking, and
+            operations optimization across multiple industries.
           </p>
           <div class="flex gap-4">
-            <a href="/get-started" class="btn btn-lg btn-white text-primary">
+            <a href="/get-started" aria-label="Get Started" class="btn btn-lg btn-white text-primary">
               Get Started
             </a>
-            <a href="/schedule-call" class="btn btn-lg btn-outline">
+            <a href="/schedule-call" aria-label="Schedule Call" class="btn btn-lg btn-outline">
               Request Demo
             </a>
           </div>
@@ -188,15 +194,11 @@ const industries = [
             <div class="card bg-white border border-base-200 shadow-lg hover:shadow-xl transition-shadow">
               <div class="card-body">
                 <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p class="text-base-content/70 mb-4">
-                  {feature.description}
-                </p>
+                <p class="text-base-content/70 mb-4">{feature.description}</p>
                 <ul class="list-disc list-inside space-y-2">
-                  {
-                    feature.items.map((item) => (
-                      <li class="text-base-content">{item}</li>
-                    ))
-                  }
+                  {feature.items.map((item) => (
+                    <li class="text-base-content">{item}</li>
+                  ))}
                 </ul>
               </div>
             </div>

@@ -106,7 +106,7 @@ function menuIsActive(path: string): boolean {
     <nav class="navbar text-neutral-800 px-4 lg:px-16 py-1 shadow-sm">
       <div class="mx-auto container flex items-center justify-between">
         <!-- LOGO -->
-        <a href="/" class="flex items-center">
+        <a href="/" aria-label="Header Logo Link" class="flex items-center">
           <Icon name="logo" class="h-8 lg:h-12 w-auto" />
         </a>
 
@@ -118,6 +118,7 @@ function menuIsActive(path: string): boolean {
                   <li>
                     <a
                       class={`py-3 px-4 rounded-lg hover:bg-primary-300 ${menuIsActive(menu.url) ? "menu-active bg-base-100 text-primary" : ""}`}
+                      aria-label={menu.label}
                       href={menu.url}
                     >
                       {menu.label}
@@ -138,7 +139,7 @@ function menuIsActive(path: string): boolean {
                             <li
                               class={`mb-2 rounded-lg hover:bg-primary-300 ${menuIsActive(childMenu.url) ? "menu-active bg-secondary-400" : ""}`}
                             >
-                              <a href={childMenu.url}>{childMenu.label}</a>
+                              <a href={childMenu.url} aria-label={childMenu.label}>{childMenu.label}</a>
                             </li>
                           ))}
                       </ul>
@@ -150,7 +151,7 @@ function menuIsActive(path: string): boolean {
           </ul>
         </div>
         <div class="hidden md:flex items-center gap-4">
-          <a class="btn btn-primary rounded-lg hover:btn-accent" href="/schedule-call">
+          <a class="btn btn-primary rounded-lg hover:btn-accent" href="/schedule-call" aria-label="Schedule Call">
             {"Schedule Call"}
           </a>
         </div>
@@ -176,6 +177,7 @@ function menuIsActive(path: string): boolean {
         <div class="mb-8 flex justify-center items-center p-8 w-full">
           <a
             href="/schedule-call"
+            aria-label="Schedule Call"
             class="btn btn-primary hover:btn-accent w-full text-white rounded-md"
             >{"Schedule Call"}</a
           >
@@ -185,7 +187,7 @@ function menuIsActive(path: string): boolean {
         menuLists.map((menu) =>
           !menu.children ? (
             <li>
-              <a href={menu.url}>{menu.label}</a>
+              <a href={menu.url} aria-label={menu.label}>{menu.label}</a>
             </li>
           ) : (
             <li>
@@ -197,7 +199,7 @@ function menuIsActive(path: string): boolean {
                   menu.children.length > 0 &&
                   menu.children.map((childMenu) => (
                     <li>
-                      <a href={childMenu.url}>{childMenu.label}</a>
+                      <a href={childMenu.url} aria-label={childMenu.label}>{childMenu.label}</a>
                     </li>
                   ))}
               </ul>

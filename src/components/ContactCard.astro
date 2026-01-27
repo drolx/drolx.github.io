@@ -23,6 +23,7 @@ import siteInfo from "../data/site-info.json";
       </p>
       <a
         href={`mailto:${siteInfo.email}`}
+        aria-label={siteInfo.email}
         class="link link-secondary font-semibold no-underline hover:underline"
       >
         {siteInfo.email}
@@ -31,6 +32,7 @@ import siteInfo from "../data/site-info.json";
         siteInfo.phones.map((phone) => (
           <a
             href={`tel:${phone}`}
+            aria-label={phone}
             class="link link-secondary font-semibold no-underline hover:underline"
           >
             {phone}
@@ -58,15 +60,17 @@ import siteInfo from "../data/site-info.json";
       </p>
       <a
         href={`mailto:${siteInfo.supportEmail}`}
+        aria-label={siteInfo.supportEmail}
         class="link link-primary font-semibold no-underline hover:underline"
       >
         {siteInfo.supportEmail}
       </a>
       <a
-        href={`tel:${siteInfo.phones[0]}`}
+        href={`tel:${siteInfo.phones[1]}`}
+        aria-label={siteInfo.phones[1]}
         class="link link-primary font-semibold no-underline hover:underline"
       >
-        {siteInfo.phones[0]}
+        {siteInfo.phones[1]}
       </a>
       <br />
       <br />
