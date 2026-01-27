@@ -1,0 +1,238 @@
+---
+import { Icon } from 'astro-icon/components';
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import SolutionCta from '@/components/SolutionCta.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'Software Development';
+export const description =
+	'Rapidly implement your business ideas into financial profit';
+
+const services = [
+	{
+		title: 'Product Development',
+		description:
+			'Build scalable products from concept to launch with cutting-edge technology and best practices',
+		icon: 'mdi:package-variant-closed',
+		features: [
+			'Requirements analysis',
+			'Prototyping & MVP',
+			'Full-stack development',
+			'Quality assurance',
+			'Launch support',
+		],
+	},
+	{
+		title: 'SaaS Development',
+		description:
+			'Create subscription-based software solutions with multi-tenant architecture',
+		icon: 'mdi:cloud-check-outline',
+		features: [
+			'Multi-tenancy design',
+			'Subscription management',
+			'Payment integration',
+			'Analytics & reporting',
+			'Scaling infrastructure',
+		],
+	},
+	{
+		title: 'Mobile App Development',
+		description:
+			'Native and cross-platform mobile applications for iOS and Android',
+		icon: 'mdi:cellphone-iphone',
+		features: [
+			'Native development',
+			'Cross-platform solutions',
+			'Offline capabilities',
+			'Push notifications',
+			'App store optimization',
+		],
+	},
+	{
+		title: 'Enterprise Solutions',
+		description:
+			'Complex enterprise applications with integration into existing systems',
+		icon: 'mdi:office-building',
+		features: [
+			'Legacy system integration',
+			'ERP implementations',
+			'CRM solutions',
+			'Workflow automation',
+			'Data migration',
+		],
+	},
+	{
+		title: 'Intranet Applications',
+		description:
+			'Private network applications for internal organizational communication and collaboration',
+		icon: 'mdi:folder-network',
+		features: [
+			'Internal portals',
+			'Document management',
+			'Team collaboration',
+			'Access control',
+			'Audit trails',
+		],
+	},
+	{
+		title: 'Web Applications',
+		description:
+			'High-performance web applications with modern UI/UX and responsive design',
+		icon: 'mdi:globe',
+		features: [
+			'Responsive design',
+			'Progressive web apps',
+			'API development',
+			'Database design',
+			'Performance optimization',
+		],
+	},
+];
+
+const technologies = [
+	{ name: 'TypeScript', icon: 'logos:typescript-icon' },
+	{ name: '.NET', icon: 'logos:dotnet' },
+	{ name: 'Node.js', icon: 'logos:nodejs-icon' },
+	{ name: 'React', icon: 'logos:react' },
+	{ name: 'Vue', icon: 'logos:vue' },
+	{ name: 'Flutter', icon: 'logos:flutter' },
+	{ name: 'Docker', icon: 'logos:docker-icon' },
+	{ name: 'Kubernetes', icon: 'logos:kubernetes' },
+];
+---
+
+<MainLayout {title} {description}>
+	<SecondaryHero {title} {description}>
+		<SecondaryHeroStyle icon="mdi:code" />
+		<div slot="inner">
+			<a
+				href="/get-started"
+				class="btn btn-lg btn-secondary rounded-lg px-4 capitalize"
+			>
+				Get Started
+			</a>
+		</div>
+	</SecondaryHero>
+
+	<!-- Services Overview -->
+	<section class="py-20 px-4 bg-base-100">
+		<div class="max-w-6xl mx-auto">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl font-bold text-primary-900 mb-4">
+					Comprehensive Software Solutions
+				</h2>
+				<p class="text-lg text-base-content/70 max-w-3xl mx-auto">
+					From concept to deployment, we deliver software solutions that drive
+					business growth and operational efficiency.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{services.map((service) => (
+					<div class="card bg-white border border-base-200 hover:shadow-xl transition-shadow">
+						<div class="card-body">
+							<div class="flex items-start justify-between mb-4">
+								<Icon name={service.icon} class="size-12 text-primary" />
+							</div>
+							<h3 class="card-title text-xl mb-3">{service.title}</h3>
+							<p class="text-base-content/70 mb-6">
+								{service.description}
+							</p>
+							<div class="space-y-2">
+								{service.features.map((feature) => (
+									<div class="flex items-center gap-2 text-sm">
+										<Icon
+											name="mdi:check-circle"
+											class="size-4 text-success flex-shrink-0"
+										/>
+										<span>{feature}</span>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Technology Stack -->
+	<section class="py-20 px-4 bg-primary-50">
+		<div class="max-w-6xl mx-auto">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl font-bold text-primary-900 mb-4">
+					Technology Stack
+				</h2>
+				<p class="text-lg text-base-content/70">
+					We use industry-leading technologies for optimal performance and
+					scalability
+				</p>
+			</div>
+
+			<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8">
+				{technologies.map((tech) => (
+					<div class="flex flex-col items-center justify-center p-6 rounded-lg bg-base-100 hover:shadow-lg transition-shadow">
+						<Icon name={tech.icon} class="size-12 mb-3" />
+						<p class="text-sm font-semibold text-center">{tech.name}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Why Choose Us -->
+	<section class="py-20 px-4 bg-base-100">
+		<div class="max-w-6xl mx-auto">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl font-bold text-primary-900 mb-4">
+					Why Choose drolx Lab
+				</h2>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+				{[
+					{
+						icon: "mdi:lightning-bolt",
+						title: "Fast Delivery",
+						description:
+							"Agile development methodologies for rapid deployment",
+					},
+					{
+						icon: "mdi:shield-check",
+						title: "Quality Assured",
+						description: "Rigorous testing and code review processes",
+					},
+					{
+						icon: "mdi:handshake",
+						title: "Dedicated Support",
+						description: "24/7 support and maintenance after launch",
+					},
+					{
+						icon: "mdi:chart-line",
+						title: "Scalable Design",
+						description: "Architecture built for growth and expansion",
+					},
+				].map((item) => (
+					<div class="text-center">
+						<div class="flex justify-center mb-4">
+							<div class="bg-secondary/10 p-4 rounded-full">
+								<Icon name={item.icon} class="size-8 text-secondary" />
+							</div>
+						</div>
+						<h3 class="font-bold mb-2">{item.title}</h3>
+						<p class="text-sm text-base-content/70">
+							{item.description}
+						</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+  <SolutionCta
+    title="Ready to Build Your Next Product?"
+    description="Let's discuss how we can turn your vision into a powerful software solution"
+  />
+</MainLayout>

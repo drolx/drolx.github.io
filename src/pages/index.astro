@@ -8,7 +8,8 @@ import CustomerImage2 from '@/assets/images/customer-2.webp';
 import DashImage from '@/assets/images/dash-content.png';
 import HeroImage from '@/assets/images/hero.svg';
 import ContactCard from '@/components/ContactCard.astro';
-import LandingIndusCard from '@/components/landing/LandingIndusCard.astro';
+import LandingIndusCard from '@/components/LandingIndusCard.astro';
+// Site data
 import IndustriesData from '@/data/industries.json';
 import LandingText from '@/data/landing-text.json';
 import MainLayout from '@/layouts/MainLayout.astro';
@@ -38,20 +39,20 @@ const skills: SkillItem[] = [
   >
     <div class="w-full lg:w-1/2">
       <div class="lg:max-w-lg">
-        <h1
+        <span
           class="text-5xl font-black tracking-wide text-primary-500 dark:text-white lg:text-6xl"
         >
           Innovate.
-        </h1>
-        <h1
+        </span>
+        <h2
           class="text-4xl font-semibold tracking-wide text-primary-500 dark:text-white lg:text-4xl"
         >
           Transform. Scale.
-        </h1>
+        </h2>
         <div class="mt-8 space-y-16">
           <p class="text-xl text-gray-700">{LandingText.tagLine}</p>
           <a
-            class="btn btn-lg btn-secondary hover:btn-primary me-2 mb-2 px-8 py-6"
+            class="btn btn-lg btn-secondary hover:btn-primary me-2 mb-2 px-6.5 py-6.5"
             href="/get-started"
             >{"Get Started"}<a/>
         </div>
@@ -142,7 +143,7 @@ const skills: SkillItem[] = [
           </div>
 
           <!-- Client Check -->
-          <button class="btn btn-lg">Check Here</button>
+          <a href="/company/our-customers" class="btn btn-lg hover:btn-primary">Check Here</a>
         </div>
         <!-- Background Content -->
         <div
@@ -204,7 +205,7 @@ const skills: SkillItem[] = [
           <div class="tooltip" data-tip={skill.label}>
             <Icon
               name={skill.icon}
-              class="size-16 p-2 rounded-lg hover:text-gray-300 hover:shadow-sm transition-colors duration-300"
+              class="size-20 p-4 rounded-lg hover:text-gray-300 hover:shadow-sm transition-colors duration-300"
             />
           </div>
         ))

@@ -5,14 +5,19 @@ import LandingText from '@/data/landing-text.json';
 import type { RouteItem } from '@/types';
 import {
 	companyRoutes as headerCompanyRoutes,
-	serviceRoutes,
+	solutionRoutes,
 } from './SiteHeader.astro';
 
 const year = new Date().getFullYear();
 const companyRoutes: RouteItem[] = [
-	{ label: 'Solutions', url: '/services' },
+	{ label: 'Solutions', url: '/solutions' },
 	...headerCompanyRoutes,
 ];
+const productRoutes = [
+  { label: 'ello 360', url: '/products/ello-360' },
+  { label: 'ello Trac', url: '/products/ello-trac' },
+  { label: 'We School', url: '/products/we-school' },
+]
 const resourceRoutes: RouteItem[] = [
 	{ label: 'Articles', url: '/resources/articles' },
 	{ label: 'Case Studies', url: '/resources/case-studies' },
@@ -36,7 +41,7 @@ const extraRoutes: RouteItem[] = [
         <a href="#" class="self-center md:self-auto">
           <Icon name="logow" class="h-16 w-auto" />
         </a>
-        <p class="max-w-sm text-white self-center md:self-auto">{LandingText.tagLine}</p>
+        <p class="max-w-sm text-white self-center md:self-auto">{LandingText.footerTagLine}</p>
         <SubscribeButton />
       </div>
 
@@ -46,12 +51,12 @@ const extraRoutes: RouteItem[] = [
           <p class="text-lg font-bold text-white">{"Products"}</p>
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
-              ["ello 360", "ello Trac", "We School"].map((item) => (
+              productRoutes.map((item) => (
                 <a
-                  href="#"
+                  href={item.url}
                   class="text-white transition-colors duration-300 hover:text-blue-500"
                 >
-                  {item}
+                  {item.label}
                 </a>
               ))
             }
@@ -88,10 +93,10 @@ const extraRoutes: RouteItem[] = [
           </div>
         </div>
         <div>
-          <p class="text-lg font-semibold text-white">{"Services"}</p>
+          <p class="text-lg font-semibold text-white">{"Solutions"}</p>
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
-              serviceRoutes.map((item) => (
+              solutionRoutes.map((item) => (
                 <a
                   href={item.url}
                   class="text-white transition-colors duration-300 hover:text-blue-500"

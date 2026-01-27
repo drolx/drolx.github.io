@@ -1,0 +1,232 @@
+---
+import { Icon } from 'astro-icon/components';
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import SolutionCta from '@/components/SolutionCta.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'Cloud Solutions';
+export const description =
+	'We provide various effective options on desired cloud or intranet service architecture & deployments';
+
+const solutions = [
+	{
+		title: 'DevOps & Infrastructure',
+		description:
+			'Automated deployment pipelines and infrastructure management for continuous integration and delivery',
+		icon: 'mdi:robot-industrial',
+		features: [
+			'CI/CD pipelines',
+			'Infrastructure as Code',
+			'Automated testing',
+			'Container orchestration',
+			'Monitoring & alerting',
+		],
+	},
+	{
+		title: 'Containerized Infrastructure',
+		description:
+			'Docker and Kubernetes-based solutions for scalable, portable applications',
+		icon: 'mdi:box-variant-closed',
+		features: [
+			'Container design',
+			'Kubernetes clusters',
+			'Service mesh',
+			'Container security',
+			'Auto-scaling setup',
+		],
+	},
+	{
+		title: 'Cloud Migration',
+		description:
+			'Seamless migration of existing applications to cloud platforms',
+		icon: 'mdi:cloud-upload-outline',
+		features: [
+			'Architecture assessment',
+			'Migration planning',
+			'Zero-downtime migration',
+			'Data synchronization',
+			'Post-migration optimization',
+		],
+	},
+	{
+		title: 'Hosted PaaS Solutions',
+		description:
+			'Platform-as-a-Service offerings for rapid application development and deployment',
+		icon: 'mdi:cloud-cog-outline',
+		features: [
+			'Managed databases',
+			'API management',
+			'Serverless functions',
+			'Backup & disaster recovery',
+			'Compliance & security',
+		],
+	},
+	{
+		title: 'Load Balancing & CDN',
+		description:
+			'Global content delivery and load distribution for optimal performance',
+		icon: 'mdi:server-network',
+		features: [
+			'Geographic distribution',
+			'DDoS protection',
+			'SSL/TLS termination',
+			'Cache optimization',
+			'Real-time analytics',
+		],
+	},
+	{
+		title: 'Disaster Recovery',
+		description:
+			'Comprehensive backup and recovery solutions ensuring business continuity',
+		icon: 'mdi:backup-restore',
+		features: [
+			'Automated backups',
+			'Recovery procedures',
+			'Geographic redundancy',
+			'RTO/RPO optimization',
+			'Compliance reporting',
+		],
+	},
+];
+
+const benefits = [
+	{
+		title: 'Cost Efficiency',
+		description: 'Pay only for resources you use with transparent pricing',
+	},
+	{
+		title: 'Scalability',
+		description:
+			'Automatically scale based on demand without manual intervention',
+	},
+	{
+		title: 'Reliability',
+		description: '99.9%+ uptime with built-in redundancy and failover',
+	},
+	{
+		title: 'Security',
+		description:
+			'Enterprise-grade security with encryption and compliance certifications',
+	},
+];
+
+const platforms = [
+	{ name: 'AWS', icon: 'logos:aws' },
+	{ name: 'Azure', icon: 'logos:microsoft-azure' },
+	{ name: 'Google Cloud', icon: 'logos:google-cloud' },
+	{ name: 'DigitalOcean', icon: 'logos:digital-ocean-icon' },
+	{ name: 'Docker', icon: 'logos:docker-icon' },
+	{ name: 'Kubernetes', icon: 'logos:kubernetes' },
+];
+---
+
+<MainLayout {title} {description}>
+  <SecondaryHero {title} {description}>
+    <SecondaryHeroStyle icon="mdi:cloud-sync-outline" />
+    <div slot="inner">
+      <a
+        href="/get-started"
+        class="btn btn-lg btn-secondary rounded-lg px-4 capitalize"
+      >
+        Get Started
+      </a>
+    </div>
+  </SecondaryHero>
+
+  <!-- Solutions Overview -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Cloud Solutions for Every Need
+        </h2>
+        <p class="text-lg text-base-content/70 max-w-3xl mx-auto">
+          From infrastructure design to managed services, we provide
+          comprehensive cloud solutions tailored to your business requirements.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          solutions.map((solution) => (
+            <div class="card bg-white border border-base-200 hover:shadow-xl transition-shadow">
+              <div class="card-body">
+                <div class="flex items-start justify-between mb-4">
+                  <Icon name={solution.icon} class="size-12 text-primary" />
+                </div>
+                <h3 class="card-title text-xl mb-3">{solution.title}</h3>
+                <p class="text-base-content/70 mb-6">{solution.description}</p>
+                <div class="space-y-2">
+                  {solution.features.map((feature) => (
+                    <div class="flex items-center gap-2 text-sm">
+                      <Icon
+                        name="mdi:check-circle"
+                        class="size-4 text-success flex-shrink-0"
+                      />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Grid -->
+  <section class="py-20 px-4 bg-primary-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">Key Benefits</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+          benefits.map((benefit) => (
+            <div class="card bg-base-100 shadow-lg">
+              <div class="card-body text-center">
+                <h3 class="card-title justify-center text-xl">{benefit.title}</h3>
+                <p class="text-base-content/70">{benefit.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Supported Platforms -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Supported Platforms
+        </h2>
+        <p class="text-base-content/70">
+          We work with leading cloud providers and technologies
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        {
+          platforms.map((platform) => (
+            <div class="flex flex-col items-center justify-center p-6 rounded-lg bg-base-100 border border-base-200 hover:border-primary hover:shadow-lg transition-all">
+              <Icon name={platform.icon} class="size-16 mb-3" />
+              <p class="text-sm font-semibold text-center">{platform.name}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <SolutionCta
+    title="Transform Your Infrastructure"
+    description="Let our cloud experts design and implement the perfect solution for your organization"
+  />
+  
+</MainLayout>

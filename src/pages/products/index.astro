@@ -1,16 +1,260 @@
 ---
+import { Icon } from 'astro-icon/components';
 import SecondaryHero from '@/components/SecondaryHero.astro';
 import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import SolutionCta from '@/components/SolutionCta.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
 export const title = 'Products';
 export const description =
-	'Various cloud services we offer as a service or entriprise deployment for private cloud';
+	'Various cloud services and solutions offered as SaaS or private cloud deployments';
+
+const products = [
+	{
+		name: 'ello 360',
+		tagline: 'Comprehensive IoT & Logistics Platform',
+		shortDescription:
+			'End-to-end solution for transportation, logistics, and field operations',
+		icon: 'mdi:compass',
+		color: 'primary',
+		features: [
+			'Live tracking',
+			'IoT integration',
+			'Task management',
+			'Inventory control',
+			'Invoicing & billing',
+		],
+		link: '/products/ello-360',
+	},
+	{
+		name: 'ello Trac',
+		tagline: 'GPS Fleet Management',
+		shortDescription: 'Real-time vehicle tracking and fleet management system',
+		icon: 'mdi:truck-check',
+		color: 'secondary',
+		features: [
+			'Live tracking',
+			'Geofencing',
+			'Reports',
+			'Notifications',
+			'Mobile app',
+		],
+		link: '/products/ello-trac',
+	},
+	{
+		name: 'WeSchool',
+		tagline: 'Education ERP Platform',
+		shortDescription:
+			'Cloud-based school management system for operations, grading, and communications',
+		icon: 'mdi:school',
+		color: 'accent',
+		features: [
+			'School operations',
+			'Grading system',
+			'Result management',
+			'Parent portal',
+			'Student tracking',
+		],
+		link: '/products/we-school',
+	},
+];
 ---
 
-<MainLayout {title}>
+<MainLayout {title} {description}>
   <SecondaryHero {title} {description}>
     <SecondaryHeroStyle icon="mdi:printer-point-of-sale-outline" />
   </SecondaryHero>
-  <div></div>
+
+  <!-- Products Overview -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Our Product Suite
+        </h2>
+        <p class="text-lg text-base-content/70 max-w-3xl mx-auto">
+          Purpose-built solutions for specific industries, available as cloud services
+          or private deployments.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {
+          products.map((product) => (
+            <div class="card bg-white shadow-xl hover:shadow-2xl transition-shadow overflow-hidden">
+              <div
+                class={`h-2 bg-${product.color}`}
+              ></div>
+              <div class="card-body">
+                <div class="flex justify-center mb-4">
+                  <div
+                    class={`bg-${product.color}/10 p-4 rounded-full`}
+                  >
+                    <Icon
+                      name={product.icon}
+                      class={`size-12 text-${product.color}`}
+                    />
+                  </div>
+                </div>
+                <h2 class="card-title text-2xl justify-center text-center mb-2">
+                  {product.name}
+                </h2>
+                <p class={`text-center text-${product.color} font-semibold mb-4`}>
+                  {product.tagline}
+                </p>
+                <p class="text-center text-base-content/70 mb-6">
+                  {product.shortDescription}
+                </p>
+                <div class="divider my-4"></div>
+                <div class="space-y-2 mb-6">
+                  {product.features.map((feature) => (
+                    <div class="flex items-center gap-2 text-sm">
+                      <Icon
+                        name="mdi:check-circle"
+                        class={`size-4 text-${product.color} flex-shrink-0`}
+                      />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                <div class="card-actions">
+                  <a
+                    href={product.link}
+                    class={`btn btn-${product.color} w-full`}
+                  >
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment Options -->
+  <section class="py-20 px-4 bg-primary-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Flexible Deployment Options
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="card bg-base-100 shadow-lg">
+          <div class="card-body">
+            <h3 class="card-title text-2xl mb-4 flex items-center gap-3">
+              <Icon name="mdi:cloud-outline" class="size-8 text-secondary" />
+              SaaS
+            </h3>
+            <ul class="space-y-3 mb-6">
+              {
+                [
+                  "No infrastructure setup",
+                  "Automatic updates",
+                  "Scalable on demand",
+                  "24/7 managed support",
+                  "Integrated backups",
+                ].map((item) => (
+                  <li class="flex items-center gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="size-5 text-success flex-shrink-0"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+            <div class="badge badge-secondary">Recommended</div>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-lg">
+          <div class="card-body">
+            <h3 class="card-title text-2xl mb-4 flex items-center gap-3">
+              <Icon name="mdi:server-outline" class="size-8 text-primary" />
+              Private Cloud
+            </h3>
+            <ul class="space-y-3 mb-6">
+              {
+                [
+                  "Full control & customization",
+                  "Data privacy & security",
+                  "Custom integrations",
+                  "Dedicated infrastructure",
+                  "On-premise deployment",
+                ].map((item) => (
+                  <li class="flex items-center gap-3">
+                    <Icon
+                      name="mdi:check-circle"
+                      class="size-5 text-success flex-shrink-0"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+            <div class="badge badge-primary">Enterprise</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Our Products -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Why Choose Our Products
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+          [
+            {
+              icon: "mdi:lightning-bolt",
+              title: "Quick Implementation",
+              description: "Get up and running in days, not months",
+            },
+            {
+              icon: "mdi:palette",
+              title: "Customizable",
+              description: "Adapt to your unique business processes",
+            },
+            {
+              icon: "mdi:shield-lock",
+              title: "Secure & Compliant",
+              description: "Enterprise-grade security and compliance",
+            },
+            {
+              icon: "mdi:lifebuoy",
+              title: "Expert Support",
+              description: "Dedicated support team available 24/7",
+            },
+          ].map((item) => (
+            <div class="text-center">
+              <div class="flex justify-center mb-4">
+                <div class="bg-secondary/10 p-4 rounded-full">
+                  <Icon name={item.icon} class="size-8 text-secondary" />
+                </div>
+              </div>
+              <h3 class="font-bold mb-2">{item.title}</h3>
+              <p class="text-sm text-base-content/70">{item.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SolutionCta
+    title="Ready to Transform Your Business?"
+    description="Choose the perfect solution for your industry and scale with confidence"
+  />
 </MainLayout>

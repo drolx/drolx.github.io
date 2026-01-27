@@ -1,0 +1,301 @@
+---
+import { Icon } from 'astro-icon/components';
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import SolutionCta from '@/components/SolutionCta.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'IoT Solutions';
+export const description =
+	'Transforming connected IoT devices into tools for business insight and success';
+
+const solutions = [
+	{
+		title: 'Device Integration',
+		description:
+			'Seamless integration of IoT devices and sensors into your business systems',
+		icon: 'mdi:devices',
+		features: [
+			'Device onboarding',
+			'Protocol support',
+			'Data streaming',
+			'Real-time synchronization',
+			'Device management',
+		],
+	},
+	{
+		title: 'Position Data Aggregation',
+		description:
+			'Aggregate and process location data from multiple sources in real-time',
+		icon: 'mdi:map-marker-multiple',
+		features: [
+			'GPS tracking',
+			'Location history',
+			'Route analysis',
+			'Geofencing',
+			'Analytics dashboard',
+		],
+	},
+	{
+		title: 'Telematics Integration',
+		description: 'Extract vehicle and asset telemetry for operational insights',
+		icon: 'mdi:truck-check',
+		features: [
+			'Speed monitoring',
+			'Fuel consumption',
+			'Driver behavior',
+			'Maintenance alerts',
+			'Performance metrics',
+		],
+	},
+	{
+		title: 'CAN Data Integration',
+		description:
+			'Controller Area Network data collection from vehicles and machinery',
+		icon: 'mdi:connection',
+		features: [
+			'CAN protocol support',
+			'Data parsing',
+			'Real-time streaming',
+			'Error handling',
+			'Custom mappings',
+		],
+	},
+	{
+		title: 'OBDII & DTC Integration',
+		description:
+			'Diagnostic Trouble Code monitoring for vehicle health and compliance',
+		icon: 'mdi:car-search',
+		features: [
+			'DTC reading',
+			'Fault monitoring',
+			'Emissions compliance',
+			'Predictive maintenance',
+			'Alert systems',
+		],
+	},
+	{
+		title: '3rd-Party Service Connectors',
+		description:
+			'Integration with external services and APIs for enhanced functionality',
+		icon: 'mdi:api',
+		features: [
+			'REST API integration',
+			'Webhook support',
+			'Authentication',
+			'Rate limiting',
+			'Error handling',
+		],
+	},
+];
+
+const useCases = [
+	{
+		title: 'Fleet Management',
+		description:
+			'Monitor and optimize your fleet operations with real-time tracking and analytics',
+		icon: 'mdi:truck-fast',
+	},
+	{
+		title: 'Asset Tracking',
+		description:
+			'Track valuable assets across multiple locations with precise location data',
+		icon: 'mdi:package-variant-closed',
+	},
+	{
+		title: 'Predictive Maintenance',
+		description:
+			'Prevent equipment failures with IoT-based predictive maintenance systems',
+		icon: 'mdi:wrench-clock',
+	},
+	{
+		title: 'Field Service Management',
+		description:
+			'Optimize field operations with real-time visibility and task management',
+		icon: 'mdi:hammer-wrench',
+	},
+];
+
+const devices = [
+	{ name: 'Beacons', icon: 'mdi:square-rounded' },
+	{ name: 'Terminal', icon: 'mdi:router-wireless' },
+	{ name: 'DashCam', icon: 'mdi:web-camera' },
+	{ name: 'GPS Trackers', icon: 'mdi:map-marker' },
+	{ name: 'Sensors', icon: 'mdi:dip-switch' },
+	{ name: 'IoT Modules', icon: 'mdi:chip' },
+];
+---
+
+<MainLayout {title} {description}>
+  <SecondaryHero {title} {description}>
+    <SecondaryHeroStyle icon="mdi:wifi-strength-4" />
+    <div slot="inner">
+      <a
+        href="/get-started"
+        class="btn btn-lg btn-secondary rounded-lg px-4 capitalize"
+      >
+        Get Started
+      </a>
+    </div>
+  </SecondaryHero>
+
+  <!-- Solutions Overview -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Comprehensive IoT Solutions
+        </h2>
+        <p class="text-lg text-base-content/70 max-w-3xl mx-auto">
+          Connect your devices, collect real-time data, and make intelligent
+          business decisions with our IoT platform and integrations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          solutions.map((solution) => (
+            <div class="card bg-white border border-base-200 hover:shadow-xl transition-shadow">
+              <div class="card-body">
+                <div class="flex items-start justify-between mb-4">
+                  <Icon name={solution.icon} class="size-12 text-primary" />
+                </div>
+                <h3 class="card-title text-xl mb-3">{solution.title}</h3>
+                <p class="text-base-content/70 mb-6">{solution.description}</p>
+                <div class="space-y-2">
+                  {solution.features.map((feature) => (
+                    <div class="flex items-center gap-2 text-sm">
+                      <Icon
+                        name="mdi:check-circle"
+                        class="size-4 text-success flex-shrink-0"
+                      />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="py-20 px-4 bg-primary-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">Use Cases</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+          useCases.map((useCase) => (
+            <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+              <div class="card-body items-center text-center">
+                <Icon
+                  name={useCase.icon}
+                  class="size-12 text-secondary mb-4"
+                />
+                <h3 class="card-title text-lg">{useCase.title}</h3>
+                <p class="text-sm text-base-content/70">{useCase.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Supported Devices -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Supported Devices & Technologies
+        </h2>
+        <p class="text-base-content/70">
+          We integrate with industry-leading IoT device manufacturers
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        {
+          devices.map((device) => (
+            <div class="flex flex-col items-center justify-center p-6 rounded-lg bg-base-100 border border-base-200 hover:border-primary hover:shadow-lg transition-all">
+              <Icon name={device.icon} class="size-12 mb-3 text-primary" />
+              <p class="text-sm font-semibold text-center">{device.name}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Features -->
+  <section class="py-20 px-4 bg-secondary-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Technical Capabilities
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-primary-900 mb-6">
+            Data Processing
+          </h3>
+          {
+            [
+              "Real-time data streaming",
+              "High-frequency data ingestion",
+              "Data aggregation & normalization",
+              "Time-series database optimization",
+              "Complex event processing",
+              "Machine learning integration",
+            ].map((feature) => (
+              <div class="flex items-center gap-3">
+                <Icon
+                  name="mdi:check-circle"
+                  class="size-6 text-success flex-shrink-0"
+                />
+                <span>{feature}</span>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-primary-900 mb-6">
+            Scalability & Performance
+          </h3>
+          {
+            [
+              "Handle millions of devices",
+              "Low-latency data delivery",
+              "Distributed architecture",
+              "Horizontal scaling",
+              "99.99% availability SLA",
+              "Disaster recovery",
+            ].map((feature) => (
+              <div class="flex items-center gap-3">
+                <Icon
+                  name="mdi:check-circle"
+                  class="size-6 text-success flex-shrink-0"
+                />
+                <span>{feature}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SolutionCta
+    title="Ready to Connect Your Devices?"
+    description="Let's implement IoT solution that transforms your business operations"
+  />
+</MainLayout>

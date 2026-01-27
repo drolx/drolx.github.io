@@ -1,21 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components';
+import type { PostProps } from '@/types/posts';
 import { processTags } from '@/utils/content';
 import FormattedDate from './FormattedDate.astro';
 
-interface Props {
-	baseUrl: string;
-	id: string;
-	title: string;
-	description: string;
-	heroImage?: string;
-	publishedAt?: Date;
-	author?: string;
-	tags?: string;
+interface Props extends PostProps {
+  baseUrl: string;
 }
 
 const {
-	baseUrl,
+  baseUrl,
 	title,
 	description,
 	heroImage = '/images/og-image.png',

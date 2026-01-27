@@ -3,15 +3,192 @@ import SecondaryHero from "@/components/SecondaryHero.astro";
 import SecondaryHeroStyle from "@/components/SecondaryHeroStyle.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 
-export const title = "FAQ's";
+export const title = "Frequently Asked Questions";
 export const description =
-  "Frequently ask questions from our customers, that we can answer";
+  "Find answers to common questions about our services and solutions";
+
+const faqs = [
+  {
+    category: "General",
+    questions: [
+      {
+        q: "What does drolx Lab do?",
+        a: "drolx Lab is a Nigerian software and cloud solutions company specializing in product engineering, DevOps, cloud infrastructure, IoT/Telematics integration, and digital transformation services. We serve businesses in logistics, transportation, retail, and education sectors.",
+      },
+      {
+        q: "Where is drolx Lab located?",
+        a: "We are based in Ikeja, Lagos, Nigeria. However, we work with clients globally and provide remote services.",
+      },
+      {
+        q: "How long has drolx Lab been in business?",
+        a: "drolx Lab is committed to delivering innovative solutions with a team of experienced professionals in software development, cloud infrastructure, and IoT integration.",
+      },
+      {
+        q: "Do you offer remote services?",
+        a: "Yes, we provide comprehensive remote services including consultation, development, deployment, and support regardless of your location.",
+      },
+    ],
+  },
+  {
+    category: "Services",
+    questions: [
+      {
+        q: "What programming languages and frameworks do you use?",
+        a: "We work with TypeScript, .NET, Node.js, React, Vue, Flutter, Python, and Java. We choose the right technology stack based on your specific requirements.",
+      },
+      {
+        q: "Do you offer custom software development?",
+        a: "Yes, we specialize in custom software solutions tailored to your business needs, from concept to deployment and ongoing support.",
+      },
+      {
+        q: "Can you integrate with existing systems?",
+        a: "Absolutely. We have extensive experience integrating new solutions with legacy systems and third-party applications.",
+      },
+      {
+        q: "What is your approach to cloud solutions?",
+        a: "We provide comprehensive cloud services including infrastructure design, migration, DevOps, containerization, and managed services on AWS, Azure, Google Cloud, and other platforms.",
+      },
+      {
+        q: "Do you handle IoT and telematics projects?",
+        a: "Yes, we have deep expertise in IoT device integration, position data aggregation, telematics data processing, CAN data, OBDII integration, and 3rd-party service connectors.",
+      },
+    ],
+  },
+  {
+    category: "Process & Timeline",
+    questions: [
+      {
+        q: "How do I get started with drolx Lab?",
+        a: "Visit our 'Get Started' page to choose your preferred communication method. You can also schedule a call for a detailed discussion about your requirements.",
+      },
+      {
+        q: "What is your typical project timeline?",
+        a: "Project timelines vary based on complexity and scope. We provide detailed estimates after requirement analysis. Simple projects may take weeks, while complex solutions may take months.",
+      },
+      {
+        q: "How do you handle project requirements?",
+        a: "We start with a comprehensive requirements analysis phase. We engage stakeholders, document needs, create specifications, and establish clear success criteria before development begins.",
+      },
+      {
+        q: "Do you use agile methodology?",
+        a: "Yes, we follow agile development practices with regular sprints, continuous feedback, and iterative improvements to ensure your satisfaction throughout the project.",
+      },
+    ],
+  },
+  {
+    category: "Support & Maintenance",
+    questions: [
+      {
+        q: "Do you provide post-launch support?",
+        a: "Yes, we offer comprehensive post-launch support including bug fixes, performance optimization, and feature enhancements.",
+      },
+      {
+        q: "What support options are available?",
+        a: "We provide 24/7 technical support via email, phone, and WhatsApp. Premium clients receive dedicated support channels.",
+      },
+      {
+        q: "Do you handle system maintenance and updates?",
+        a: "Yes, we provide ongoing maintenance, security updates, performance monitoring, and infrastructure management services.",
+      },
+      {
+        q: "What is your response time for critical issues?",
+        a: "Critical issues receive immediate attention with a response within 1 hour for enterprise clients and 4 hours for standard clients.",
+      },
+    ],
+  },
+  {
+    category: "Pricing",
+    questions: [
+      {
+        q: "How do you price your services?",
+        a: "We offer flexible pricing models including fixed-price projects, time-and-materials, and retainer-based arrangements depending on project scope and requirements.",
+      },
+      {
+        q: "Do you offer free consultations?",
+        a: "Yes, we offer a free initial consultation to understand your requirements and discuss potential solutions without obligation.",
+      },
+      {
+        q: "Can you provide a quote for my project?",
+        a: "Absolutely. Schedule a call or contact us with your requirements, and we'll provide a detailed quote after requirement analysis.",
+      },
+      {
+        q: "Do you offer payment plans?",
+        a: "Yes, for larger projects, we can arrange flexible payment schedules aligned with project milestones.",
+      },
+    ],
+  },
+  {
+    category: "Security & Compliance",
+    questions: [
+      {
+        q: "What security measures do you implement?",
+        a: "We implement comprehensive security including encryption, SSL/TLS, authentication, authorization, regular security audits, and compliance with industry standards.",
+      },
+      {
+        q: "Are you compliant with data protection regulations?",
+        a: "Yes, we comply with GDPR, HIPAA, PCI-DSS, ISO 27001, and other relevant compliance frameworks depending on your industry.",
+      },
+      {
+        q: "How do you handle sensitive data?",
+        a: "We implement strict data protection policies including encryption at rest and in transit, access controls, audit trails, and regular security assessments.",
+      },
+      {
+        q: "Do you conduct security testing?",
+        a: "Yes, we perform regular security testing including penetration testing, vulnerability assessments, and code security reviews.",
+      },
+    ],
+  },
+];
 ---
 
-<MainLayout {title}>
+<MainLayout {title} {description}>
   <SecondaryHero {title} {description}>
     <SecondaryHeroStyle icon="mdi:question-answer" />
-    <div slot="inner" class="py-4"></div>
   </SecondaryHero>
-  <div></div>
+
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-4xl mx-auto">
+      {
+        faqs.map((faqGroup) => (
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-primary-900 mb-8">
+              {faqGroup.category}
+            </h2>
+            <div class="space-y-4">
+              {faqGroup.questions.map((faq, index) => (
+                <div class="collapse collapse-plus border border-base-300 bg-base-100">
+                  <input
+                    type="radio"
+                    name={`accordion-${faqGroup.category}`}
+                    checked={index === 0}
+                  />
+                  <div class="collapse-title text-lg font-semibold pr-8">
+                    {faq.q}
+                  </div>
+                  <div class="collapse-content">
+                    <p class="text-base-content/70 pt-4">{faq.a}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      <!-- CTA Section -->
+      <div class="card bg-gradient-to-r from-primary to-secondary text-white mt-16">
+        <div class="card-body items-center text-center">
+          <h3 class="card-title text-2xl">Didn't find your answer?</h3>
+          <p class="mb-6">
+            Contact our team for any additional questions or specific concerns
+          </p>
+          <div class="card-actions">
+            <a href="/get-started" class="btn btn-white text-primary">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </MainLayout>

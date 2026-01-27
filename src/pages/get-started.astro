@@ -1,9 +1,123 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import { Icon } from 'astro-icon/components';
+import siteInfo from '../data/site-info.json';
+import MainLayout from '../layouts/MainLayout.astro';
 
-export const title = "Get Started";
+export const title = 'Get Started';
+export const description =
+	'Quick way to get in touch with drolx Lab for your business needs';
 ---
 
-<MainLayout {title}>
-  <div></div>
+<MainLayout {title} {description}>
+  <section class="bg-gradient-to-br from-primary-50 to-secondary-50 py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl lg:text-5xl font-bold text-primary-900 mb-4">
+          Let's Start Your Journey
+        </h1>
+        <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
+          Choose the best way to connect with our team. Whether you need a quick conversation or detailed planning, we're here to help transform your ideas into reality.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <!-- Quick Chat -->
+        <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="card-body">
+            <div class="flex justify-center mb-4">
+              <div class="bg-secondary/10 p-4 rounded-full">
+                <Icon name="mdi:chat-outline" class="text-4xl text-secondary" />
+              </div>
+            </div>
+            <h3 class="card-title justify-center text-xl mb-3">Quick Chat</h3>
+            <p class="text-center text-base-content/70 mb-6">
+              Have a quick question? Chat with our team in real-time.
+            </p>
+            <div class="card-actions justify-center">
+              <a href={`https://wa.me/${siteInfo.phones[1].replace(/\D/g, '')}`}
+                 target="_blank"
+                 class="btn btn-secondary btn-sm">
+                <Icon name="mdi:whatsapp" class="size-5" />
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone Call -->
+        <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="card-body">
+            <div class="flex justify-center mb-4">
+              <div class="bg-info/10 p-4 rounded-full">
+                <Icon name="mdi:phone-outline" class="text-4xl text-info" />
+              </div>
+            </div>
+            <h3 class="card-title justify-center text-xl mb-3">Phone Call</h3>
+            <p class="text-center text-base-content/70 mb-6">
+              Prefer to speak directly? Call us for an immediate conversation.
+            </p>
+            <div class="card-actions justify-center">
+              <a href={`tel:${siteInfo.phones[1]}`} class="btn btn-info btn-sm">
+                <Icon name="mdi:phone" class="size-5" />
+                Call Now
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="card-body">
+            <div class="flex justify-center mb-4">
+              <div class="bg-accent/10 p-4 rounded-full">
+                <Icon name="mdi:email-outline" class="text-4xl text-accent" />
+              </div>
+            </div>
+            <h3 class="card-title justify-center text-xl mb-3">Email</h3>
+            <p class="text-center text-base-content/70 mb-6">
+              Send us an email with details about your project or inquiry.
+            </p>
+            <div class="card-actions justify-center">
+              <a href={`mailto:${siteInfo.email}`} class="btn btn-accent btn-sm">
+                <Icon name="mdi:email" class="size-5" />
+                Email Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule Call CTA -->
+      <div class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 md:p-12 text-white text-center">
+        <h2 class="text-3xl font-bold mb-4">Need a Detailed Discussion?</h2>
+        <p class="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
+          Schedule a call with our team to explore your requirements, discuss solutions, and plan your project roadmap.
+        </p>
+        <a href="/schedule-call" class="btn btn-lg btn-white text-primary hover:btn-ghost">
+          <Icon name="mdi:calendar-check" class="size-5" />
+          Schedule a Call
+        </a>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold text-center mb-12">What We Can Help You With</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon: "mdi:code-braces", label: "Software Development", color: "primary" },
+            { icon: "mdi:cloud-outline", label: "Cloud Solutions", color: "secondary" },
+            { icon: "mdi:wifi-strength-4", label: "IoT & Telematics", color: "accent" },
+            { icon: "mdi:shield-lock-outline", label: "Security Solutions", color: "info" },
+          ].map((service) => (
+            <div class="flex flex-col items-center text-center p-4">
+              <div class={`bg-${service.color}/10 p-4 rounded-full mb-4`}>
+                <Icon name={service.icon} class={`text-3xl text-${service.color}`} />
+              </div>
+              <p class="font-semibold text-base-content">{service.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 </MainLayout>

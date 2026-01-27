@@ -1,0 +1,870 @@
+---
+import { Icon } from 'astro-icon/components';
+import SolutionCta from '@/components/SolutionCta.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export const title = 'WeSchool';
+export const description =
+    'Comprehensive cloud-based education ERP platform for modern school management';
+
+const features = [
+    {
+        title: 'School Operations Management',
+        description: 'Streamline administrative and operational tasks',
+        icon: 'mdi:office-building-cog',
+        details: [
+            'Student enrollment & registration',
+            'Class scheduling & timetables',
+            'Teacher management',
+            'Staff payroll integration',
+            'Leave & attendance tracking',
+        ],
+    },
+    {
+        title: 'Grading & Assessment',
+        description: 'Comprehensive academic performance tracking',
+        icon: 'mdi:clipboard-check-multiple-outline',
+        details: [
+            'Online grade entry',
+            'Multi-format assessments',
+            'Automatic calculation',
+            'Grade weightage configuration',
+            'Performance analytics',
+        ],
+    },
+    {
+        title: 'Result Management & Publishing',
+        description: 'Efficient result processing and distribution',
+        icon: 'mdi:file-document-multiple-outline',
+        details: [
+            'Automated result compilation',
+            'Result sheet generation',
+            'Parent portal access',
+            'Student result viewing',
+            'Historical records',
+        ],
+    },
+    {
+        title: 'Parent-School Communication',
+        description: 'Keep parents informed and engaged',
+        icon: 'mdi:cellphone-message',
+        details: [
+            'Parent portal dashboard',
+            'Real-time notifications',
+            'Performance updates',
+            'Event announcements',
+            'Two-way messaging',
+        ],
+    },
+    {
+        title: 'Student Tracking',
+        description: 'Monitor student progress and engagement',
+        icon: 'mdi:chart-line-variant',
+        details: [
+            'Academic progress tracking',
+            'Attendance monitoring',
+            'Behavioral records',
+            'Extracurricular activities',
+            'Progress reports',
+        ],
+    },
+    {
+        title: 'Financial Management',
+        description: 'Streamline fee collection and accounting',
+        icon: 'mdi:cash-register',
+        details: [
+            'Fee structure management',
+            'Online payment processing',
+            'Invoice generation',
+            'Payment tracking',
+            'Financial reporting',
+        ],
+    },
+];
+
+const studentFeatures = [
+    {
+        icon: 'mdi:book-open-outline',
+        title: 'Academic Access',
+        description: 'View grades, assignments, and course materials',
+    },
+    {
+        icon: 'mdi:calendar-check',
+        title: 'Schedule Management',
+        description: 'Access class schedules and exam timetables',
+    },
+    {
+        icon: 'mdi:history',
+        title: 'Performance History',
+        description: 'Track academic progress over time',
+    },
+    {
+        icon: 'mdi:bell-outline',
+        title: 'Notifications',
+        description: 'Receive real-time alerts and updates',
+    },
+];
+
+const parentFeatures = [
+    {
+        icon: 'mdi:eye-outline',
+        title: 'Real-Time Visibility',
+        description: 'Monitor your child\'s academic performance',
+    },
+    {
+        icon: 'mdi:chart-box-outline',
+        title: 'Performance Reports',
+        description: 'Detailed insights into academic progress',
+    },
+    {
+        icon: 'mdi:message-outline',
+        title: 'Direct Communication',
+        description: 'Connect with teachers and school staff',
+    },
+    {
+        icon: 'mdi:credit-card-outline',
+        title: 'Fee Management',
+        description: 'View and pay school fees online',
+    },
+];
+
+const teacherFeatures = [
+    {
+        icon: 'mdi:pencil-box-outline',
+        title: 'Grade Entry',
+        description: 'Easy-to-use grading interface',
+    },
+    {
+        icon: 'mdi:clipboard-list-outline',
+        title: 'Attendance Tracking',
+        description: 'Quick attendance recording',
+    },
+    {
+        icon: 'mdi:format-list-text',
+        title: 'Assignment Management',
+        description: 'Create and manage assignments',
+    },
+    {
+        icon: 'mdi:comment-multiple-outline',
+        title: 'Parent Engagement',
+        description: 'Communicate progress to parents',
+    },
+];
+
+const benefits = [
+    {
+        icon: 'mdi:clock-fast',
+        title: 'Faster Processing',
+        metric: '80%',
+        description: 'Reduce administrative overhead',
+    },
+    {
+        icon: 'mdi:check-circle',
+        title: 'Error Reduction',
+        metric: '95%',
+        description: 'Minimize data entry mistakes',
+    },
+    {
+        icon: 'mdi:users-outline',
+        title: 'Better Engagement',
+        metric: 'Improved',
+        description: 'Increase parent-school collaboration',
+    },
+    {
+        icon: 'mdi:trending-up',
+        title: 'Performance Insight',
+        metric: 'Real-time',
+        description: 'Data-driven academic decisions',
+    },
+];
+
+const modules = [
+    {
+        name: 'Academics',
+        icon: 'mdi:book-open-variant',
+        color: 'primary',
+        description: 'Curriculum, assessments, and learning management',
+    },
+    {
+        name: 'Administration',
+        icon: 'mdi:office-building',
+        color: 'secondary',
+        description: 'Student records, staffing, and operations',
+    },
+    {
+        name: 'Finance',
+        icon: 'mdi:cash-multiple',
+        color: 'accent',
+        description: 'Billing, fees, and financial reporting',
+    },
+    {
+        name: 'Communication',
+        icon: 'mdi:message-group',
+        color: 'info',
+        description: 'Parent portals and notifications',
+    },
+    {
+        name: 'Analytics',
+        icon: 'mdi:chart-multiple',
+        color: 'warning',
+        description: 'Reports and performance insights',
+    },
+    {
+        name: 'Integration',
+        icon: 'mdi:link-variant',
+        color: 'success',
+        description: 'Third-party systems and APIs',
+    },
+];
+
+const schoolSizes = [
+    {
+        name: 'Small Schools',
+        students: 'Up to 500 students',
+        icon: 'mdi:school-outline',
+        features: [
+            'Single campus support',
+            'Basic reporting',
+            'Email support',
+            'Up to 50 users',
+        ],
+    },
+    {
+        name: 'Medium Schools',
+        students: '500 - 2000 students',
+        icon: 'mdi:school',
+        features: [
+            'Multiple classes support',
+            'Advanced reporting',
+            'Phone & email support',
+            'Up to 200 users',
+            'Custom workflows',
+        ],
+    },
+    {
+        name: 'Large Institutions',
+        students: '2000+ students',
+        icon: 'mdi:office-building-outline',
+        features: [
+            'Multi-campus support',
+            'Enterprise analytics',
+            '24/7 dedicated support',
+            'Unlimited users',
+            'Custom development',
+            'SLA guarantee',
+        ],
+    },
+];
+---
+
+<MainLayout {title} {description}>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-primary-700 text-white py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl font-bold mb-4">WeSchool</h1>
+                    <p class="text-xl opacity-90 mb-6">
+                        Cloud-based education ERP platform designed for modern schools
+                    </p>
+                    <p class="text-lg opacity-75 mb-8">
+                        Comprehensive solution for academic management, student tracking, and parent engagement all in one platform
+                    </p>
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="/get-started" class="btn btn-lg btn-white text-primary">
+                            Start Free Trial
+                        </a>
+                        <a href="/schedule-call" class="btn btn-lg btn-outline">
+                            Schedule Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="bg-white/10 p-12 rounded-2xl backdrop-blur">
+                        <Icon name="mdi:school" class="size-48 text-white" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Stats -->
+    <section class="py-16 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                {
+                    [
+                        { number: '10+', label: 'Schools Using WeSchool' },
+                        { number: '5K+', label: 'Students Managed' },
+                        { number: '1K+', label: 'Parents Connected' },
+                        { number: '99.9%', label: 'Uptime SLA' },
+                    ].map((stat) => (
+                        <div class="text-center">
+                            <p class="text-4xl lg:text-5xl font-bold text-primary mb-2">{stat.number}</p>
+                            <p class="text-lg text-base-content/70">{stat.label}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Core Features
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Everything your school needs to succeed
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    features.map((feature) => (
+                        <div class="card bg-white border border-base-200 shadow-lg hover:shadow-xl transition-shadow">
+                            <div class="card-body">
+                                <div class="flex items-start justify-between mb-4">
+                                    <Icon name={feature.icon} class="size-12 text-primary" />
+                                </div>
+                                <h3 class="card-title text-lg mb-3">{feature.title}</h3>
+                                <p class="text-base-content/70 mb-6">{feature.description}</p>
+                                <div class="space-y-2">
+                                    {feature.details.map((detail) => (
+                                        <div class="flex items-center gap-2 text-sm">
+                                            <Icon
+                                                name="mdi:check-circle"
+                                                class="size-4 text-success flex-shrink-0"
+                                            />
+                                            <span>{detail}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- User Roles Benefits -->
+    <section class="py-20 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Tailored for All Stakeholders
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Dedicated tools for students, parents, and teachers
+                </p>
+            </div>
+
+            <!-- Student Features -->
+            <div class="mb-16">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="bg-primary/20 p-3 rounded-full">
+                        <Icon name="mdi:account-student" class="size-8 text-primary" />
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary-900">For Students</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {
+                        studentFeatures.map((feature) => (
+                            <div class="card bg-white shadow-lg">
+                                <div class="card-body items-center text-center">
+                                    <Icon name={feature.icon} class="size-12 text-primary mb-4" />
+                                    <h4 class="card-title text-lg">{feature.title}</h4>
+                                    <p class="text-sm text-base-content/70">{feature.description}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Parent Features -->
+            <div class="mb-16">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="bg-secondary/20 p-3 rounded-full">
+                        <Icon name="mdi:account-multiple" class="size-8 text-secondary" />
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary-900">For Parents</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {
+                        parentFeatures.map((feature) => (
+                            <div class="card bg-white shadow-lg">
+                                <div class="card-body items-center text-center">
+                                    <Icon name={feature.icon} class="size-12 text-secondary mb-4" />
+                                    <h4 class="card-title text-lg">{feature.title}</h4>
+                                    <p class="text-sm text-base-content/70">{feature.description}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Teacher Features -->
+            <div>
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="bg-accent/20 p-3 rounded-full">
+                        <Icon name="mdi:human-male-board" class="size-8 text-accent" />
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary-900">For Teachers</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {
+                        teacherFeatures.map((feature) => (
+                            <div class="card bg-white shadow-lg">
+                                <div class="card-body items-center text-center">
+                                    <Icon name={feature.icon} class="size-12 text-accent mb-4" />
+                                    <h4 class="card-title text-lg">{feature.title}</h4>
+                                    <p class="text-sm text-base-content/70">{feature.description}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Why Schools Choose WeSchool
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {
+                    benefits.map((benefit) => (
+                        <div class="text-center">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-primary/10 p-4 rounded-full">
+                                    <Icon name={benefit.icon} class="size-8 text-primary" />
+                                </div>
+                            </div>
+                            <p class="text-3xl font-bold text-primary mb-2">{benefit.metric}</p>
+                            <h3 class="card-title text-lg mb-2">{benefit.title}</h3>
+                            <p class="text-sm text-base-content/70">{benefit.description}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Overview -->
+    <section class="py-20 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Comprehensive Modules
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Integrated systems for complete school management
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    modules.map((module) => (
+                        <div class="card bg-white shadow-lg hover:shadow-xl transition-shadow">
+                            <div class="card-body">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class={`bg-${module.color}/10 p-3 rounded-lg`}>
+                                        <Icon name={module.icon} class={`size-8 text-${module.color}`} />
+                                    </div>
+                                </div>
+                                <h3 class="card-title text-xl mb-3">{module.name}</h3>
+                                <p class="text-base-content/70">{module.description}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- For Different School Sizes -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Scalable for Schools of Any Size
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    From small private schools to large institutions
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {
+                    schoolSizes.map((size) => (
+                        <div class="card bg-white border border-base-200 shadow-lg hover:shadow-xl transition-shadow">
+                            <div class="card-body items-center text-center">
+                                <Icon name={size.icon} class="size-16 text-primary mb-4" />
+                                <h3 class="card-title text-xl">{size.name}</h3>
+                                <p class="text-sm font-semibold text-secondary mb-4">{size.students}</p>
+                                <div class="space-y-2 w-full">
+                                    {size.features.map((feature) => (
+                                        <div class="flex items-center gap-2 text-sm">
+                                            <Icon
+                                                name="mdi:check-circle"
+                                                class="size-4 text-success flex-shrink-0"
+                                            />
+                                            <span>{feature}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Options -->
+    <section class="py-20 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Flexible Deployment Options
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Choose what works best for your school
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card bg-white shadow-lg border border-base-200">
+                    <div class="card-body">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-primary/10 p-4 rounded-full">
+                                <Icon name="mdi:cloud-outline" class="size-8 text-primary" />
+                            </div>
+                            <h3 class="card-title text-xl">Cloud SaaS</h3>
+                        </div>
+                        <p class="text-base-content/70 mb-6">
+                            Managed cloud solution with automatic updates and maintenance
+                        </p>
+                        <div class="space-y-2">
+                            {
+                                [
+                                    'No infrastructure setup',
+                                    'Automatic backups',
+                                    'Always up-to-date',
+                                    'Accessible from anywhere',
+                                    'Managed security',
+                                    '99.9% uptime SLA',
+                                ].map((feature) => (
+                                    <div class="flex items-center gap-2">
+                                        <Icon
+                                            name="mdi:check-circle"
+                                            class="size-4 text-success flex-shrink-0"
+                                        />
+                                        <span class="text-sm">{feature}</span>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-white shadow-lg border border-base-200">
+                    <div class="card-body">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-secondary/10 p-4 rounded-full">
+                                <Icon name="mdi:server-network" class="size-8 text-secondary" />
+                            </div>
+                            <h3 class="card-title text-xl">Private Deployment</h3>
+                        </div>
+                        <p class="text-base-content/70 mb-6">
+                            On-premise solution for complete control and data ownership
+                        </p>
+                        <div class="space-y-2">
+                            {
+                                [
+                                    'Full data ownership',
+                                    'On-premise installation',
+                                    'Custom configurations',
+                                    'Offline capability',
+                                    'Complete compliance',
+                                    'Dedicated support',
+                                ].map((feature) => (
+                                    <div class="flex items-center gap-2">
+                                        <Icon
+                                            name="mdi:check-circle"
+                                            class="size-4 text-success flex-shrink-0"
+                                        />
+                                        <span class="text-sm">{feature}</span>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security & Compliance -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Enterprise Security & Compliance
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Your data is protected with industry-leading security measures
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {
+                    [
+                        {
+                            icon: 'mdi:shield-lock',
+                            title: 'Data Encryption',
+                            description: 'End-to-end encryption for all data',
+                        },
+                        {
+                            icon: 'mdi:lock-check',
+                            title: 'Access Control',
+                            description: 'Role-based access management',
+                        },
+                        {
+                            icon: 'mdi:file-document-check',
+                            title: 'Compliance',
+                            description: 'GDPR and data protection ready',
+                        },
+                        {
+                            icon: 'mdi:backup-restore',
+                            title: 'Disaster Recovery',
+                            description: 'Automatic backups and recovery',
+                        },
+                    ].map((item) => (
+                        <div class="text-center">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-primary/10 p-4 rounded-full">
+                                    <Icon name={item.icon} class="size-8 text-primary" />
+                                </div>
+                            </div>
+                            <h3 class="font-bold mb-2">{item.title}</h3>
+                            <p class="text-sm text-base-content/70">{item.description}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Ecosystem -->
+    <section class="py-20 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Integration Ecosystem
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Connect with your existing systems seamlessly
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                {
+                    [
+                        { name: 'Payment Gateway', icon: 'mdi:credit-card' },
+                        { name: 'SMS Service', icon: 'mdi:message-text' },
+                        { name: 'Email Service', icon: 'mdi:email' },
+                        { name: 'Video Conference', icon: 'mdi:video' },
+                        { name: 'Document Storage', icon: 'mdi:cloud-upload' },
+                        { name: 'Analytics', icon: 'mdi:chart-line' },
+                    ].map((integration) => (
+                        <div class="flex flex-col items-center justify-center p-6 rounded-lg bg-white border border-base-200 hover:border-primary hover:shadow-lg transition-all">
+                            <Icon name={integration.icon} class="size-12 text-primary mb-3" />
+                            <p class="text-sm font-semibold text-center">{integration.name}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Trusted by Schools
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    See what school administrators say about WeSchool
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {
+                    [
+                        {
+                            text: 'WeSchool has transformed how we manage our school. The automation has freed up hours of administrative work every week.',
+                            author: 'Mrs. Akosile',
+                            role: 'School Principal',
+                            school: 'ROZ Academy',
+                        },
+                        {
+                            text: 'Parents love the portal. They can now check their child\'s progress anytime, anywhere. Communication has never been better.',
+                            author: 'Mr. Segun',
+                            role: 'Vice Principal',
+                            school: 'Bright Minds School',
+                        },
+                        {
+                            text: 'The grading system is intuitive and saves us so much time. Our teachers are thrilled with how easy it is to use.',
+                            author: 'Dr. Chioma',
+                            role: 'Academic Director',
+                            school: 'Excellence Academy',
+                        },
+                    ].map((testimonial) => (
+                        <div class="card bg-white border border-base-200 shadow-lg">
+                            <div class="card-body">
+                                <div class="flex gap-1 mb-4">
+                                    {[...Array(5)].map(() => (
+                                        <Icon name="mdi:star" class="size-5 text-warning" />
+                                    ))}
+                                </div>
+                                <p class="text-base-content/70 mb-6 italic">
+                                    "{testimonial.text}"
+                                </p>
+                                <div class="border-t pt-4">
+                                    <p class="font-bold">{testimonial.author}</p>
+                                    <p class="text-sm text-base-content/70">
+                                        {testimonial.role}
+                                    </p>
+                                    <p class="text-sm text-primary font-semibold">
+                                        {testimonial.school}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Process -->
+    <section class="py-20 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Simple Implementation Process
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Get up and running quickly
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {
+                    [
+                        {
+                            step: '1',
+                            title: 'Discovery',
+                            description: 'Understand your school\'s unique needs and requirements',
+                        },
+                        {
+                            step: '2',
+                            title: 'Setup',
+                            description: 'Configure the system with your school data',
+                        },
+                        {
+                            step: '3',
+                            title: 'Training',
+                            description: 'Comprehensive training for staff and stakeholders',
+                        },
+                        {
+                            step: '4',
+                            title: 'Launch',
+                            description: 'Go live with dedicated support',
+                        },
+                    ].map((item) => (
+                        <div class="card bg-white shadow-lg">
+                            <div class="card-body items-center text-center">
+                                <div class="rounded-full bg-primary text-white w-12 h-12 flex items-center justify-center text-2xl font-bold mb-4">
+                                    {item.step}
+                                </div>
+                                <h3 class="card-title text-lg">{item.title}</h3>
+                                <p class="text-sm text-base-content/70">{item.description}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Support & Resources -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Support & Resources
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    We're here to help you succeed
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {
+                    [
+                        {
+                            icon: 'mdi:file-document-outline',
+                            title: 'Documentation',
+                            description: 'Comprehensive guides and tutorials',
+                        },
+                        {
+                            icon: 'mdi:video-outline',
+                            title: 'Video Tutorials',
+                            description: 'Step-by-step video guides',
+                        },
+                        {
+                            icon: 'mdi:headset',
+                            title: 'Phone Support',
+                            description: '24/7 dedicated support team',
+                        },
+                        {
+                            icon: 'mdi:chat-outline',
+                            title: 'Chat Support',
+                            description: 'Real-time assistance from experts',
+                        },
+                    ].map((resource) => (
+                        <div class="text-center">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-secondary/10 p-4 rounded-full">
+                                    <Icon name={resource.icon} class="size-8 text-secondary" />
+                                </div>
+                            </div>
+                            <h3 class="font-bold mb-2">{resource.title}</h3>
+                            <p class="text-sm text-base-content/70">{resource.description}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <SolutionCta
+        title="Ready to Transform Your School?"
+        description="Join hundreds of schools using WeSchool to improve operations and student outcomes"
+    />
+</MainLayout>

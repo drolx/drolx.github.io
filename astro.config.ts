@@ -30,7 +30,8 @@ export default defineConfig({
   },
   redirects: {
     "/company": "/company/about-us",
-    "/services": "/services/software-development",
+    "/solutions": "/solutions/software-development",
+    "/services": "/solutions/software-development",
     "/resources": "/resources/faqs",
   },
   integrations: [

@@ -1,0 +1,33 @@
+---
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!-- CTA -->
+<section
+  class="py-16 px-4 bg-gradient-to-r from-primary to-secondary text-white"
+>
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-4">
+      {title}
+    </h2>
+    <p class="text-lg opacity-90 mb-8">
+      {description}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/get-started" class="btn btn-lg btn-white text-primary">
+        Get Started
+      </a>
+      <a
+        href="/schedule-call"
+        class="btn btn-lg btn-outline btn-white hover:bg-white hover:text-primary"
+      >
+        Schedule Call
+      </a>
+    </div>
+  </div>
+</section>

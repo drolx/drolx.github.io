@@ -1,0 +1,49 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { PostProps } from '@/types/posts';
+import ArticleItem from './ArticleItem.astro';
+
+interface Props {
+	baseUrl: string;
+	posts: PostProps[];
+}
+
+const { baseUrl, posts } = Astro.props;
+---
+
+<div class="max-w-7xl mx-auto px-8 lg:px-4 py-16">
+    <!-- Article Search -->
+    <div class="mb-8 lg:mb-16 flex justify-center">
+      <label class="input input-xl w-full max-w-xl">
+        <Icon name="mdi:search" class="size-8" />
+        <input class="" type="search" placeholder="Search..." />
+      </label>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        posts.map((post) => (
+          <ArticleItem
+            {baseUrl}
+            id={post.id}
+            title={post.title}
+            description={post.description}
+            heroImage={post.heroImage}
+            author={post.author}
+            publishedAt={post.publishedAt}
+            tags={post.tags}
+          />
+        ))
+      }
+    </div>
+    <div class="mt-16 lg:mt-24 flex justify-center">
+      <div class="join">
+        <div class="join-item btn btn-disabled">
+          <Icon name="mdi:chevron-left" class="size-8" />
+        </div>
+        <div class="join-item btn">1</div>
+        <div class="join-item btn btn-disabled">
+          <Icon name="mdi:chevron-right" class="size-8" />
+        </div>
+      </div>
+    </div>
+  </div>

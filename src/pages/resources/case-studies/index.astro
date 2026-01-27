@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import ArticleItem from '@/components/ArticleItem.astro';
+import ArticleListView from '@/components/ArticleListView.astro';
 import SecondaryHero from '@/components/SecondaryHero.astro';
 import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
 import { BASE_CASE_STUDY_PATH } from '@/consts';
@@ -10,31 +10,23 @@ export const title = 'Case Studies';
 export const description =
 	'Explore our in-depth case studies showcasing successful projects and solutions.';
 
-const posts = (await getCollection('caseStudy')).sort(
+const collectionPayload = (await getCollection('caseStudy')).sort(
 	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
 );
+const posts = collectionPayload.map((post) => ({
+	id: post.id,
+	title: post.data.title,
+	description: post.data.description,
+	heroImage: post.data.heroImage,
+	author: post.data.author,
+	publishedAt: post.data.publishedAt,
+	tags: post.data.tags,
+}));
 ---
 
 <MainLayout title={title}>
   <SecondaryHero {title} {description}>
     <SecondaryHeroStyle icon="mdi:projector-screen-outline" />
   </SecondaryHero>
-  <div class="max-w-7xl mx-auto px-4 py-16">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        posts.map((post) => (
-          <ArticleItem
-            baseUrl={BASE_CASE_STUDY_PATH}
-            id={post.id}
-            title={post.data.title}
-            description={post.data.description}
-            heroImage={post.data.heroImage}
-            author={post.data.author}
-            publishedAt={post.data.publishedAt}
-            tags={post.data.tags}
-          />
-        ))
-      }
-    </div>
-  </div>
+   <ArticleListView baseUrl={BASE_CASE_STUDY_PATH} {posts} />
 </MainLayout>

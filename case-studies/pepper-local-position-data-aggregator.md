@@ -6,4 +6,4 @@ author: "Godwin Peter .O"
 heroImage: "/images/placeholder.webp"
 ---
 
-All frontmatter properties are available as props to an Astro layout component.
+This is a draft a proper content is coming very soon.

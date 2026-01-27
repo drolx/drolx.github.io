@@ -1,40 +1,32 @@
 ---
-import { getCollection } from "astro:content";
-import ArticleItem from "@/components/ArticleItem.astro";
-import SecondaryHero from "@/components/SecondaryHero.astro";
-import SecondaryHeroStyle from "@/components/SecondaryHeroStyle.astro";
-import { BASE_ARTICLE_PATH } from "@/consts";
-import MainLayout from "../../../layouts/MainLayout.astro";
+import { getCollection } from 'astro:content';
+import ArticleListView from '@/components/ArticleListView.astro';
+import SecondaryHero from '@/components/SecondaryHero.astro';
+import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import { BASE_ARTICLE_PATH } from '@/consts';
+import MainLayout from '../../../layouts/MainLayout.astro';
 
-export const title = "Articles & Insights";
+export const title = 'Articles & Insights';
 export const description =
-  "Our various insight on various topics especially on technologies and software";
+	'Our various insight on various topics especially on technologies and software';
 
-const posts = (await getCollection("article")).sort(
-  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+const collectionPayload = (await getCollection('article')).sort(
+	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
 );
+const posts = collectionPayload.map((post) => ({
+	id: post.id,
+	title: post.data.title,
+	description: post.data.description,
+	heroImage: post.data.heroImage,
+	author: post.data.author,
+	publishedAt: post.data.publishedAt,
+	tags: post.data.tags,
+}));
 ---
 
 <MainLayout title={title}>
   <SecondaryHero {title} {description}>
     <SecondaryHeroStyle icon="mdi:rss-feed-box" />
   </SecondaryHero>
-  <div class="max-w-7xl mx-auto px-4 py-16">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        posts.map((post) => (
-          <ArticleItem
-            baseUrl={BASE_ARTICLE_PATH}
-            id={post.id}
-            title={post.data.title}
-            description={post.data.description}
-            heroImage={post.data.heroImage}
-            author={post.data.author}
-            publishedAt={post.data.publishedAt}
-            tags={post.data.tags}
-          />
-        ))
-      }
-    </div>
-  </div>
+  <ArticleListView baseUrl={BASE_ARTICLE_PATH} {posts} />
 </MainLayout>

@@ -1,9 +1,563 @@
 ---
+import { Icon } from 'astro-icon/components';
+import SolutionCta from '@/components/SolutionCta.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
 export const title = 'ello Trac';
+export const description =
+    'Real-time GPS fleet management and vehicle tracking solution for modern businesses';
+
+const features = [
+    {
+        title: 'Live Tracking',
+        description: 'Real-time vehicle location and movement tracking',
+        icon: 'mdi:map-marker-multiple',
+        details: [
+            'Real-time GPS positioning',
+            'Vehicle location history',
+            'Multi-vehicle dashboard',
+            'Speed monitoring',
+            'Route visualization',
+        ],
+    },
+    {
+        title: 'Geofencing',
+        description: 'Define boundaries and receive alerts when vehicles enter or exit zones',
+        icon: 'mdi:map-marker-check',
+        details: [
+            'Custom zone creation',
+            'Entry/exit notifications',
+            'Dwell time alerts',
+            'Unauthorized area detection',
+            'Multi-geofence management',
+        ],
+    },
+    {
+        title: 'Reports & Analytics',
+        description: 'Comprehensive tracking reports and operational analytics',
+        icon: 'mdi:chart-line',
+        details: [
+            'Trip reports',
+            'Mileage tracking',
+            'Idle time analysis',
+            'Fuel consumption estimates',
+            'Driver behavior analytics',
+        ],
+    },
+    {
+        title: 'Notifications',
+        description: 'Real-time alerts for critical events and anomalies',
+        icon: 'mdi:bell-alert',
+        details: [
+            'Speed violations',
+            'Geofence breaches',
+            'Device offline alerts',
+            'Custom event triggers',
+            'Multi-channel notifications',
+        ],
+    },
+];
+
+const useCases = [
+    {
+        title: 'Logistics & Delivery',
+        description: 'Optimize delivery routes and monitor fleet operations',
+        icon: 'mdi:truck-fast',
+    },
+    {
+        title: 'Ride-Sharing Services',
+        description: 'Track drivers and ensure passenger safety',
+        icon: 'mdi:car-multiple',
+    },
+    {
+        title: 'Field Service',
+        description: 'Monitor technicians and optimize service calls',
+        icon: 'mdi:tools',
+    },
+    {
+        title: 'Public Transportation',
+        description: 'Real-time fleet management and passenger information',
+        icon: 'mdi:bus-multiple',
+    },
+    {
+        title: 'Asset Management',
+        description: 'Track valuable equipment and machinery',
+        icon: 'mdi:package-variant',
+    },
+    {
+        title: 'Security & Compliance',
+        description: 'Audit trails and compliance reporting',
+        icon: 'mdi:shield-check',
+    },
+];
+
+const capabilities = [
+    {
+        category: 'Tracking & Monitoring',
+        items: [
+            'Real-time GPS tracking',
+            'Historical route playback',
+            'Speed monitoring',
+            'Harsh braking detection',
+            'Rapid acceleration tracking',
+        ],
+    },
+    {
+        category: 'Operational Intelligence',
+        items: [
+            'Trip analytics',
+            'Idle time reports',
+            'Stop duration tracking',
+            'Distance calculations',
+            'Fuel consumption analysis',
+        ],
+    },
+    {
+        category: 'Fleet Management',
+        items: [
+            'Multi-vehicle dashboard',
+            'Driver assignment',
+            'Vehicle maintenance tracking',
+            'Asset lifecycle management',
+            'Utilization reports',
+        ],
+    },
+    {
+        category: 'Safety & Compliance',
+        items: [
+            'Geofence management',
+            'Speed limit enforcement',
+            'Route compliance',
+            'Audit logging',
+            'Data retention policies',
+        ],
+    },
+];
+
+const deploymentOptions = [
+    {
+        name: 'Cloud SaaS',
+        icon: 'mdi:cloud-outline',
+        description: 'Managed cloud deployment with automatic updates',
+        features: [
+            'No infrastructure setup',
+            'Automatic scaling',
+            '99.9% uptime SLA',
+            'Managed backups',
+        ],
+    },
+    {
+        name: 'Private Deployment',
+        icon: 'mdi:server-network',
+        description: 'Self-hosted solution for complete control',
+        features: [
+            'On-premise deployment',
+            'Full data ownership',
+            'Custom integrations',
+            'Dedicated support',
+        ],
+    },
+];
+
+const integrations = [
+    { name: 'GPS Devices', icon: 'mdi:satellite' },
+    { name: 'Telematics', icon: 'mdi:router-wireless' },
+    { name: 'Mobile Apps', icon: 'mdi:phone' },
+    { name: 'Web Dashboard', icon: 'mdi:monitor' },
+    { name: 'API Integration', icon: 'mdi:api' },
+    { name: 'Third-party Services', icon: 'mdi:link-variant' },
+];
 ---
 
-<MainLayout {title}>
-  <h1>{"ello Trac"}</h1>
+<MainLayout {title} {description}>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-primary-700 text-white py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl font-bold mb-4">ello Trac</h1>
+                    <p class="text-xl opacity-90 mb-6">
+                        Powerful GPS fleet tracking solution built on proven open-source technology
+                    </p>
+                    <p class="text-lg opacity-75 mb-8">
+                        Real-time vehicle monitoring, geofencing, and comprehensive analytics for modern fleet operations
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="/get-started" class="btn btn-lg btn-white text-primary">
+                            Get Started
+                        </a>
+                        <a href="/schedule-call" class="btn btn-lg btn-outline">
+                            Request Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="bg-white/10 p-12 rounded-2xl backdrop-blur">
+                        <Icon name="mdi:map" class="size-48 text-white" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Core Features
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Everything you need for effective fleet management
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {
+                    features.map((feature) => (
+                        <div class="card bg-white border border-base-200 shadow-lg hover:shadow-xl transition-shadow">
+                            <div class="card-body">
+                                <div class="flex items-start justify-between mb-4">
+                                    <Icon name={feature.icon} class="size-12 text-primary" />
+                                </div>
+                                <h3 class="card-title text-xl mb-3">{feature.title}</h3>
+                                <p class="text-base-content/70 mb-6">{feature.description}</p>
+                                <div class="space-y-2">
+                                    {feature.details.map((detail) => (
+                                        <div class="flex items-center gap-2 text-sm">
+                                            <Icon
+                                                name="mdi:check-circle"
+                                                class="size-4 text-success flex-shrink-0"
+                                            />
+                                            <span>{detail}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="py-20 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Use Cases
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Perfect for diverse industries and operational needs
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    useCases.map((useCase) => (
+                        <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+                            <div class="card-body items-center text-center">
+                                <Icon
+                                    name={useCase.icon}
+                                    class="size-12 text-secondary mb-4"
+                                />
+                                <h3 class="card-title text-lg">{useCase.title}</h3>
+                                <p class="text-sm text-base-content/70">{useCase.description}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Comprehensive Capabilities
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    All the tools you need for complete fleet visibility
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {
+                    capabilities.map((cap) => (
+                        <div class="card bg-white border border-base-200 shadow-lg">
+                            <div class="card-body">
+                                <h3 class="card-title text-xl mb-4">{cap.category}</h3>
+                                <div class="space-y-3">
+                                    {cap.items.map((item) => (
+                                        <div class="flex items-start gap-3">
+                                            <Icon
+                                                name="mdi:check-bold"
+                                                class="size-5 text-success flex-shrink-0 mt-0.5"
+                                            />
+                                            <span class="text-base-content/80">{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Options -->
+    <section class="py-20 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Flexible Deployment Options
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Choose the deployment model that works best for your organization
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {
+                    deploymentOptions.map((option) => (
+                        <div class="card bg-white shadow-lg border border-base-200">
+                            <div class="card-body">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="bg-primary/10 p-4 rounded-full">
+                                        <Icon name={option.icon} class="size-8 text-primary" />
+                                    </div>
+                                    <h3 class="card-title text-xl">{option.name}</h3>
+                                </div>
+                                <p class="text-base-content/70 mb-6">{option.description}</p>
+                                <div class="space-y-2">
+                                    {option.features.map((feature) => (
+                                        <div class="flex items-center gap-2">
+                                            <Icon
+                                                name="mdi:check-circle"
+                                                class="size-4 text-success flex-shrink-0"
+                                            />
+                                            <span class="text-sm">{feature}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrations -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Integrations & Connectivity
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Seamless integration with your existing infrastructure
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                {
+                    integrations.map((integration) => (
+                        <div class="flex flex-col items-center justify-center p-6 rounded-lg bg-white border border-base-200 hover:border-primary hover:shadow-lg transition-all">
+                            <Icon name={integration.icon} class="size-12 text-primary mb-3" />
+                            <p class="text-sm font-semibold text-center">{integration.name}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose ello Trac -->
+    <section class="py-20 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Why Choose ello Trac
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {
+                    [
+                        {
+                            icon: 'mdi:open-source-initiative',
+                            title: 'Open Source Foundation',
+                            description: 'Built on proven, reliable OSS technology',
+                        },
+                        {
+                            icon: 'mdi:lightning-bolt',
+                            title: 'Real-Time Performance',
+                            description: 'Low-latency GPS tracking and updates',
+                        },
+                        {
+                            icon: 'mdi:shield-lock',
+                            title: 'Secure & Private',
+                            description: 'Complete data control and encryption',
+                        },
+                        {
+                            icon: 'mdi:cash-multiple',
+                            title: 'Cost Effective',
+                            description: 'Transparent pricing with no hidden fees',
+                        },
+                    ].map((item) => (
+                        <div class="text-center">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-secondary/10 p-4 rounded-full">
+                                    <Icon name={item.icon} class="size-8 text-secondary" />
+                                </div>
+                            </div>
+                            <h3 class="font-bold mb-2">{item.title}</h3>
+                            <p class="text-sm text-base-content/70">{item.description}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Devices -->
+    <section class="py-20 px-4 bg-base-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Supported GPS Devices
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Compatible with industry-leading GPS tracking devices
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                {
+                    [
+                        'Teltonika',
+                        'Calamp',
+                        'Tramigo',
+                        'Quectel',
+                        'Sierra Wireless',
+                        'u-blox',
+                        'Gurtam',
+                        'Sensormatic',
+                        'Topten',
+                        'Custom Devices',
+                    ].map((device) => (
+                        <div class="flex items-center justify-center p-6 rounded-lg bg-white border border-base-200 hover:shadow-lg transition-shadow">
+                            <div class="text-center">
+                                <Icon name="mdi:satellite" class="size-8 text-primary mx-auto mb-2" />
+                                <p class="text-sm font-semibold">{device}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Plans -->
+    <section class="py-20 px-4 bg-primary-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-900 mb-4">
+                    Simple, Transparent Pricing
+                </h2>
+                <p class="text-lg text-base-content/70">
+                    Choose the plan that fits your fleet size
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {
+                    [
+                        {
+                            name: 'Starter',
+                            devices: 'Up to 10 Devices',
+                            price: 'Custom',
+                            features: [
+                                'Live tracking',
+                                'Basic reports',
+                                'Email alerts',
+                                'Mobile app',
+                                'Email support',
+                            ],
+                        },
+                        {
+                            name: 'Professional',
+                            devices: 'Up to 50 Devices',
+                            price: 'Custom',
+                            highlighted: true,
+                            features: [
+                                'All Starter features',
+                                'Advanced geofencing',
+                                'Driver management',
+                                'Priority support',
+                                'Custom reports',
+                                'API access',
+                            ],
+                        },
+                        {
+                            name: 'Enterprise',
+                            devices: 'Unlimited',
+                            price: 'Custom',
+                            features: [
+                                'All Professional features',
+                                'Dedicated account manager',
+                                'Custom integrations',
+                                'On-premise deployment',
+                                '24/7 phone support',
+                                'SLA guarantee',
+                            ],
+                        },
+                    ].map((plan) => (
+                        <div class={`card ${plan.highlighted ? 'bg-primary text-white shadow-xl' : 'bg-white border border-base-200 shadow-lg'} hover:shadow-2xl transition-shadow`}>
+                            <div class="card-body">
+                                <h3 class={`card-title text-2xl ${plan.highlighted ? 'text-white' : 'text-primary-900'}`}>
+                                    {plan.name}
+                                </h3>
+                                <p class={`text-lg font-semibold mb-2 ${plan.highlighted ? 'text-white/90' : 'text-base-content/70'}`}>
+                                    {plan.devices}
+                                </p>
+                                <p class={`text-3xl font-bold mb-6 ${plan.highlighted ? 'text-white' : 'text-primary'}`}>
+                                    {plan.price}
+                                </p>
+                                <div class="space-y-3 flex-grow">
+                                    {plan.features.map((feature) => (
+                                        <div class="flex items-center gap-2">
+                                            <Icon
+                                                name="mdi:check-circle"
+                                                class={`size-5 flex-shrink-0 ${plan.highlighted ? 'text-white' : 'text-success'}`}
+                                            />
+                                            <span class={plan.highlighted ? 'text-white/90' : 'text-base-content/80'}>
+                                                {feature}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div class="card-actions mt-6">
+                                    <button class={`btn w-full ${plan.highlighted ? 'btn-white text-primary' : 'btn-primary'}`}>
+                                        Get Started
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <SolutionCta
+        title="Ready to Transform Your Fleet Operations?"
+        description="Start tracking and optimizing your fleet today with ello Trac"
+    />
 </MainLayout>
