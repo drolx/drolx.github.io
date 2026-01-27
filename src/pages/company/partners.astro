@@ -1,17 +1,189 @@
 ---
+import { Icon } from 'astro-icon/components';
 import SecondaryHero from '@/components/SecondaryHero.astro';
 import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import SolutionCta from '@/components/SolutionCta.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
 export const title = 'Our Partners';
 export const description =
-	'An overview of related partners and providers that enable us to offer effective solutions';
+	'An overview of organizations and providers that enable us to offer effective solutions';
+
+const partnerCategories = [
+	{
+		name: 'Technology Partners',
+		icon: 'mdi:laptop',
+		color: 'primary',
+		partners: [
+			{
+				name: 'Twilo',
+				description: 'Telecommunications and connectivity solutions',
+				website: '#',
+			},
+			{
+				name: 'MTN Nigeria',
+				description: 'Mobile network and data services',
+				website: '#',
+			},
+		],
+	},
+	{
+		name: 'Cloud Infrastructure',
+		icon: 'mdi:cloud',
+		color: 'secondary',
+		partners: [
+			{
+				name: 'Contabo Cloud',
+				description: 'VPS and cloud hosting solutions',
+				website: '#',
+			},
+			{
+				name: 'Hetzner Cloud',
+				description: 'European cloud infrastructure provider',
+				website: '#',
+			},
+		],
+	},
+	{
+		name: 'IoT & Telematics',
+		icon: 'mdi:wifi-strength-4',
+		color: 'accent',
+		partners: [
+			{
+				name: 'Teltonika',
+				description: 'GPS tracking and IoT devices',
+				website: '#',
+			},
+			{
+				name: 'Tramigo',
+				description: 'Real-time tracking solutions',
+				website: '#',
+			},
+			{
+				name: 'Coban',
+				description: 'Wireless IoT and mobile solutions',
+				website: '#',
+			},
+		],
+	},
+	{
+		name: 'Logistics & Transportation',
+		icon: 'mdi:truck',
+		color: 'info',
+		partners: [
+			{
+				name: 'Profound Telematics',
+				description: 'Fleet management and telematics services',
+				website: '#',
+			},
+		],
+	},
+];
 ---
 
-<MainLayout {title}>
+<MainLayout {title} {description}>
   <SecondaryHero {title} {description}>
     <SecondaryHeroStyle icon="mdi:nature-people-outline" />
-    <div slot="inner" class="py-4"></div>
   </SecondaryHero>
-  <div></div>
+
+  <!-- Introduction -->
+  <section class="py-16 px-4 bg-primary-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-primary-900 mb-4">
+        Strategic Partnerships for Excellence
+      </h2>
+      <p class="text-lg text-base-content/70">
+        We collaborate with industry-leading organizations to provide comprehensive
+        solutions that drive business success. Our partners share our commitment to
+        innovation, quality, and customer satisfaction.
+      </p>
+    </div>
+  </section>
+
+  <!-- Partners by Category -->
+  {
+    partnerCategories.map((category) => (
+      <section
+        class={`py-20 px-4 ${category.color === "primary" ? "bg-base-100" : "bg-primary-50"}`}
+      >
+        <div class="max-w-6xl mx-auto">
+          <div class="mb-12">
+            <h2 class="text-3xl font-bold text-primary-900 mb-2 flex items-center gap-3">
+              <Icon name={category.icon} class="size-8 text-secondary" />
+              {category.name}
+            </h2>
+            <div class="h-1 w-20 bg-secondary rounded-full"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {category.partners.map((partner) => (
+              <div class="card bg-white border border-base-200 hover:shadow-xl transition-shadow">
+                <div class="card-body">
+                  <h3 class="card-title text-xl mb-2">{partner.name}</h3>
+                  <p class="text-base-content/70 mb-6">{partner.description}</p>
+                  <div class="card-actions">
+                    <a href={partner.website} class="link link-primary">
+                      Learn More →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- Partnership Value -->
+  <section class="py-20 px-4 bg-gradient-to-r from-secondary to-primary text-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12 text-center">
+        Partnership Benefits
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          [
+            {
+              icon: "mdi:check-circle",
+              title: "Best-in-Class Solutions",
+              description:
+                "Access to cutting-edge technologies and proven solutions",
+            },
+            {
+              icon: "mdi:shield-check",
+              title: "Reliability & Support",
+              description:
+                "24/7 support and maintenance from partner ecosystems",
+            },
+            {
+              icon: "mdi:chart-line",
+              title: "Scalability",
+              description: "Solutions that grow with your business needs",
+            },
+            {
+              icon: "mdi:handshake",
+              title: "Collaboration",
+              description: "Close partnerships ensuring your success",
+            },
+          ].map((item) => (
+            <div class="flex gap-4">
+              <Icon name={item.icon} class="size-8 flex-shrink-0" />
+              <div>
+                <h3 class="font-bold mb-2">{item.title}</h3>
+                <p class="opacity-90">{item.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SolutionCta
+    title="Interested in Partnership?"
+    description="We're always looking for strategic partners who share our vision for innovation and customer success"
+  />
 </MainLayout>

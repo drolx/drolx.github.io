@@ -1,20 +1,323 @@
 ---
+import { Icon } from 'astro-icon/components';
 import SecondaryHero from '@/components/SecondaryHero.astro';
 import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import SolutionCta from '@/components/SolutionCta.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
 export const title = 'Digital Transformation';
-export const description = 'We work with our customer towards a near zero paper based process for any workflow';
+export const description =
+	'We work with our customers towards a near zero paper-based process for any workflow';
+
+const services = [
+	{
+		title: 'Process Digitization',
+		description:
+			'Convert manual paper-based processes into automated digital workflows',
+		icon: 'mdi:file-document-multiple-outline',
+		features: [
+			'Process analysis',
+			'Workflow design',
+			'Automation rules',
+			'Integration setup',
+			'Employee training',
+		],
+	},
+	{
+		title: 'Document Management',
+		description:
+			'Centralized digital document storage with version control and compliance',
+		icon: 'mdi:folder-multiple-outline',
+		features: [
+			'Document digitization',
+			'OCR capabilities',
+			'Version control',
+			'Access management',
+			'Retention policies',
+		],
+	},
+	{
+		title: 'Business Process Automation',
+		description:
+			'Automate repetitive tasks and streamline operations for efficiency',
+		icon: 'mdi:robot-industrial',
+		features: [
+			'RPA implementation',
+			'Workflow automation',
+			'Task scheduling',
+			'Error handling',
+			'Performance monitoring',
+		],
+	},
+	{
+		title: 'Business Intelligence',
+		description:
+			'Data-driven insights for better decision-making and strategic planning',
+		icon: 'mdi:chart-line',
+		features: [
+			'Data warehousing',
+			'BI dashboards',
+			'Predictive analytics',
+			'Report generation',
+			'Data visualization',
+		],
+	},
+	{
+		title: 'Legacy System Modernization',
+		description:
+			'Upgrade outdated systems to modern, scalable cloud-based solutions',
+		icon: 'mdi:refresh-circle',
+		features: [
+			'System assessment',
+			'Architecture redesign',
+			'Data migration',
+			'Gradual migration',
+			'Parallel running',
+		],
+	},
+	{
+		title: 'Change Management',
+		description:
+			'Guide your organization through digital transformation successfully',
+		icon: 'mdi:hand-heart',
+		features: [
+			'Change strategy',
+			'Stakeholder engagement',
+			'Training programs',
+			'Support system',
+			'Progress tracking',
+		],
+	},
+];
+
+const benefits = [
+	{
+		icon: 'mdi:percent',
+		title: 'Cost Reduction',
+		metric: '30-50%',
+		description: 'Lower operational costs through automation',
+	},
+	{
+		icon: 'mdi:lightning-bolt',
+		title: 'Faster Processing',
+		metric: '80%',
+		description: 'Accelerate business processes',
+	},
+	{
+		icon: 'mdi:shield-check',
+		title: 'Error Reduction',
+		metric: '95%',
+		description: 'Minimize manual process errors',
+	},
+	{
+		icon: 'mdi:smiley-wink',
+		title: 'Better Experience',
+		metric: 'Improved',
+		description: 'Enhanced customer and employee experience',
+	},
+];
+
+const phases = [
+	{
+		phase: '1. Assessment',
+		description:
+			'Analyze current processes and identify transformation opportunities',
+	},
+	{
+		phase: '2. Strategy',
+		description:
+			'Develop digital transformation roadmap and implementation plan',
+	},
+	{
+		phase: '3. Implementation',
+		description: 'Deploy digital solutions and automation tools',
+	},
+	{
+		phase: '4. Optimization',
+		description: 'Fine-tune processes and maximize ROI',
+	},
+];
 ---
 
-<MainLayout {title}>
-    <SecondaryHero {title} {description}>
-        <SecondaryHeroStyle icon="mdi:newspaper-variant-multiple" />
-        <div slot="inner">
-        <a href="/get-started" class="btn btn-lg btn-secondary rounded-lg px-4 capitalize">
-            {"Get Started"}
-        </a>
-        </div>
+<MainLayout {title} {description}>
+  <SecondaryHero {title} {description}>
+    <SecondaryHeroStyle icon="mdi:lightbulb-on-outline" />
+    <div slot="inner">
+      <a
+        href="/get-started"
+        class="btn btn-lg btn-secondary rounded-lg px-4 capitalize"
+      >
+        Get Started
+      </a>
+    </div>
   </SecondaryHero>
-  <div></div>
+
+  <!-- Services Overview -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Digital Transformation Services
+        </h2>
+        <p class="text-lg text-base-content/70 max-w-3xl mx-auto">
+          Move towards paperless, automated operations with our comprehensive
+          transformation solutions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          services.map((service) => (
+            <div class="card bg-white border border-base-200 hover:shadow-xl transition-shadow">
+              <div class="card-body">
+                <div class="flex items-start justify-between mb-4">
+                  <Icon name={service.icon} class="size-12 text-primary" />
+                </div>
+                <h3 class="card-title text-xl mb-3">{service.title}</h3>
+                <p class="text-base-content/70 mb-6">{service.description}</p>
+                <div class="space-y-2">
+                  {service.features.map((feature) => (
+                    <div class="flex items-center gap-2 text-sm">
+                      <Icon
+                        name="mdi:check-circle"
+                        class="size-4 text-success flex-shrink-0"
+                      />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-20 px-4 bg-primary-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Proven Benefits
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+          benefits.map((benefit) => (
+            <div class="card bg-base-100 shadow-lg">
+              <div class="card-body items-center text-center">
+                <Icon name={benefit.icon} class="size-12 text-secondary mb-4" />
+                <p class="text-3xl font-bold text-primary mb-2">
+                  {benefit.metric}
+                </p>
+                <h3 class="card-title text-lg">{benefit.title}</h3>
+                <p class="text-sm text-base-content/70">
+                  {benefit.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Transformation Journey -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Our Transformation Approach
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          phases.map((item, index) => (
+            <div class="relative">
+              <div class="card bg-white border-2 border-primary shadow-lg">
+                <div class="card-body items-center text-center">
+                  <div class="badge badge-primary badge-lg mb-4">
+                    Step {index + 1}
+                  </div>
+                  <h3 class="card-title text-lg">{item.phase}</h3>
+                  <p class="text-sm text-base-content/70">{item.description}</p>
+                </div>
+              </div>
+              {index < phases.length - 1 && (
+                <div class="hidden lg:flex absolute top-1/2 -right-6 translate-y--1/2">
+                  <Icon name="mdi:arrow-right" class="size-8 text-primary" />
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study Highlight -->
+  <section class="py-20 px-4 bg-gradient-to-r from-secondary-50 to-primary-50">
+    <div class="max-w-4xl mx-auto">
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title text-2xl mb-4">
+            Why Organizations Choose Digital Transformation
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-bold mb-3 flex items-center gap-2">
+                <Icon name="mdi:check" class="size-5 text-success" />
+                For Business
+              </h3>
+              <ul class="space-y-2 text-sm">
+                {
+                  [
+                    "Increased revenue opportunities",
+                    "Competitive advantage",
+                    "Better decision making",
+                    "Improved customer satisfaction",
+                  ].map((item) => (
+                    <li class="flex items-center gap-2">
+                      <Icon name="mdi:dot" class="size-3 text-primary" />
+                      {item}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-bold mb-3 flex items-center gap-2">
+                <Icon name="mdi:check" class="size-5 text-success" />
+                For Operations
+              </h3>
+              <ul class="space-y-2 text-sm">
+                {
+                  [
+                    "Streamlined workflows",
+                    "Reduced operational costs",
+                    "Enhanced security",
+                    "Better compliance",
+                  ].map((item) => (
+                    <li class="flex items-center gap-2">
+                      <Icon name="mdi:dot" class="size-3 text-primary" />
+                      {item}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SolutionCta
+    title="Start Your Digital Transformation Journey"
+    description="Let's modernize your operations and prepare your business for the future"
+  />
 </MainLayout>

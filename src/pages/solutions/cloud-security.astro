@@ -1,21 +1,337 @@
 ---
+import { Icon } from 'astro-icon/components';
 import SecondaryHero from '@/components/SecondaryHero.astro';
 import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
+import SolutionCta from '@/components/SolutionCta.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
 export const title = 'Cloud Security';
 export const description =
 	'We provide the assurance for security across any infrastructure type';
+
+const services = [
+	{
+		title: 'Single Sign-On (SSO)',
+		description:
+			'Centralized authentication across all your applications and services',
+		icon: 'mdi:lock-smart',
+		features: [
+			'OAuth 2.0 & SAML',
+			'Multi-provider support',
+			'Session management',
+			'MFA integration',
+			'Audit logging',
+		],
+	},
+	{
+		title: 'LDAP Integration',
+		description: 'Directory services for user authentication and authorization',
+		icon: 'mdi:account-multiple-check',
+		features: [
+			'Active Directory sync',
+			'User provisioning',
+			'Group management',
+			'Password policies',
+			'Real-time sync',
+		],
+	},
+	{
+		title: 'Role-Based Access Control (RBAC)',
+		description:
+			'Role-based permissions management for simplified access control',
+		icon: 'mdi:shield-account',
+		features: [
+			'Role hierarchy',
+			'Permission mapping',
+			'Dynamic assignment',
+			'Audit trails',
+			'Revocation policies',
+		],
+	},
+	{
+		title: 'Attribute-Based Access Control (ABAC)',
+		description:
+			'Fine-grained access control based on user and resource attributes',
+		icon: 'mdi:tag-check',
+		features: [
+			'Custom attributes',
+			'Policy engine',
+			'Conditional rules',
+			'Real-time evaluation',
+			'Compliance mapping',
+		],
+	},
+	{
+		title: 'Policy-Based Access Control (PBAC)',
+		description:
+			'Centralized policies for consistent access management across systems',
+		icon: 'mdi:file-document-check',
+		features: [
+			'Policy templates',
+			'Version control',
+			'Automated deployment',
+			'Compliance validation',
+			'Change management',
+		],
+	},
+	{
+		title: 'Fine-Grained Access Control',
+		description:
+			'Granular permission management at resource and operation level',
+		icon: 'mdi:key-chain-variant',
+		features: [
+			'Field-level security',
+			'Object-level permissions',
+			'Row-level security',
+			'Time-based access',
+			'Contextual rules',
+		],
+	},
+];
+
+const frameworks = [
+	{
+		title: 'Compliance Standards',
+		items: [
+			'ISO 27001',
+			'SOC 2',
+			'GDPR',
+			'HIPAA',
+			'PCI-DSS',
+			'NIST Cybersecurity Framework',
+		],
+	},
+	{
+		title: 'Security Features',
+		items: [
+			'End-to-end encryption',
+			'Data at rest encryption',
+			'TLS 1.3 support',
+			'API security',
+			'DDoS protection',
+			'Intrusion detection',
+		],
+	},
+];
 ---
 
-<MainLayout {title}>
-    <SecondaryHero {title} {description}>
-        <SecondaryHeroStyle icon="mdi:cloud-key-outline" />
-        <div slot="inner">
-        <a href="/get-started" class="btn btn-lg btn-secondary rounded-lg px-4 capitalize">
-            {"Get Started"}
-        </a>
-        </div>
+<MainLayout {title} {description}>
+  <SecondaryHero {title} {description}>
+    <SecondaryHeroStyle icon="mdi:cloud-key-outline" />
+    <div slot="inner">
+      <a
+        href="/get-started"
+        class="btn btn-lg btn-secondary rounded-lg px-4 capitalize"
+      >
+        Get Started
+      </a>
+    </div>
   </SecondaryHero>
-  <div></div>
+
+  <!-- Services Overview -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Enterprise Security Solutions
+        </h2>
+        <p class="text-lg text-base-content/70 max-w-3xl mx-auto">
+          Protect your organization with comprehensive identity and access
+          management solutions that scale with your business.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          services.map((service) => (
+            <div class="card bg-white border border-base-200 hover:shadow-xl transition-shadow">
+              <div class="card-body">
+                <div class="flex items-start justify-between mb-4">
+                  <Icon name={service.icon} class="size-12 text-primary" />
+                </div>
+                <h3 class="card-title text-xl mb-3">{service.title}</h3>
+                <p class="text-base-content/70 mb-6">{service.description}</p>
+                <div class="space-y-2">
+                  {service.features.map((feature) => (
+                    <div class="flex items-center gap-2 text-sm">
+                      <Icon
+                        name="mdi:check-circle"
+                        class="size-4 text-success flex-shrink-0"
+                      />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance & Standards -->
+  <section class="py-20 px-4 bg-primary-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Compliance & Standards
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {
+          frameworks.map((framework) => (
+            <div class="card bg-base-100 shadow-lg">
+              <div class="card-body">
+                <h3 class="card-title text-2xl mb-6">{framework.title}</h3>
+                <ul class="space-y-3">
+                  {framework.items.map((item) => (
+                    <li class="flex items-center gap-3">
+                      <Icon
+                        name="mdi:check-circle"
+                        class="size-5 text-success flex-shrink-0"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Architecture -->
+  <section class="py-20 px-4 bg-base-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Security Architecture
+        </h2>
+        <p class="text-base-content/70">
+          Layered security approach for comprehensive protection
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {
+          [
+            {
+              layer: "Application Layer",
+              features: [
+                "API authentication & authorization",
+                "Input validation",
+                "Output encoding",
+                "CSRF protection",
+              ],
+            },
+            {
+              layer: "Network Layer",
+              features: [
+                "TLS/SSL encryption",
+                "VPN support",
+                "Firewall rules",
+                "Network segmentation",
+              ],
+            },
+            {
+              layer: "Data Layer",
+              features: [
+                "Encryption at rest",
+                "Field-level encryption",
+                "Database hardening",
+                "Backup encryption",
+              ],
+            },
+            {
+              layer: "Infrastructure Layer",
+              features: [
+                "Container security",
+                "Vulnerability scanning",
+                "Patch management",
+                "Hardened OS images",
+              ],
+            },
+          ].map((item) => (
+            <div class="card bg-white border border-base-200 hover:shadow-lg transition-shadow">
+              <div class="card-body">
+                <h3 class="card-title flex items-center gap-3 mb-4">
+                  <Icon name="mdi:layers" class="size-6 text-primary" />
+                  {item.layer}
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {item.features.map((feature) => (
+                    <div class="flex items-center gap-2">
+                      <Icon
+                        name="mdi:shield-check"
+                        class="size-4 text-success flex-shrink-0"
+                      />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-20 px-4 bg-secondary-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-900 mb-4">
+          Why Choose drolx Lab for Security
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+          [
+            {
+              icon: "mdi:certificate",
+              title: "Certified Experts",
+              description: "Security professionals with industry certifications",
+            },
+            {
+              icon: "mdi:hours-24",
+              title: "24/7 Monitoring",
+              description: "Continuous security monitoring and threat detection",
+            },
+            {
+              icon: "mdi:update",
+              title: "Proactive Updates",
+              description: "Regular updates and patches for emerging threats",
+            },
+            {
+              icon: "mdi:file-document-check",
+              title: "Compliance Ready",
+              description: "Built for regulatory compliance from day one",
+            },
+          ].map((item) => (
+            <div class="text-center">
+              <div class="flex justify-center mb-4">
+                <div class="bg-primary/10 p-4 rounded-full">
+                  <Icon name={item.icon} class="size-8 text-primary" />
+                </div>
+              </div>
+              <h3 class="font-bold mb-2">{item.title}</h3>
+              <p class="text-sm text-base-content/70">{item.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <SolutionCta
+    title="Secure Your Infrastructure Today"
+    description="Implement enterprise-grade security with our comprehensive IAM and access control solutions"
+  />
 </MainLayout>
