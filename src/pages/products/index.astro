@@ -1,62 +1,62 @@
 ---
-import { Icon } from 'astro-icon/components';
-import SecondaryHero from '@/components/SecondaryHero.astro';
-import SecondaryHeroStyle from '@/components/SecondaryHeroStyle.astro';
-import SolutionCta from '@/components/SolutionCta.astro';
-import MainLayout from '../../layouts/MainLayout.astro';
+import { Icon } from "astro-icon/components";
+import SecondaryHero from "@/components/SecondaryHero.astro";
+import SecondaryHeroStyle from "@/components/SecondaryHeroStyle.astro";
+import SolutionCta from "@/components/SolutionCta.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
 
-export const title = 'Products';
+export const title = "Products";
 export const description =
-	'Various cloud services and solutions offered as SaaS or private cloud deployments';
+  "Various cloud services and solutions offered as SaaS or private cloud deployments";
 
 const products = [
-	{
-		name: 'ello 360',
-		tagline: 'Comprehensive IoT & Logistics Platform',
-		shortDescription:
-			'End-to-end solution for transportation, logistics, and field operations',
-		icon: 'mdi:compass',
-		color: 'primary',
-		features: [
-			'Live tracking',
-			'IoT integration',
-			'Task management',
-			'Inventory control',
-			'Invoicing & billing',
-		],
-		link: '/products/ello-360',
-	},
-	{
-		name: 'ello Trac',
-		tagline: 'GPS Fleet Management',
-		shortDescription: 'Real-time vehicle tracking and fleet management system',
-		icon: 'mdi:truck-check',
-		color: 'secondary',
-		features: [
-			'Live tracking',
-			'Geofencing',
-			'Reports',
-			'Notifications',
-			'Mobile app',
-		],
-		link: '/products/ello-trac',
-	},
-	{
-		name: 'WeSchool',
-		tagline: 'Education ERP Platform',
-		shortDescription:
-			'Cloud-based school management system for operations, grading, and communications',
-		icon: 'mdi:school',
-		color: 'accent',
-		features: [
-			'School operations',
-			'Grading system',
-			'Result management',
-			'Parent portal',
-			'Student tracking',
-		],
-		link: '/products/we-school',
-	},
+  {
+    name: "ello Trac",
+    tagline: "GPS Fleet Management",
+    shortDescription: "Real-time vehicle tracking and fleet management system",
+    icon: "mdi:truck-check",
+    color: "secondary",
+    features: [
+      "Live tracking",
+      "Geofencing",
+      "Reports",
+      "Notifications",
+      "Mobile app",
+    ],
+    link: "/products/ello-trac",
+  },
+  {
+    name: "ello 360",
+    tagline: "Comprehensive IoT & Logistics Platform",
+    shortDescription:
+      "End-to-end solution for transportation, logistics, and field operations",
+    icon: "mdi:compass",
+    color: "primary",
+    features: [
+      "Live tracking",
+      "IoT integration",
+      "Task management",
+      "Inventory control",
+      "Invoicing & billing",
+    ],
+    link: "/products/ello-360",
+  },
+  {
+    name: "WeSchool",
+    tagline: "Education ERP Platform",
+    shortDescription:
+      "Cloud-based school management system for operations, grading, and communications",
+    icon: "mdi:school",
+    color: "accent",
+    features: [
+      "School operations",
+      "Grading system",
+      "Result management",
+      "Parent portal",
+      "Student tracking",
+    ],
+    link: "/products/we-school",
+  },
 ];
 ---
 
@@ -73,8 +73,8 @@ const products = [
           Our Product Suite
         </h2>
         <p class="text-lg text-base-content/70 max-w-3xl mx-auto">
-          Purpose-built solutions for specific industries, available as cloud services
-          or private deployments.
+          Purpose-built solutions for specific industries, available as cloud
+          services or private deployments.
         </p>
       </div>
 
@@ -82,14 +82,10 @@ const products = [
         {
           products.map((product) => (
             <div class="card bg-white shadow-xl hover:shadow-2xl transition-shadow overflow-hidden">
-              <div
-                class={`h-2 bg-${product.color}`}
-              ></div>
+              <div class={`h-2 bg-${product.color}`} />
               <div class="card-body">
                 <div class="flex justify-center mb-4">
-                  <div
-                    class={`bg-${product.color}/10 p-4 rounded-full`}
-                  >
+                  <div class={`bg-${product.color}/10 p-4 rounded-full`}>
                     <Icon
                       name={product.icon}
                       class={`size-12 text-${product.color}`}
@@ -99,13 +95,15 @@ const products = [
                 <h2 class="card-title text-2xl justify-center text-center mb-2">
                   {product.name}
                 </h2>
-                <p class={`text-center text-${product.color} font-semibold mb-4`}>
+                <p
+                  class={`text-center text-${product.color} font-semibold mb-4`}
+                >
                   {product.tagline}
                 </p>
                 <p class="text-center text-base-content/70 mb-6">
                   {product.shortDescription}
                 </p>
-                <div class="divider my-4"></div>
+                <div class="divider my-4" />
                 <div class="space-y-2 mb-6">
                   {product.features.map((feature) => (
                     <div class="flex items-center gap-2 text-sm">
@@ -120,6 +118,7 @@ const products = [
                 <div class="card-actions">
                   <a
                     href={product.link}
+                    aria-label={`Learn More About ${product.name}`}
                     class={`btn btn-${product.color} w-full`}
                   >
                     Learn More

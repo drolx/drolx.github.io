@@ -122,9 +122,9 @@ const partnerCategories = [
                   <h3 class="card-title text-xl mb-2">{partner.name}</h3>
                   <p class="text-base-content/70 mb-6">{partner.description}</p>
                   <div class="card-actions">
-                    <a href={partner.website} class="link link-primary">
-                      Learn More →
-                    </a>
+                    <a href={partner.website} aria-label={`Learn More About ${partner.name}`} class="link link-primary">
+                      <span>Learn More</span>
+                      <Icon name="md:arrow-right-thin" size="ms-2 size-2" />                    </a>
                   </div>
                 </div>
               </div>

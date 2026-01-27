@@ -56,6 +56,7 @@ const description = 'We develop reliable software and that drive growth, especia
           <a
             class="btn btn-lg btn-secondary hover:btn-primary me-2 mb-2 px-6.5 py-6.5"
             href="/get-started"
+            aria-label="Get Started"
             >{"Get Started"}<a/>
         </div>
       </div>
@@ -73,12 +74,12 @@ const description = 'We develop reliable software and that drive growth, especia
   </div>
   <div class="bg-neutral-500">
     <div class="container mx-auto flex flex-col py-8">
-      <p class="mb-16 text-5xl font-black self-center text-neutral-900">
+      <p class="mb-16 text-5xl font-black self-center text-neutral-800">
         {"What We Offer"}
       </p>
       <div class="flex flex-col md:flex-row space-x-4 px-4 justify-between">
         <div class="flex-1 flex flex-col space-y-4 px-4 lg:px-6">
-          <h1 class="text-4xl font-bold text-primary-400">
+          <h1 class="text-4xl font-bold text-neutral-900">
             {LandingText.solutionTitle}
           </h1>
           <p class="text-lg text-gray-700">{LandingText.solutionContent}</p>
@@ -145,7 +146,7 @@ const description = 'We develop reliable software and that drive growth, especia
           </div>
 
           <!-- Client Check -->
-          <a href="/company/our-customers" class="btn btn-lg hover:btn-primary">Check Here</a>
+          <a href="/company/our-customers" aria-label="Check Customers" class="btn btn-lg hover:btn-primary">Check Here</a>
         </div>
         <!-- Background Content -->
         <div
@@ -189,7 +190,7 @@ const description = 'We develop reliable software and that drive growth, especia
               </div>
               <p class="font-normal">{service.description}</p>
               <div class="card-actions justify-start">
-                <a href={service.url} class="btn btn-md btn-outline btn-secondary">Read More</a>
+                <a href={service.url} aria-label={`Read More About ${service.title}`} class="btn btn-md btn-outline btn-secondary">Read More</a>
               </div>
             </div>
           </div>

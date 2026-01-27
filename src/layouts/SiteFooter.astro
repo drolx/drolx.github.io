@@ -1,47 +1,50 @@
 ---
-import { Icon } from 'astro-icon/components';
-import SubscribeButton from '@/components/SubscribeButton.astro';
-import LandingText from '@/data/landing-text.json';
-import type { RouteItem } from '@/types';
+import { Icon } from "astro-icon/components";
+import FooterLink from "@/components/FooterLink.astro";
+import SubscribeButton from "@/components/SubscribeButton.astro";
+import LandingText from "@/data/landing-text.json";
+import type { RouteItem } from "@/types";
+import siteInfo from "../data/site-info.json";
 import {
-	companyRoutes as headerCompanyRoutes,
-	solutionRoutes,
-} from './SiteHeader.astro';
+  companyRoutes as headerCompanyRoutes,
+  solutionRoutes,
+} from "./SiteHeader.astro";
 
-const year = new Date().getFullYear();
 const companyRoutes: RouteItem[] = [
-	{ label: 'Solutions', url: '/solutions' },
-	...headerCompanyRoutes,
+  { label: "Solutions", url: "/solutions" },
+  ...headerCompanyRoutes,
 ];
 const productRoutes = [
-  { label: 'ello 360', url: '/products/ello-360' },
-  { label: 'ello Trac', url: '/products/ello-trac' },
-  { label: 'We School', url: '/products/we-school' },
-]
+  { label: "ello Trac", url: "/products/ello-trac" },
+  { label: "ello 360", url: "/products/ello-360" },
+  { label: "We School", url: "/products/we-school" },
+];
 const resourceRoutes: RouteItem[] = [
-	{ label: 'Articles', url: '/resources/articles' },
-	{ label: 'Case Studies', url: '/resources/case-studies' },
-	{ label: 'Contact', url: '/company/contact' },
-	{ label: "FAQ's", url: '/resources/faqs' },
-	{ label: 'Status', url: '#' },
+  { label: "Articles", url: "/resources/articles" },
+  { label: "Case Studies", url: "/resources/case-studies" },
+  { label: "Contact", url: "/company/contact" },
+  { label: "FAQ's", url: "/resources/faqs" },
+  { label: "Status", url: "#" },
 ];
 const extraRoutes: RouteItem[] = [
-	{ label: 'Licenses', url: '/licenses' },
-	{ label: 'Terms', url: '/terms-of-service' },
-	{ label: 'Privacy Policy', url: '/privacy-policy' },
-	{ label: 'Cookies', url: '/cookies' },
+  { label: "Licenses", url: "/licenses" },
+  { label: "Terms", url: "/terms-of-service" },
+  { label: "Privacy Policy", url: "/privacy-policy" },
+  { label: "Cookies", url: "/cookies" },
 ];
 ---
 
 <footer class="bg-secondary-600">
-  <div class="container mx-auto px-6 lg:px-0 pb-8 pt-16">
+  <div class="container mx-auto px-2 lg:px-0 pb-4 pt-16">
     <div class="flex flex-col md:flex-row gap-8 lg:px-8">
       <!-- Left Content -->
       <div class="lg:max-w-96 flex flex-col gap-8 sm:justify-center">
-        <a href="#" class="self-center md:self-auto">
+        <a href="/" aria-label="Footer Logo" class="self-center md:self-auto">
           <Icon name="logow" class="h-16 w-auto" />
         </a>
-        <p class="max-w-sm text-white self-center md:self-auto">{LandingText.footerTagLine}</p>
+        <p class="max-w-sm text-white self-center md:self-auto">
+          {LandingText.footerTagLine}
+        </p>
         <SubscribeButton />
       </div>
 
@@ -52,12 +55,7 @@ const extraRoutes: RouteItem[] = [
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
               productRoutes.map((item) => (
-                <a
-                  href={item.url}
-                  class="text-white transition-colors duration-300 hover:text-blue-500"
-                >
-                  {item.label}
-                </a>
+                <FooterLink label={item.label} url={item.url} />
               ))
             }
           </div>
@@ -67,12 +65,7 @@ const extraRoutes: RouteItem[] = [
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
               companyRoutes.map((item) => (
-                <a
-                  href={item.url}
-                  class="text-white transition-colors duration-300 hover:text-blue-500"
-                >
-                  {item.label}
-                </a>
+                <FooterLink label={item.label} url={item.url} />
               ))
             }
           </div>
@@ -82,12 +75,7 @@ const extraRoutes: RouteItem[] = [
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
               resourceRoutes.map((item) => (
-                <a
-                  href={item.url}
-                  class="text-white transition-colors duration-300 hover:text-blue-500"
-                >
-                  {item.label}
-                </a>
+                <FooterLink label={item.label} url={item.url} />
               ))
             }
           </div>
@@ -97,12 +85,7 @@ const extraRoutes: RouteItem[] = [
           <div class="mt-5 flex flex-col items-start space-y-2">
             {
               solutionRoutes.map((item) => (
-                <a
-                  href={item.url}
-                  class="text-white transition-colors duration-300 hover:text-blue-500"
-                >
-                  {item.label}
-                </a>
+                <FooterLink label={item.label} url={item.url} />
               ))
             }
           </div>
@@ -112,17 +95,11 @@ const extraRoutes: RouteItem[] = [
     <hr class="my-4 border-white md:my-8" />
     <div class="mb-16 flex gap-3 justify-center self-center lg:self-end">
       {
-        [
-          { url: "https://x.com/drolxLab", icon: "mdi:twitter" },
-          { url: "https://facebook.com/drolxLab", icon: "mdi:facebook" },
-          { url: "https://instagram.com/drolxLab", icon: "mdi:instagram" },
-          {
-            url: "https://linkedin.com/company/drolxLab",
-            icon: "mdi:linkedin",
-          },
-        ].map((item) => (
+        Object.values(siteInfo.socials).map((item) => (
           <a
             href={item.url}
+            aria-label={item.label}
+            target="_blank"
             class="text-white transition-colors duration-300 hover:text-secondary-300"
           >
             <Icon name={item.icon} class="size-8" />
@@ -130,12 +107,12 @@ const extraRoutes: RouteItem[] = [
         ))
       }
     </div>
-    <div class="flex flex-col items-center sm:flex-row sm:justify-between">
-      <p class="mt-4 text-sm text-white sm:mt-0">
-        &copy; {"drolx Lab"}
-        {year}, All Rights Reserved.
+    <div class="flex flex-col items-center sm:flex-row px-2 sm:justify-between">
+      <p class="text-sm mt-1 text-white sm:mt-0">
+        &copy; {new Date().getFullYear()}
+        {"drolx Lab"}, All Rights Reserved.
       </p>
-      <div class="flex mt-3 -mx-2 sm:mt-0">
+      <div class="flex -mx-2 sm:mt-0">
         {
           extraRoutes.map((item) => (
             <a

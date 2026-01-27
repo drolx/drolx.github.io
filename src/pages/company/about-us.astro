@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import BreadcrumbSection from '@/components/BreadcrumbSection.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
 export const title = 'About Us';
@@ -32,11 +32,8 @@ const personnels: TeamPersonnel[] = [
 ---
 
 <MainLayout title={title}>
-  <div class="w-full">
-    <div class="lg:max-w-6xl mx-auto pt-8">
-      <Breadcrumbs />
-    </div>
-  </div>
+  <BreadcrumbSection />
+  
   <!--  OUR STORY SECTION  -->
   <section class="bg-base-100 py-20 px-4">
     <div class="max-w-7xl mx-auto">
@@ -166,12 +163,14 @@ const personnels: TeamPersonnel[] = [
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
           href="/get-started"
+          aria-label="Get Started"
           class="btn btn-lg btn-secondary text-white hover:bg-white hover:text-secondary rounded-lg px-8"
         >
           {"Get Started"}
         </a>
         <a
           href="/schedule-call"
+          aria-label="Schedule Call"
           class="btn btn-lg btn-white text-primary hover:btn-accent hover:text-white rounded-lg px-8"
         >
           {"Schedule Call"}
