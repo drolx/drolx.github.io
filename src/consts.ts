@@ -16,7 +16,7 @@
 //  Modified At: Thu 22 Jan 2026 02:40:00 PM UTC
 
 export const SITE_TITLE = "drolx Lab";
-export const SITE_DESCRIPTION = "Software & Cloud Solutions";
+export const SITE_DESCRIPTION = "Software, IoT & Cloud Solutions";
 export const SITE_AUTHOR = "Godwin peter .O";
 export const SITE_URL = "https://www.drolx.com";
 

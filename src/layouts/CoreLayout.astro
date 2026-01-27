@@ -25,24 +25,17 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`;
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Global Metadata -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    
+    <title>{layoutTitle}</title>
     <!-- Favicon  -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/logo.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png">
-
-    <meta name="generator" content={Astro.generator}>
-    <!-- Canonical URL -->
-    <link rel="canonical" href={canonicalURL} />
-
     <!-- Primary Meta Tags -->
-    <title>{layoutTitle}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="title" content={layoutTitle}>
-    <meta name="description" content={description}>
-    <link rel="sitemap" type="application/xml" href="/sitemap-0.xml" />
+    <meta name="description" content={description ?? `${title} - ${SITE_DESCRIPTION}`}>
+    <meta name="generator" content={Astro.generator}>
     <meta name="author" content={SITE_AUTHOR}>
 		<meta name="copyright" content="drolx-source-1.0" >
     <meta name="keywords" content="drolx, software, tech, development, software solution, cloud services, cloud security, sass, product development, devOps, logistics, retail, telematics, gps tracking">
@@ -56,6 +49,9 @@ const layoutTitle = `${title} :: ${SITE_TITLE} | ${SITE_DESCRIPTION}`;
     <meta name="twitter:site" content="@drolxLab">
     <meta name="twitter:title" content={layoutTitle}>
     <meta name="twitter:image" content={openGraphImageUrl}>
+    <!-- Others -->
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-0.xml" />
 
     <!-- Analytics scripts -->
     {isProduction && (
