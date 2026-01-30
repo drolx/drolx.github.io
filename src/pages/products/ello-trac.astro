@@ -164,7 +164,7 @@ const deploymentOptions = [
 const integrations = [
 	{ name: 'GPS Devices', icon: 'mdi:satellite' },
 	{ name: 'Telematics', icon: 'mdi:router-wireless' },
-	{ name: 'Mobile Apps', icon: 'mdi:phone' },
+	{ name: 'Mobile Apps', icon: 'mdi:mobile-phone-text' },
 	{ name: 'Web Dashboard', icon: 'mdi:monitor' },
 	{ name: 'API Integration', icon: 'mdi:api' },
 	{ name: 'Third-party Services', icon: 'mdi:link-variant' },
@@ -483,32 +483,20 @@ const integrations = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
         {
           [
             {
-              name: "Starter",
-              devices: "Up to 10 Devices",
-              price: "Custom",
+              name: "Standard",
+              devices: "Up to 50 Devices",
+              highlighted: true,
+              price: "Free",
               features: [
                 "Live tracking",
                 "Basic reports",
-                "Email alerts",
-                "Mobile app",
-                "Email support",
-              ],
-            },
-            {
-              name: "Professional",
-              devices: "Up to 50 Devices",
-              price: "Custom",
-              highlighted: true,
-              features: [
-                "All Starter features",
-                "Advanced geofencing",
-                "Driver management",
+                "Mobile application",
+                "Advanced Geo-fencing",
                 "Priority support",
-                "Custom reports",
                 "API access",
               ],
             },
@@ -517,7 +505,7 @@ const integrations = [
               devices: "Unlimited",
               price: "Custom",
               features: [
-                "All Professional features",
+                "All Standard features",
                 "Dedicated account manager",
                 "Custom integrations",
                 "On-premise deployment",
@@ -527,7 +515,7 @@ const integrations = [
             },
           ].map((plan) => (
             <div
-              class={`card ${plan.highlighted ? "bg-primary text-white shadow-xl" : "bg-white border border-base-200 shadow-lg"} hover:shadow-2xl transition-shadow`}
+              class={`card ${plan.highlighted ? "bg-primary text-white shadow-xl" : "bg-white border border-base-200 shadow-lg"} hover:shadow-2xl transition-shadow lg:max-w-[450px]`}
             >
               <div class="card-body">
                 <h3
@@ -565,11 +553,17 @@ const integrations = [
                   ))}
                 </div>
                 <div class="card-actions mt-6">
-                  <button
+                  {plan.price === "Free" ? (<a
+                    href="https://trac.ello360.com"
+                    aria-label="Sign Up"
                     class={`btn w-full ${plan.highlighted ? "btn-white text-primary" : "btn-primary"}`}
-                  >
-                    Get Started
-                  </button>
+                  >{"Sign Up"}
+                  </a>) : (<a
+                    href="/company/contact-us"
+                    aria-label="Contact Us"
+                    class={`btn w-full ${plan.highlighted ? "btn-white text-primary" : "btn-primary"}`}
+                  >{"Contact Us"}
+                  </a>)}
                 </div>
               </div>
             </div>
