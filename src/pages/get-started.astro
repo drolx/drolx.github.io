@@ -61,7 +61,7 @@ export const description =
           <div class="card-body">
             <div class="flex justify-center mb-4">
               <div class="bg-info/10 p-4 rounded-full">
-                <Icon name="mdi:phone-outline" class="text-4xl text-info" />
+                <Icon name="mdi:phone-outline" class="text-4xl text-primary" />
               </div>
             </div>
             <h3 class="card-title justify-center text-xl mb-3">Phone Call</h3>
@@ -69,9 +69,9 @@ export const description =
               Prefer to speak directly? Call us for an immediate conversation.
             </p>
             <div class="card-actions justify-center">
-              <a href={`tel:${siteInfo.phones[0]}`} aria-label="Call Now" class="btn btn-info btn-sm">
+              <a href={`tel:${siteInfo.phones[0]}`} aria-label="Call Now" class="btn btn-primary btn-sm">
                 <Icon name="mdi:phone" class="size-5" />
-                Call Now
+                <span>{"Call Now"}</span>
               </a>
             </div>
           </div>
@@ -95,10 +95,10 @@ export const description =
               <a
                 href={`mailto:${siteInfo.email}`}
                 aria-label={siteInfo.email}
-                class="btn btn-accent btn-sm"
+                class="btn btn-accent btn-sm text-white"
               >
                 <Icon name="mdi:email" class="size-5" />
-                Email Us
+                <span>{"Email Us"}</span>
               </a>
             </div>
           </div>
